@@ -1,0 +1,11 @@
+{
+  "extends": "../../../api-extractor.json",
+  "mainEntryPointFilePath": "<projectFolder>/dist/types/src/gherkin-to-test/index.d.ts",
+  "apiReport": {
+    "reportFileName": "gherkin-to-test.api.md",
+    "reportFolder": "<projectFolder>/docs/lib"
+  },
+  "docModel": {
+    "apiJsonFilePath": "<projectFolder>/docs/lib/gherkin-to-test.api.json"
+  }
+}

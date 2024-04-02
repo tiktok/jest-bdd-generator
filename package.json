@@ -1,0 +1,108 @@
+{
+  "name": "@tiktok/jest-bdd-generator",
+  "version": "0.1.0",
+  "description": "Jest code generator empowered with Gherkin and BDD",
+  "keywords": [
+    "Jest", 
+    "JestJS",
+    "Testing",
+    "Unit-Testing",
+    "Behaviour-Driven-Development",
+    "BDD",
+    "Cucumber", 
+    "CucumberJS",
+    "Gherkin",
+    "Use case",
+    "Code Generator",
+    "Test Oracle"
+  ],
+  "license": "MIT",
+  "author": "aishiguang",
+  "main": "./dist/lib/index.js",
+  "module": "./dist/es/index.js",
+  "types": "./dist/types/src/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "modern build",
+    "build:watch": "modern build -w",
+    "dev": "modern dev",
+    "doc": "ts-node tools/export-api-doc",
+    "lint": "eslint .",
+    "lint:error": "eslint . --quiet",
+    "prepublishOnly": "modern build"
+  },
+  "exports": {
+    "./lib/transpiler": {
+      "import": "./dist/es/transpiler/index.js",
+      "require": "./dist/lib/transpiler/index.js",
+      "types": "./dist/types/src/transpiler/index.d.ts"
+    },
+    "./lib/jest-to-gherkin": {
+      "import": "./dist/es/jest-to-gherkin/index.js",
+      "require": "./dist/lib/jest-to-gherkin/index.js",
+      "types": "./dist/types/src/jest-to-gherkin/index.d.ts"
+    },
+    "./lib/gherkin-to-test": {
+      "import": "./dist/es/gherkin-to-test/index.js",
+      "require": "./dist/lib/gherkin-to-test/index.js",
+      "types": "./dist/types/src/gherkin-to-test/index.d.ts"
+    },
+    "./UI/TestGeneration" : {
+      "import": "./dist/es/UI/TestGeneration.js",
+      "require": "./dist/lib/UI/TestGeneration.js",
+      "types": "./dist/types/src/UI/TestGeneration.d.ts"
+    },
+    "./UI/TestOracle" : {
+      "import": "./dist/es/UI/TestOracle.js",
+      "require": "./dist/lib/UI/TestOracle.js",
+      "types": "./dist/types/src/UI/TestOracle.d.ts"
+    }
+  },
+  "bin": {
+    "gen-report": "./bin/gen-report.js",
+    "gen-doc": "./bin/gen-doc.js",
+    "gen-test": "./bin/gen-test.js"
+  },
+  "peerDependencies": {
+    "@monaco-editor/react": "~4.6.0",
+    "pako": "~2.1.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "styled-components": "5.3.5"
+  },
+  "dependencies": {
+    "@cucumber/cucumber": "^9.2.0",
+    "@cucumber/gherkin": "26.2.0",
+    "@cucumber/messages": "22.0.0",
+    "jest": "^27.5.1",
+    "ts-jest": "^27.1.5",
+    "ts-node": "~10.9.1"
+  },
+  "devDependencies": {
+    "@jest/test-result": "^27.1.5",
+    "@microsoft/api-extractor": "~7.39.1",
+    "@modern-js/module-tools": "^2.46.1",
+    "@monaco-editor/react": "~4.6.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^20.11.19",
+    "@types/pako": "~2.0.3",
+    "@types/react": "17.0.65",
+    "@types/react-dom": "17.0.20",
+    "@types/react-router-dom": "~5.3.3",
+    "@types/styled-components": "^5.1.14",
+    "eslint": "8.23.1",
+    "pako": "~2.1.0",
+    "prettier": "2.7.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "rimraf": "3.0.2",
+    "styled-components": "5.3.5",
+    "stylelint": "13.13.1",
+    "typescript": "^4.9.5"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.nodejs.org/"
+  },
+  "jsnext:source": "./src/index.ts"
+}

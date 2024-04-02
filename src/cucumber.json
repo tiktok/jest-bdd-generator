@@ -1,0 +1,9 @@
+{
+    "default": {
+      "parallel": 2,
+      "format": ["html:cucumber-report.html"],
+      "requireModule": ["../dist/features/register.js"],
+      "require": ["test/**/*.ts"]
+    }
+  }
+  

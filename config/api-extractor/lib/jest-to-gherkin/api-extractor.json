@@ -1,0 +1,11 @@
+{
+  "extends": "../../../api-extractor.json",
+  "mainEntryPointFilePath": "<projectFolder>/dist/types/src/jest-to-gherkin/index.d.ts",
+  "apiReport": {
+    "reportFileName": "jest-to-gherkin.api.md",
+    "reportFolder": "<projectFolder>/docs/lib"
+  },
+  "docModel": {
+    "apiJsonFilePath": "<projectFolder>/docs/lib/jest-to-gherkin.api.json"
+  }
+}
