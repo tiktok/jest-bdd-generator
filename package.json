@@ -31,8 +31,7 @@
     "dev": "modern dev",
     "doc": "ts-node tools/export-api-doc",
     "lint": "eslint .",
-    "lint:error": "eslint . --quiet",
-    "prepublishOnly": "modern build"
+    "lint:error": "eslint . --quiet"
   },
   "exports": {
     "./lib/transpiler": {
