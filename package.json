@@ -1,5 +1,5 @@
 {
-  "name": "@tiktok/jest-bdd-generator",
+  "name": "jest-bdd-generator",
   "version": "0.1.0",
   "description": "Jest code generator empowered with Gherkin and BDD",
   "keywords": [
