@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "description": "Jest code generator empowered with Gherkin and BDD",
   "keywords": [
-    "Jest", 
+    "Jest",
     "JestJS",
     "Testing",
     "Unit-Testing",
     "Behaviour-Driven-Development",
     "BDD",
-    "Cucumber", 
+    "Cucumber",
     "CucumberJS",
     "Gherkin",
     "Use case",
@@ -17,7 +17,10 @@
     "Test Oracle"
   ],
   "license": "MIT",
-  "author": "aishiguang",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tiktok/jest-bdd-generator"
+  },
   "main": "./dist/lib/index.js",
   "module": "./dist/es/index.js",
   "types": "./dist/types/src/index.d.ts",
