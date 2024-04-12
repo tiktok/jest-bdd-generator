@@ -11,7 +11,7 @@ if (files[0]) {
 
 const options = {
   pathTestsInput: path.join(process.cwd(), `./tests/${defaultFileEntry}.test.ts`),
-  pathOutput: path.join(process.cwd(), `./doc/features/${defaultFileEntry}.test.feature`),
+  pathOutput: path.join(process.cwd(), `./docs/features/${defaultFileEntry}.feature`),
 };
 
 void run(compose, options, ['pathTestsInput']);

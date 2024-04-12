@@ -21,7 +21,7 @@ async function main(): Promise<void> {
 
   const options: Parameters<typeof generator.generateGherkin>[0] = {
     pathTestInput: path.join(process.cwd(), `./tests/${defaultFileEntry}.test.ts`),
-    pathGherkinInput: path.join(process.cwd(), `./features/${defaultFileEntry}.test.feature`),
+    pathGherkinInput: path.join(process.cwd(), `./docs/features/${defaultFileEntry}.feature`),
   };
   const optionsFromArgV: (keyof Parameters<typeof generator.generateGherkin>[0])[] = [
     'pathTestInput',

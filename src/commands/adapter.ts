@@ -69,6 +69,12 @@ export async function run<Opt extends Record<string, unknown>, Ret>(
       const res = await execute(_option);
 
       if (typeof _option[OUTPUT_PARAM] === 'string') {
+
+        const outputPath = path.dirname(_option[OUTPUT_PARAM]);
+        if (!fs.existsSync(outputPath)) {
+          fs.mkdirSync(outputPath);
+        }
+        
         fs.writeFileSync(_option[OUTPUT_PARAM], res as string);
       } else {
         console.log(res);
