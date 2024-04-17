@@ -19,7 +19,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tiktok/jest-bdd-generator"
+    "url": "git+https://github.com/tiktok/jest-bdd-generator.git"
   },
   "main": "./dist/lib/index.js",
   "module": "./dist/es/index.js",
@@ -49,21 +49,21 @@
       "require": "./dist/lib/gherkin-to-test/index.js",
       "types": "./dist/types/src/gherkin-to-test/index.d.ts"
     },
-    "./UI/TestGeneration" : {
+    "./UI/TestGeneration": {
       "import": "./dist/es/UI/TestGeneration.js",
       "require": "./dist/lib/UI/TestGeneration.js",
       "types": "./dist/types/src/UI/TestGeneration.d.ts"
     },
-    "./UI/TestOracle" : {
+    "./UI/TestOracle": {
       "import": "./dist/es/UI/TestOracle.js",
       "require": "./dist/lib/UI/TestOracle.js",
       "types": "./dist/types/src/UI/TestOracle.d.ts"
     }
   },
   "bin": {
-    "gen-report": "./bin/gen-report.js",
-    "gen-doc": "./bin/gen-doc.js",
-    "gen-test": "./bin/gen-test.js"
+    "gen-report": "bin/gen-report.js",
+    "gen-doc": "bin/gen-doc.js",
+    "gen-test": "bin/gen-test.js"
   },
   "peerDependencies": {
     "@monaco-editor/react": "~4.6.0",
