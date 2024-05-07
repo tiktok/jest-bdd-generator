@@ -1,0 +1,22 @@
+{
+  "name": "te",
+  "format": { "pattern": "#,##,##0.###" },
+  "proportional": { "percent": "{0}%", "perMille": "{0}‰" },
+  "currency": [""],
+  "scientific": "#E0",
+  "compact": {
+    "4digit": { "long": { "one": "0 వేయి", "other": "0 వేలు" }, "short": { "one": "0వే", "other": "0వే" } },
+    "7digit": { "long": { "one": "0 మిలియన్", "other": "0 మిలియన్లు" }, "short": { "one": "0మి", "other": "0మి" } },
+    "10digit": { "long": { "one": "0 బిలియన్", "other": "0 బిలియన్లు" }, "short": { "one": "0బి", "other": "0బి" } },
+    "13digit": {
+      "long": { "one": "0 ట్రిలియన్", "other": "0 ట్రిలియన్లు" },
+      "short": { "one": "0ట్రి", "other": "0ట్రి" }
+    }
+  },
+  "range": {
+    "between": { "short": "{0}–{1}" },
+    "approximately": { "short": "~{0}" },
+    "atLeast": { "short": "{0}+" },
+    "atMost": { "short": "≤{0}" }
+  }
+}

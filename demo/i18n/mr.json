@@ -1,0 +1,21 @@
+{
+  "name": "mr",
+  "format": { "pattern": "#,##,##0.###" },
+  "proportional": { "percent": "{0}%", "perMille": "{0}‰" },
+  "currency": [""],
+  "scientific": "[#×10^0]",
+  "compact": {
+    "4digit": { "long": { "one": "0 हजार", "other": "0 हजार" }, "short": { "one": "0 हजार", "other": "0 हजार" } },
+    "6digit": { "long": { "one": "0 लाख", "other": "0 लाख" }, "short": { "one": "0 लाख", "other": "0 लाख" } },
+    "8digit": { "long": { "one": "0 कोटी", "other": "0 कोटी" }, "short": { "one": "0 कोटी", "other": "0 कोटी" } },
+    "10digit": { "long": { "one": "0 अब्ज", "other": "0 अब्ज" }, "short": { "one": "0 अब्ज", "other": "0 अब्ज" } },
+    "12digit": { "long": { "one": "0 खर्व", "other": "0 खर्व" }, "short": { "one": "0 खर्व", "other": "0 खर्व" } },
+    "14digit": { "long": { "one": "0 पद्म", "other": "0 पद्म" }, "short": { "one": "0 पद्म", "other": "0 पद्म" } }
+  },
+  "range": {
+    "between": { "short": "{0}–{1}", "long": "{0} ते {1}" },
+    "approximately": { "short": "~{0}", "long": "सुमारे {0}" },
+    "atLeast": { "short": "{0}+", "long": "किमान {0}" },
+    "atMost": { "short": "≤{0}", "long": "कमाल {0}" }
+  }
+}

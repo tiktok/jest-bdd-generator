@@ -12,8 +12,6 @@
 *.report
 *.lcov
 lib-cov
-features/
-tests/
 node_modules/
 .npm
 .lock-wscript

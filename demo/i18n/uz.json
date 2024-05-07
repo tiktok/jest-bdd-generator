@@ -1,0 +1,25 @@
+{
+  "name": "uz",
+  "format": { "pattern": "# ##0,###" },
+  "proportional": { "percent": "{0}%", "perMille": "{0}‰" },
+  "currency": [""],
+  "scientific": "#E0",
+  "compact": {
+    "4digit": { "long": { "one": "0 ming", "other": "0 ming" }, "short": { "one": "0 ming", "other": "0 ming" } },
+    "7digit": { "long": { "one": "0 million", "other": "0 million" }, "short": { "one": "0 mln", "other": "0 mln" } },
+    "10digit": {
+      "long": { "one": "0 milliard", "other": "0 milliard" },
+      "short": { "one": "0 mlrd", "other": "0 mlrd" }
+    },
+    "13digit": {
+      "long": { "one": "0 trillion", "other": "0 trillion" },
+      "short": { "one": "0 trln", "other": "0 trln" }
+    }
+  },
+  "range": {
+    "between": { "short": "{0}–{1}", "long": "{0} dan {1} gacha" },
+    "approximately": { "short": "~{0}", "long": "taxminan {0}" },
+    "atLeast": { "short": "≥{0}", "long": "kamida {0}" },
+    "atMost": { "short": "≤{0}", "long": "koʻpi bilan {0}" }
+  }
+}

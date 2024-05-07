@@ -1,0 +1,19 @@
+{
+  "name": "id",
+  "format": { "pattern": "#.##0,###" },
+  "proportional": { "percent": "{0}%", "perMille": "{0}‰" },
+  "currency": [""],
+  "scientific": "#E0",
+  "compact": {
+    "4digit": { "long": { "other": "0 ribu" }, "short": { "other": "0 rb" } },
+    "7digit": { "long": { "other": "0 juta" }, "short": { "other": "0 jt" } },
+    "10digit": { "long": { "other": "0 miliar" }, "short": { "other": "0 M" } },
+    "13digit": { "long": { "other": "0 triliun" }, "short": { "other": "0 T" } }
+  },
+  "range": {
+    "between": { "short": "{0}–{1}", "long": "{0} sampai {1}" },
+    "approximately": { "short": "~{0}", "long": "sekitar {0}" },
+    "atLeast": { "short": "≥{0}", "long": "minimal {0}" },
+    "atMost": { "short": "≤{0}", "long": "maksimal {0}" }
+  }
+}

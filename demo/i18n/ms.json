@@ -1,0 +1,19 @@
+{
+  "name": "ms",
+  "format": { "pattern": "#,##0.###" },
+  "proportional": { "percent": "{0}%", "perMille": "{0}‰" },
+  "currency": [""],
+  "scientific": "#E0",
+  "compact": {
+    "4digit": { "long": { "other": "0 ribu" }, "short": { "other": "0K" } },
+    "7digit": { "long": { "other": "0 juta" }, "short": { "other": "0J" } },
+    "10digit": { "long": { "other": "0 bilion" }, "short": { "other": "0B" } },
+    "13digit": { "long": { "other": "0 trilion" }, "short": { "other": "0T" } }
+  },
+  "range": {
+    "between": { "short": "{0}–{1}", "long": "{0} hingga {1}" },
+    "approximately": { "short": "~{0}", "long": "kira-kira {0}" },
+    "atLeast": { "short": "{0}+", "long": "sekurang-kurangnya {0}" },
+    "atMost": { "short": "≤{0}", "long": "paling banyak {0}" }
+  }
+}

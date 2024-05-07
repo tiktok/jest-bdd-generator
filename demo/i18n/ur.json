@@ -1,0 +1,20 @@
+{
+  "name": "ur",
+  "format": { "pattern": "#,##0.###" },
+  "proportional": { "percent": "{0}%", "perMille": "{0}‰" },
+  "currency": [""],
+  "scientific": "#E0",
+  "compact": {
+    "4digit": { "long": { "one": "0 ہزار", "other": "0 ہزار" }, "short": { "one": "0 ہزار", "other": "0 ہزار" } },
+    "6digit": { "long": { "one": "0 لاکھ", "other": "0 لاکھ" }, "short": { "one": "0 لاکھ", "other": "0 لاکھ" } },
+    "8digit": { "long": { "one": "0 کروڑ", "other": "0 کروڑ" }, "short": { "one": "0 کروڑ", "other": "0 کروڑ" } },
+    "10digit": { "long": { "one": "0 ارب", "other": "0 ارب" }, "short": { "one": "0 ارب", "other": "0 ارب" } },
+    "12digit": { "long": { "one": "0 کھرب", "other": "0 کھرب" }, "short": { "one": "0 کھرب", "other": "0 کھرب" } }
+  },
+  "range": {
+    "between": { "short": "{0}–{1}", "long": "{0} سے {1}" },
+    "approximately": { "short": "~{0}", "long": "تقریباً {0}" },
+    "atLeast": { "short": "≥{0}", "long": "کم از کم {0}" },
+    "atMost": { "short": "≤{0}", "long": "زیادہ سے زیادہ {0}" }
+  }
+}

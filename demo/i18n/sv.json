@@ -1,0 +1,19 @@
+{
+  "name": "sv",
+  "format": { "pattern": "# ##0,###" },
+  "proportional": { "percent": "{0} %", "perMille": "{0} ‰" },
+  "currency": [""],
+  "scientific": "#×10^0",
+  "compact": {
+    "4digit": { "long": { "one": "0 tusen", "other": "0 tusen" }, "short": { "one": "0 tn", "other": "0 tn" } },
+    "7digit": { "long": { "one": "0 miljon", "other": "0 miljoner" }, "short": { "one": "0 mn", "other": "0 mn" } },
+    "10digit": { "long": { "one": "0 miljard", "other": "0 miljarder" }, "short": { "one": "0 md", "other": "0 md" } },
+    "13digit": { "long": { "one": "0 biljon", "other": "0 biljoner" }, "short": { "one": "0 bn", "other": "0 bn" } }
+  },
+  "range": {
+    "between": { "short": "{0}‒{1}", "long": "{0} till {1}" },
+    "approximately": { "short": "~ {0}", "long": "ungefär {0}" },
+    "atLeast": { "short": "≥ {0}", "long": "som minst {0}" },
+    "atMost": { "short": "≤ {0}", "long": "som mest {0}" }
+  }
+}

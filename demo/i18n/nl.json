@@ -1,0 +1,22 @@
+{
+  "name": "nl",
+  "format": { "pattern": "##.##0,###" },
+  "proportional": { "percent": "{0} %", "perMille": "{0} ‰" },
+  "currency": [""],
+  "scientific": "#E0",
+  "compact": {
+    "4digit": { "long": { "one": "duizend;", "other": "0 duizend" }, "short": { "one": "0K", "other": "0K" } },
+    "7digit": { "long": { "one": "0 miljoen", "other": "0 miljoen" }, "short": { "one": "0 mln.", "other": "0 mln." } },
+    "10digit": {
+      "long": { "one": "0 miljard", "other": "0 miljard" },
+      "short": { "one": "0 mld.", "other": "0 mld." }
+    },
+    "13digit": { "long": { "one": "0 biljoen", "other": "0 biljoen" }, "short": { "one": "0 bln.", "other": "0 bln." } }
+  },
+  "range": {
+    "between": { "short": "{0}-{1}", "long": "{0} tot {1}" },
+    "approximately": { "short": "~{0}", "long": "ongeveer {0}" },
+    "atLeast": { "short": "{0}+", "long": "minimaal {0}" },
+    "atMost": { "short": "≤ {0}", "long": "maximaal {0}" }
+  }
+}

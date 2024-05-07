@@ -13,7 +13,7 @@ export async function runTests(options: {
 
   // load the support code upfront
   runConfiguration.support.requireModules = [
-    path.join(__dirname, `./jest-to-cucumber/jest-ts-register${path.extname(__filename)}`),
+    path.join(__dirname, `./jest-execute/jest-ts-register${path.extname(__filename)}`),
   ];
 
   if (options.pathTestsInput) {

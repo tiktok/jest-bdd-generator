@@ -1,0 +1,31 @@
+{
+  "name": "uk",
+  "format": { "pattern": "## ##0,###" },
+  "proportional": { "percent": "{0}%", "perMille": "{0}‰" },
+  "currency": [""],
+  "scientific": "#Е0",
+  "compact": {
+    "4digit": {
+      "long": { "one": "0 тисяча", "few": "0 тисячі", "many": "0 тисяч", "other": "0 тисячі" },
+      "short": { "one": "0 тис.", "few": "0 тис.", "many": "0 тис.", "other": "0 тис." }
+    },
+    "7digit": {
+      "long": { "one": "0 мільйон", "few": "0 мільйони", "many": "0 мільйонів", "other": "0 мільйона" },
+      "short": { "one": "0 млн", "few": "0 млн", "many": "0 млн", "other": "0 млн" }
+    },
+    "10digit": {
+      "long": { "one": "0 мільярд", "few": "0 мільярди", "many": "0 мільярдів", "other": "0 мільярда" },
+      "short": { "one": "0 млрд", "few": "0 млрд", "many": "0 млрд", "other": "0 млрд" }
+    },
+    "13digit": {
+      "long": { "one": "0 трильйон", "few": "0 трильйони", "many": "0 трильйонів", "other": "0 трильйона" },
+      "short": { "one": "0 трлн", "few": "0 трлн", "many": "0 трлн", "other": "0 трлн" }
+    }
+  },
+  "range": {
+    "between": { "short": "{0}–{1}", "long": "{0}–{1}" },
+    "approximately": { "short": "~{0}", "long": "приблизно {0}" },
+    "atLeast": { "short": "Понад {0}", "long": "щонайменше {0}" },
+    "atMost": { "short": "≤{0}", "long": "щонайбільше {0}" }
+  }
+}

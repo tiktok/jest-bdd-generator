@@ -1,0 +1,25 @@
+{
+  "name": "ca",
+  "format": { "pattern": "#.##0,###" },
+  "proportional": { "percent": "{0} %", "perMille": "{0} ‰" },
+  "currency": [""],
+  "scientific": "#E0",
+  "compact": {
+    "4digit": { "long": { "one": "mil;", "other": "0 mil" }, "short": { "one": "mil;", "other": "0 mil" } },
+    "7digit": { "long": { "one": "0 milió", "other": "0 milions" }, "short": { "one": "0 M", "other": "0 M" } },
+    "10digit": {
+      "long": { "one": "0 miliard", "other": "0 miliards" },
+      "short": { "one": "0 miliard", "other": "0 miliards" }
+    },
+    "13digit": {
+      "long": { "one": "0 bilió", "other": "0 bilions" },
+      "short": { "one": "0 bilió", "other": "0 bilions" }
+    }
+  },
+  "range": {
+    "between": { "short": "{0}-{1}", "long": "de {0} a {1}" },
+    "approximately": { "short": "~{0}", "long": "al voltant de {0}" },
+    "atLeast": { "short": "{0}+", "long": "{0} com a mínim" },
+    "atMost": { "short": "≤{0}", "long": "{0} com a màxim" }
+  }
+}

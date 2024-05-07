@@ -1,0 +1,23 @@
+{
+  "name": "th",
+  "format": { "pattern": "#,##0.###" },
+  "proportional": { "percent": "{0}%", "perMille": "{0}‰" },
+  "currency": [""],
+  "scientific": "#E0",
+  "compact": {
+    "4digit": { "long": { "other": "0 พัน" }, "short": { "other": "0K" } },
+    "5digit": { "long": { "other": "0 หมื่น" } },
+    "6digit": { "long": { "other": "0 แสน" } },
+    "7digit": { "long": { "other": "0 ล้าน" }, "short": { "other": "0M" } },
+    "10digit": { "long": { "other": "0 พันล้าน" }, "short": { "other": "0B" } },
+    "11digit": { "long": { "other": "0 หมื่นล้าน" } },
+    "12digit": { "long": { "other": "0 แสนล้าน" } },
+    "13digit": { "long": { "other": "0 ล้านล้าน" }, "short": { "other": "0T" } }
+  },
+  "range": {
+    "between": { "short": "{0}-{1}", "long": "{0} ถึง {1}" },
+    "approximately": { "short": "~{0}", "long": "ประมาณ {0}" },
+    "atLeast": { "short": "{0}+", "long": "อย่างน้อย {0}" },
+    "atMost": { "short": "≤{0}", "long": "สูงสุด {0}" }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "es-419",
+  "format": { "pattern": "#,##0.###" },
+  "proportional": { "percent": "{0} %", "perMille": "{0} ‰" },
+  "currency": [""],
+  "scientific": "#E0",
+  "compact": {
+    "4digit": { "long": { "one": "mil;", "other": "0 mil" }, "short": { "one": "mil;", "other": "0 mil" } },
+    "7digit": {
+      "long": { "one": "0 millón", "other": "0 millones" },
+      "short": { "one": "0 mill.", "other": "0 mill." }
+    },
+    "10digit": {
+      "long": { "one": "mil millones;", "other": "0 mil millones" },
+      "short": { "one": "mil mill.;", "other": "0 mil mill." }
+    },
+    "13digit": {
+      "long": { "one": "0 billón", "other": "0 billones" },
+      "short": { "one": "0 billón", "other": "0 billón" }
+    }
+  },
+  "range": {
+    "between": { "short": "{0}-{1}", "long": "de {0} a {1}" },
+    "approximately": { "short": "~{0}", "long": "unos {0}" },
+    "atLeast": { "short": "Más de {0}", "long": "{0} como mínimo" },
+    "atMost": { "short": "≤{0}", "long": "{0} como máximo" }
+  }
+}
