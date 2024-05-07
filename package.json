@@ -23,7 +23,7 @@
   },
   "main": "./dist/lib/index.js",
   "module": "./dist/es/index.js",
-  "types": "./dist/types/src/index.d.ts",
+  "types": "./dist/types/index.d.ts",
   "type": "module",
   "scripts": {
     "build": "modern build",
@@ -37,27 +37,27 @@
     "./lib/transpiler": {
       "import": "./dist/es/transpiler/index.js",
       "require": "./dist/lib/transpiler/index.js",
-      "types": "./dist/types/src/transpiler/index.d.ts"
+      "types": "./dist/types/transpiler/index.d.ts"
     },
     "./lib/jest-to-gherkin": {
       "import": "./dist/es/jest-to-gherkin/index.js",
       "require": "./dist/lib/jest-to-gherkin/index.js",
-      "types": "./dist/types/src/jest-to-gherkin/index.d.ts"
+      "types": "./dist/types/jest-to-gherkin/index.d.ts"
     },
     "./lib/gherkin-to-test": {
       "import": "./dist/es/gherkin-to-test/index.js",
       "require": "./dist/lib/gherkin-to-test/index.js",
-      "types": "./dist/types/src/gherkin-to-test/index.d.ts"
+      "types": "./dist/types/gherkin-to-test/index.d.ts"
     },
     "./UI/TestGeneration": {
       "import": "./dist/es/UI/TestGeneration.js",
       "require": "./dist/lib/UI/TestGeneration.js",
-      "types": "./dist/types/src/UI/TestGeneration.d.ts"
+      "types": "./dist/types/UI/TestGeneration.d.ts"
     },
     "./UI/TestOracle": {
       "import": "./dist/es/UI/TestOracle.js",
       "require": "./dist/lib/UI/TestOracle.js",
-      "types": "./dist/types/src/UI/TestOracle.d.ts"
+      "types": "./dist/types/UI/TestOracle.d.ts"
     }
   },
   "bin": {

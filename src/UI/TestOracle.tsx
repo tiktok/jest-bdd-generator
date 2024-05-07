@@ -188,18 +188,18 @@ const ExpressionEditor: React.FC<{
   );
 };
 
-const Head: < T extends object = Record<string, any>>(...args: Parameters<React.FC<{
-  colHead: { expression: T; };
-  titles?: Array<keyof T>;
+const Head: < T extends { expression: Record<string, any> } = { expression: Record<string, any> }>(...args: Parameters<React.FC<{
+  colHead: T;
+  titles?: Array<keyof T['expression']>;
   isEditing: boolean;
-  handler: (colHead?: { expression: T; }, keyname?: keyof T) => void;
+  handler: (colHead?: T, keyname?: keyof T['expression']) => void;
   style?: React.CSSProperties;
 }>>) => ReactElement = ({ colHead, handler, isEditing, style, titles }) => {
   type _iColHead = typeof colHead;
   const displayTitle = titles ?? (Object.keys(colHead.expression) as [keyof _iColHead['expression']]);
   const myStyle = {
     ...style,
-    width: titles ? displayTitle.length + '0em' : '10em',
+    width: titles ? displayTitle.length * 2 + '0em' : '20em',
     background: isEditing ? '#ffa' : 'transparent',
   };
   return (
@@ -288,7 +288,7 @@ export const TestOracle: <C extends { expression: Record<string, any> }, R exten
   //   const [idxRows, editingArray, update] = getEditingArray();
   //   editingArray.splice(idxRows + 1, 0, { expression: {} } as _iRowHead);
   //   update([...editingArray]);
-  // };
+  // };`
 
   const width = { width: `${cols.length * 10}em` };
 
@@ -310,10 +310,10 @@ export const TestOracle: <C extends { expression: Record<string, any> }, R exten
     setResult(ret);
   };
 
-  // const headClickHandler = (data?: _iRowHead, keyname?: keyof _iRowHead['expression']): void => {
-  //   setEditingKey(keyname);
-  //   setEditingHead(data);
-  // };
+  const headClickHandler = (data?: _iRowHead | _iColumnHead, keyname?: keyof _iRowHead['expression']): void => {
+    setEditingKey(keyname);
+    setEditingHead(data);
+  };
 
   const arrRowExpression: Array<keyof _iRowHead['expression']> = rows.reduce<Array<keyof _iRowHead['expression']>>((prev, { expression }) => {
     const keys = Object.keys(expression) as Array<keyof _iRowHead['expression']>;
@@ -342,13 +342,13 @@ export const TestOracle: <C extends { expression: Record<string, any> }, R exten
               ))}
             </RowHead>
             {rows.map((r, i) => (
-              <Head key={i} handler={() => { }} titles={arrRowExpression as any} colHead={r} isEditing={selected === r} />
+              <Head<_iRowHead> key={i} handler={headClickHandler} titles={arrRowExpression as any} colHead={r} isEditing={selected === r} />
             ))}
           </aside>
           <div style={{ overflow: 'auto', ...width }}>
             <header>
               {cols.map((col, j) => (
-                <Head key={j} handler={() => { }} colHead={col} isEditing={selected === col} style={{ display: 'inline-flex' }} />
+                <Head<_iColumnHead> key={j} handler={headClickHandler} colHead={col} isEditing={selected === col} style={{ display: 'inline-flex' }} />
               ))}
             </header>
             {rows.map((r, i) => (
