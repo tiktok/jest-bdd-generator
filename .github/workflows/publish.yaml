@@ -21,11 +21,12 @@ jobs:
       - name: Build
         run: npm run build
       - name: Publish NPM package
+        # Create an .npmrc file containing the *unexpanded* environment variable name.
+        # "npm publish" will expand the variable during publishing.  This is more secure
+        # because the token is discarded after the process terminates and cannot be
+        # accessed by other build steps or processes on the VM.
         run: |
           echo "//registry.npmjs.org/:_authToken=\${NPM_AUTH_TOKEN}" >> .npmrc
-          echo ----
-          cat .npmrc
-          echo ----
           npm publish
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

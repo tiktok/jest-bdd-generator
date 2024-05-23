@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
 /* eslint-disable @ttfe/@typescript-eslint/no-unnecessary-condition */
-import type { AggregatedResult, AssertionResult } from '@jest/test-result';
-import * as cucumber from '@cucumber/cucumber';
-import { runCLI } from 'jest';
-import { Step, Result, ExampleStep } from '../types';
+import type { AggregatedResult, AssertionResult } from "@jest/test-result";
+import * as cucumber from "@cucumber/cucumber";
+import { runCLI } from "jest";
+import { Step, Result, ExampleStep } from "../types";
 // import { PickleStep } from '@cucumber/messages';
 
 type StepContext = {
@@ -49,7 +49,10 @@ export class DelegateJest {
     return this.transformResult(results, gherkinMap);
   }
 
-  transformResult(aggregatedResult: AggregatedResult | null, gherkinMap: Step[] = []): AssertionResult[] {
+  transformResult(
+    aggregatedResult: AggregatedResult | null,
+    gherkinMap: Step[] = []
+  ): AssertionResult[] {
     if (!aggregatedResult) {
       return [];
     }
@@ -82,19 +85,19 @@ export class DelegateJest {
         // resultInGherkin.push(...relatedSteps);
 
         resultInGherkin.push(assertionResult);
-      }),
+      })
     );
     return resultInGherkin;
   }
 
-  markStepsStatus(relatedSteps: Result[], status: Result['status']): void {
+  markStepsStatus(relatedSteps: Result[], status: Result["status"]): void {
     relatedSteps.forEach((step) => {
       step.status = status;
     });
   }
 
-  traceErrorFromMessage(msg: string, step: Step): Result['status'] {
-    const lines = msg.split('\n');
+  traceErrorFromMessage(msg: string, step: Step): Result["status"] {
+    const lines = msg.split("\n");
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];
       const stackPosition = line.match(/\s+at .*?(\S+):(\d+:\d+)\)*?$/);
@@ -105,21 +108,23 @@ export class DelegateJest {
         if (!fileName.match(this.filename)) {
           continue;
         }
-        const [lineNumber, colNumber] = (stackPosition[2]?.split(':')?.map((v) => Number(v) - 1) as
-          | [number, number]
-          | null) ?? [0, 0];
+        const [lineNumber, colNumber] = (stackPosition[2]
+          ?.split(":")
+          ?.map((v) => Number(v) - 1) as [number, number] | null) ?? [0, 0];
         if (
           step.pos.end.line < lineNumber ||
-          (step.pos.end.line === lineNumber && step.pos.end.character < colNumber)
+          (step.pos.end.line === lineNumber &&
+            step.pos.end.character < colNumber)
         ) {
-          return 'passed';
+          return "passed";
         } else if (
           step.pos.start.line < lineNumber ||
-          (step.pos.start.line === lineNumber && step.pos.start.character <= colNumber)
+          (step.pos.start.line === lineNumber &&
+            step.pos.start.character <= colNumber)
         ) {
-          return 'failed';
+          return "failed";
         } else {
-          return 'passed';
+          return "passed";
         }
       }
     }
@@ -127,20 +132,23 @@ export class DelegateJest {
 
   sanitizeTitle(
     title: string,
-    params?: ExampleStep['examples'],
+    params?: ExampleStep["examples"]
   ): {
     cucumberStepKey: string;
     stepParams?: string[];
   } {
-    const stepParams = title.match(new RegExp(escapableWrapper('<>'), 'g')) as string[] | undefined;
-    let cucumberStepKey = title.replace(/\(/g, '\\(').replace(')', '\\)');
+    const stepParams = title.match(new RegExp(escapableWrapper("<>"), "g")) as
+      | string[]
+      | undefined;
+    let cucumberStepKey = title.replace(/\(/g, "\\(").replace(")", "\\)");
 
     stepParams?.forEach((p, i) => {
-      const valKey = p.replace(/<|>/g, '');
+      const valKey = p.replace(/<|>/g, "");
       stepParams[i] = valKey;
       const examplesValue = params?.[0]?.[valKey];
       if (examplesValue !== undefined) {
-        const typeOfValue = typeof examplesValue === 'number' ? '{float}' : '{string}';
+        const typeOfValue =
+          typeof examplesValue === "number" ? "{float}" : "{string}";
         cucumberStepKey = cucumberStepKey.replace(p, typeOfValue);
       }
     });
@@ -150,10 +158,13 @@ export class DelegateJest {
   matchStepName(
     jestStep: StepWithSanTitle,
     pickleSteps: { text: string }[],
-    callback: (values: string[], idx: number) => boolean | void,
+    callback: (values: string[], idx: number) => boolean | void
   ): void {
     const regexText = jestStep.sanitizedTitle
-      .replace(/\{string\}/g, `(${escapableWrapper('"')}|${escapableWrapper("'")})`)
+      .replace(
+        /\{string\}/g,
+        `(${escapableWrapper('"')}|${escapableWrapper("'")})`
+      )
       .replace(/\{float\}/g, `((\-)?\d+(\.\d+)?)`);
     const regex = new RegExp(`^${regexText}$`);
     for (let i = 0; i < pickleSteps.length; i++) {
@@ -168,16 +179,23 @@ export class DelegateJest {
     }
   }
 
-  dedupeStepName(dedupe: { text: string; step: StepWithSanTitle }[]): { text: string; step: StepWithSanTitle }[] {
+  dedupeStepName(
+    dedupe: { text: string; step: StepWithSanTitle }[]
+  ): { text: string; step: StepWithSanTitle }[] {
     const paramSteps = [...dedupe.filter((v) => v.step.stepParams)];
     paramSteps.forEach(({ step }) => {
       this.matchStepName(step, dedupe, (values, idx) => {
         dedupe[idx].step.sanitizedTitle = step.sanitizedTitle;
-        dedupe[idx].step.stepParams = dedupe[idx].step.stepParams ?? new Array(step.stepParams?.length);
+        dedupe[idx].step.stepParams =
+          dedupe[idx].step.stepParams ?? new Array(step.stepParams?.length);
       });
     });
     return dedupe.filter(
-      (v, i) => i === dedupe.findIndex((predicate) => predicate.step.sanitizedTitle === v.step.sanitizedTitle),
+      (v, i) =>
+        i ===
+        dedupe.findIndex(
+          (predicate) => predicate.step.sanitizedTitle === v.step.sanitizedTitle
+        )
     );
   }
 
@@ -186,17 +204,21 @@ export class DelegateJest {
     const matchStepName = this.matchStepName;
 
     cucumber.Before<StepContext>(async function (scenario) {
-      const jestScenario = steps.find((step) => step.key === 'Scenario' && step.value === scenario.pickle.name);
+      const jestScenario = steps.find(
+        (step) => step.key === "Scenario" && step.value === scenario.pickle.name
+      );
 
       const examplesScenario: Record<string, string | number> = {};
       const pickleSteps = [...scenario.pickle.steps];
-      const relatedSteps = steps.filter((s) => s.parent === scenario.pickle.name);
+      const relatedSteps = steps.filter(
+        (s) => s.parent === scenario.pickle.name
+      );
       relatedSteps.forEach((jestStep) => {
         if (!jestStep.stepParams) {
           return;
         }
         const jStep = jestStep as StepWithSanTitle & {
-          stepParams: Exclude<StepWithSanTitle['stepParams'], undefined>;
+          stepParams: Exclude<StepWithSanTitle["stepParams"], undefined>;
         };
 
         matchStepName(jStep, pickleSteps, (values, idx) => {
@@ -229,7 +251,7 @@ export class DelegateJest {
         return r.title === scenario.pickle.name;
       });
       const jestMappedResult = arrJestMappedResult[exampleIndex ?? 0];
-      this.jest = (this.jest as StepContext['jest'] | null) || {
+      this.jest = (this.jest as StepContext["jest"] | null) || {
         stepIndex: {},
         exampleIndex,
         parent: scenario.pickle.name,
@@ -237,15 +259,20 @@ export class DelegateJest {
       };
     });
     const dedupe: { text: string; step: StepWithSanTitle }[] = [];
-    const scenarios = steps.filter((step) => step.key === 'Scenario');
+    const scenarios = steps.filter((step) => step.key === "Scenario");
 
     steps.forEach((step) => {
-      const keyword = step.key as 'Given' | 'When' | 'Then';
+      const keyword = step.key as "Given" | "When" | "Then";
       const title = step.value;
       if (cucumber[keyword]) {
-        const parent = scenarios.find((s) => s.key === 'Scenario' && s.value === step.parent);
+        const parent = scenarios.find(
+          (s) => s.key === "Scenario" && s.value === step.parent
+        );
 
-        const { cucumberStepKey, stepParams } = this.sanitizeTitle(title, parent?.examples);
+        const { cucumberStepKey, stepParams } = this.sanitizeTitle(
+          title,
+          parent?.examples
+        );
         step.sanitizedTitle = cucumberStepKey;
         step.stepParams = stepParams;
         dedupe.push({ text: cucumberStepKey, step });
@@ -256,40 +283,55 @@ export class DelegateJest {
     });
   }
 
-  registerStepDefinition(step: StepWithSanTitle, allSteps: StepWithSanTitle[]): void {
-    const traceErrorFromMessage: DelegateJest['traceErrorFromMessage'] = this.traceErrorFromMessage.bind(this);
+  registerStepDefinition(
+    step: StepWithSanTitle,
+    allSteps: StepWithSanTitle[]
+  ): void {
+    const traceErrorFromMessage: DelegateJest["traceErrorFromMessage"] =
+      this.traceErrorFromMessage.bind(this);
     type ICallback = Parameters<typeof fnStepDefinition>[2];
-    const keyword = step.key as 'Given' | 'When' | 'Then';
-    const fnStepDefinition: typeof cucumber.defineStep<StepContext> = cucumber[keyword];
+    const keyword = step.key as "Given" | "When" | "Then";
+    const fnStepDefinition: typeof cucumber.defineStep<StepContext> =
+      cucumber[keyword];
     const cucumberStepKey = step.sanitizedTitle;
 
     const callback: ICallback = async function (...args) {
       // console.log('=====call=====', step.key, cucumberStepKey)
 
-      this.jest.stepIndex[cucumberStepKey] = (this.jest.stepIndex[cucumberStepKey] ?? -1) + 1;
+      this.jest.stepIndex[cucumberStepKey] =
+        (this.jest.stepIndex[cucumberStepKey] ?? -1) + 1;
       const stepInScenario = allSteps.filter((s) => {
-        return s.parent === this.jest?.parent && s.sanitizedTitle === cucumberStepKey;
+        return (
+          s.parent === this.jest?.parent && s.sanitizedTitle === cucumberStepKey
+        );
       })[this.jest.stepIndex[cucumberStepKey]] as StepWithSanTitle | undefined;
       if (!stepInScenario) {
         // throw new Error(['Not Found', keyword, cucumberStepKey].join('/'))
-        return 'pending';
+        return "pending";
       }
 
       const { jestMappedResult } = this.jest;
       if (!jestMappedResult) {
-        return 'pending';
-      } else if (jestMappedResult.status === 'failed') {
+        return "pending";
+      } else if (jestMappedResult.status === "failed") {
         if (stepInScenario.host) {
-          for (let idxMsg = 0; idxMsg < jestMappedResult.failureMessages.length; idxMsg++) {
-            const status = traceErrorFromMessage(jestMappedResult.failureMessages[idxMsg], stepInScenario);
-            if (status === 'failed') {
+          for (
+            let idxMsg = 0;
+            idxMsg < jestMappedResult.failureMessages.length;
+            idxMsg++
+          ) {
+            const status = traceErrorFromMessage(
+              jestMappedResult.failureMessages[idxMsg],
+              stepInScenario
+            );
+            if (status === "failed") {
               throw errorBuilder(jestMappedResult.failureMessages[idxMsg]);
             }
             if (status) {
               return status;
             }
           }
-          return 'pending';
+          return "pending";
         } else {
           throw errorBuilder(jestMappedResult.failureMessages[0]);
         }
@@ -299,7 +341,9 @@ export class DelegateJest {
     };
 
     if (step.stepParams) {
-      Object.defineProperty(callback, 'length', { value: step.stepParams.length });
+      Object.defineProperty(callback, "length", {
+        value: step.stepParams.length,
+      });
     }
     // console.log('=====regi=====', step.key, cucumberStepKey)
 
@@ -316,7 +360,7 @@ function errorBuilder(msg: string): Error {
     err.message = matched[1];
     err.stack = matched[2];
   }
-  err.message = err.message.replace(/\[\d+m/g, '');
+  err.message = err.message.replace(/\[\d+m/g, "");
   return err;
 }
 
