@@ -28,7 +28,7 @@ Unlike the steps from CucumberJS, in unit testing the functions being tested sho
 
 ## 1. View DEFINED STEPS
 ```ts
-import { JestToGherkin } from '@tiktok/behaviour-driven/lib/jest-to-gherkin/JestToGherkin';
+import { JestToGherkin } from 'jest-bdd-generator/lib/jest-to-gherkin/JestToGherkin';
 
 const transpiler = new JestToGherkin();
 transpiler.transpile(jestSource, { fileName: '*.test.ts' });
@@ -37,7 +37,7 @@ const uniqueSteps = transpiler.uniqueSteps;
 
 ## 1. Generate comments of test code from DEFINED STEPS
 ```ts
-import { JestToGherkin } from '@tiktok/behaviour-driven/lib/jest-to-gherkin/JestToGherkin';
+import { JestToGherkin } from 'jest-bdd-generator/lib/jest-to-gherkin/JestToGherkin';
 
 const transpiler = new JestToGherkin();
 transpiler.transpile(jestSource, { fileName: '*.test.ts' });
@@ -51,7 +51,7 @@ npx gen-comments pathTestInput=./tests/format.test.ts  # pathOutput=./generatedT
 
 ## 1. Generate test code from Gherkin Document and DEFINED STEPS
 ```ts
-import { TestGeneratorFromSource } from '@tiktok/behaviour-driven/lib/gherkin-to-test/TestGeneratorFromSource';
+import { TestGeneratorFromSource } from 'jest-bdd-generator/lib/gherkin-to-test/TestGeneratorFromSource';
 
 const generator = new TestGeneratorFromSource();
 const steps = generator.compileKnownStepsFromSource(jestSource);
@@ -59,12 +59,12 @@ const ret = generator.generateGherkinFromSource(steps, gherkinSource)
 ```
 
 ```bash
-npx gen-test pathTestInput=./tests/format.test.ts pathGherkinInput=./doc/features/format.feature # pathOutput=./generatedTest.ts
+npx gen-test pathTestInput=./tests/format.test.ts pathGherkinInput=./docs/features/format.feature # pathOutput=./generatedTest.ts
 ```
 
 ## 1. Generate Gherkin from DEFINED STEPS
 ```ts
-import { JestToGherkin } from '@tiktok/behaviour-driven/lib/jest-to-gherkin/JestToGherkin';
+import { JestToGherkin } from 'jest-bdd-generator/lib/jest-to-gherkin/JestToGherkin';
 
 const transpiler = new JestToGherkin();
 const ret = transpiler.transpile(jestSource, { fileName: 'a.test.ts' }).outputText;
@@ -76,18 +76,16 @@ npx gen-doc pathTestsInput=./tests/format.test.ts # pathOutput=./doc/features/fo
 
 ## 1. Generate Report.html
 ```ts
-import { runTests } from '@tiktok/behaviour-driven'
+import { runTests } from 'jest-bdd-generator'
 
 runTest({
-  pathFeatureInput: './doc/features/format.feature',
+  pathFeatureInput: './docs/features/format.feature',
   pathTestsInput: './tests/format.test.ts',
-  pathOutput: './doc/reports/' // default = './doc/reports'
+  pathOutput: './docs/reports/' // default = './docs/reports'
 })
 ```
 
 ```bash
-npx report pathTestsInput=./tests/format.test.ts pathFeatureInput=./doc/features/format.feature
+npx report pathTestsInput=./tests/format.test.ts pathFeatureInput=./docs/features/format.feature
 #>>> pathOutput DEFAULT ./report.html
 ```
-
-# Tools for pagepass.js
