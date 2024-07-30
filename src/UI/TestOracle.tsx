@@ -180,62 +180,6 @@ const ExpressionEditor: React.FC<{
             <input type="button" value="Delete" onClick={deleting} />
             <input type="button" value="InsertAfter" onClick={insertAfter} />
           </div>
-          <div>
-            <label>locale</label>
-            <ExpressionInput name="locale" data={colHead.expression} focused={focused === 'locale'} />
-          </div>
-          <div>
-            <label>input</label>
-            <ExpressionInput name="input" data={colHead.expression} focused={focused === 'input'} />
-          </div>
-          <div>
-            <label>notation</label>
-            <ExpressionInput
-              focused={focused === 'formatOption.notation'}
-              name="formatOption.notation"
-              selections={['normal', 'compact', 'scientific', 'percent', 'per-mille']}
-              data={colHead.expression}
-            />
-          </div>
-          <div>
-            <label>input2</label>
-            <ExpressionInput name="input2" data={colHead.expression} focused={focused === 'input2'} />
-          </div>
-          <div>
-            <label>relativeForm</label>
-            <ExpressionInput
-              focused={focused === 'formatOption.relativeForm'}
-              name="formatOption.relativeForm"
-              data={colHead.expression}
-              selections={['between', 'approximately', 'atLeast', 'atMost']}
-            />
-          </div>
-          <div>
-            <label>compactDisplay</label>
-            <ExpressionInput
-              focused={focused === 'formatOption.compactDisplay'}
-              name="formatOption.compactDisplay"
-              data={colHead.expression}
-              selections={['short', 'long']}
-            />
-          </div>
-          <div>
-            <label>precision</label>
-            <ExpressionInput
-              name="formatOption.precision"
-              data={colHead.expression}
-              focused={focused === 'formatOption.precision'}
-            />
-          </div>
-          <div>
-            <label>keepTrailingZero</label>
-            <ExpressionInput
-              focused={focused === 'formatOption.keepTrailingZero'}
-              name="formatOption.keepTrailingZero"
-              data={colHead.expression}
-              selections={[false, true]}
-            />
-          </div>
         </>
       ) : (
         <></>
