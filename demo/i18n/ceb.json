@@ -1,0 +1,31 @@
+{
+  "name": "ceb",
+  "format": { "pattern": "#,##0.###" },
+  "proportional": { "percent": "{0}%", "perMille": "{0}‰" },
+  "currency": [""],
+  "scientific": "#E0",
+  "compact": {
+    "4digit": {
+      "long": { "one": "0 ka libo", "few": "0 ka libo", "other": "0 ka libo" },
+      "short": { "one": "0K", "few": "0K", "other": "0K" }
+    },
+    "7digit": {
+      "long": { "one": "0 ka milyon", "few": "0 ka milyon", "other": "0 ka milyon" },
+      "short": { "one": "0M", "few": "0M", "other": "0M" }
+    },
+    "10digit": {
+      "long": { "one": "0 ka bilyon", "few": "0 ka bilyon", "other": "0 ka bilyon" },
+      "short": { "one": "0B", "few": "0B", "other": "0B" }
+    },
+    "13digit": {
+      "long": { "one": "0 ka trilyon", "few": "0 ka trilyon", "other": "0 ka trilyon" },
+      "short": { "one": "0T", "few": "0T", "other": "0T" }
+    }
+  },
+  "range": {
+    "between": { "short": "{0}–{1}", "long": "{0} hangtod {1}" },
+    "approximately": { "short": "~{0}", "long": "mga {0}" },
+    "atLeast": { "short": "{0}+", "long": "dili moubos sa {0}" },
+    "atMost": { "short": "≤{0}", "long": "dili mosobra sa {0}" }
+  }
+}

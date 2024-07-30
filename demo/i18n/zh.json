@@ -1,0 +1,18 @@
+{
+  "name": "zh",
+  "format": { "pattern": "###0.###" },
+  "proportional": { "percent": "{0}%", "perMille": "{0}‰" },
+  "currency": [""],
+  "scientific": "#E0",
+  "compact": {
+    "5digit": { "long": { "other": "0 万" }, "short": { "other": "0 万" } },
+    "9digit": { "long": { "other": "0 亿" }, "short": { "other": "0 亿" } },
+    "13digit": { "long": { "other": "0 万亿" }, "short": { "other": "0 万亿" } }
+  },
+  "range": {
+    "between": { "short": "{0}-{1}", "long": "{0} 至 {1}" },
+    "approximately": { "short": "~{0}", "long": "约 {0}" },
+    "atLeast": { "short": "{0}+", "long": "最少 {0}" },
+    "atMost": { "short": "≤{0}", "long": "最多 {0}" }
+  }
+}

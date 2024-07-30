@@ -1,0 +1,28 @@
+{
+  "name": "fr-CA",
+  "format": { "pattern": "# ##0,###" },
+  "proportional": { "percent": "{0} %", "perMille": "{0} ‰" },
+  "currency": [""],
+  "scientific": "#E0",
+  "compact": {
+    "4digit": { "long": { "one": "mille;", "other": "0 mille" } },
+    "7digit": {
+      "long": { "one": "0 million", "other": "0 millions" },
+      "short": { "one": "0 million", "other": "0 millions" }
+    },
+    "10digit": {
+      "long": { "one": "0 milliard", "other": "0 milliards" },
+      "short": { "one": "0 milliard", "other": "0 milliards" }
+    },
+    "13digit": {
+      "long": { "one": "0 billion", "other": "0 billions" },
+      "short": { "one": "0 billion", "other": "0 billions" }
+    }
+  },
+  "range": {
+    "between": { "short": "{0}–{1}", "long": "{0} à {1}" },
+    "approximately": { "short": "≈{0}", "long": "environ {0}" },
+    "atLeast": { "short": "Plus de {0}", "long": "{0} au minimum" },
+    "atMost": { "short": "≤ {0}", "long": "{0} au maximum" }
+  }
+}

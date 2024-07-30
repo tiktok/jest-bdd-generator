@@ -1,0 +1,19 @@
+{
+  "name": "jv",
+  "format": { "pattern": "#.##0,###" },
+  "proportional": { "percent": "{0}%", "perMille": "{0}‰" },
+  "currency": [""],
+  "scientific": "#E0",
+  "compact": {
+    "4digit": { "long": { "other": "0 ewu" }, "short": { "other": "0 ewu" } },
+    "7digit": { "long": { "other": "0 yuta" }, "short": { "other": "0 yt" } },
+    "10digit": { "long": { "other": "0 milyar" }, "short": { "other": "0 M" } },
+    "13digit": { "long": { "other": "0 trilyun" }, "short": { "other": "0 T" } }
+  },
+  "range": {
+    "between": { "short": "{0} – {1}", "long": "{0} nganti {1}" },
+    "approximately": { "short": "~ {0}", "long": "kira-kira {0}" },
+    "atLeast": { "short": "⩾ {0}", "long": "minimal {0}" },
+    "atMost": { "short": "≤{0}", "long": "maksimal {0}" }
+  }
+}

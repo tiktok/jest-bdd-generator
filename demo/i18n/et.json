@@ -1,0 +1,28 @@
+{
+  "name": "et",
+  "format": { "pattern": "## ##0,###" },
+  "proportional": { "percent": "{0}%", "perMille": "{0}‰" },
+  "currency": [""],
+  "scientific": "#×10^0",
+  "compact": {
+    "4digit": { "long": { "one": "tuhat;", "other": "0 tuhat" } },
+    "7digit": {
+      "long": { "one": "miljon;-0 miljon", "other": "0 miljonit" },
+      "short": { "one": "0 mln", "other": "0 mln" }
+    },
+    "10digit": {
+      "long": { "one": "miljard;-0 miljard", "other": "0 miljardit" },
+      "short": { "one": "0 mld", "other": "0 mld" }
+    },
+    "13digit": {
+      "long": { "one": "triljon;-0 triljon", "other": "0 triljonit" },
+      "short": { "one": "0 trln", "other": "0 trln" }
+    }
+  },
+  "range": {
+    "between": { "short": "{0}‒{1}", "long": "{0} kuni {1}" },
+    "approximately": { "short": "~ {0}", "long": "umbes {0}" },
+    "atLeast": { "short": "≥{0}", "long": "vähemalt {0}" },
+    "atMost": { "short": "≤ {0}", "long": "kuni {0}" }
+  }
+}

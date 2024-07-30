@@ -24,7 +24,6 @@
   "main": "./dist/lib/index.js",
   "module": "./dist/es/index.js",
   "types": "./dist/types/index.d.ts",
-  "type": "module",
   "scripts": {
     "build": "modern build",
     "build:watch": "modern build -w",
@@ -63,7 +62,8 @@
   "bin": {
     "gen-report": "bin/gen-report.js",
     "gen-doc": "bin/gen-doc.js",
-    "gen-test": "bin/gen-test.js"
+    "gen-test": "bin/gen-test.js",
+    "gen-comments": "bin/gen-comments.js"
   },
   "peerDependencies": {
     "@monaco-editor/react": "~4.6.0",

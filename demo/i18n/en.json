@@ -1,0 +1,19 @@
+{
+  "name": "en",
+  "format": { "pattern": "#,##0.###" },
+  "proportional": { "percent": "{0}%", "perMille": "{0}‰" },
+  "currency": [""],
+  "scientific": "#E0",
+  "compact": {
+    "4digit": { "long": { "one": "0 thousand", "other": "0 thousand" }, "short": { "one": "0K", "other": "0K" } },
+    "7digit": { "long": { "one": "0 million", "other": "0 million" }, "short": { "one": "0M", "other": "0M" } },
+    "10digit": { "long": { "one": "0 billion", "other": "0 billion" }, "short": { "one": "0B", "other": "0B" } },
+    "13digit": { "long": { "one": "0 trillion", "other": "0 trillion" }, "short": { "one": "0T", "other": "0T" } }
+  },
+  "range": {
+    "between": { "short": "{0}–{1}", "long": "from {0} to {1}" },
+    "approximately": { "short": "~{0}", "long": "about {0}" },
+    "atLeast": { "short": "{0}+", "long": "at least {0}" },
+    "atMost": { "short": "≤{0}", "long": "at most {0}" }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "he",
+  "format": { "pattern": "#,##0.###" },
+  "proportional": { "percent": "{0}%", "perMille": "{0}‰" },
+  "currency": [""],
+  "scientific": "#E0",
+  "compact": {
+    "4digit": {
+      "long": { "one": "‏0 אלף", "two": "‏0 אלף", "many": "‏0 אלף", "other": "‏0 אלף" },
+      "short": { "one": "0K‏", "two": "0K‏", "many": "0K‏", "other": "0K‏" }
+    },
+    "7digit": {
+      "long": { "one": "‏0 מיליון", "two": "‏0 מיליון", "many": "‏0 מיליון", "other": "‏0 מיליון" },
+      "short": { "one": "0M‏", "two": "0M‏", "many": "0M‏", "other": "0M‏" }
+    },
+    "10digit": {
+      "long": { "one": "‏0 מיליארד", "two": "‏0 מיליארד", "many": "‏0 מיליארד", "other": "‏0 מיליארד" },
+      "short": { "one": "0B‏", "two": "0B‏", "many": "0B‏", "other": "0B‏" }
+    },
+    "13digit": {
+      "long": { "one": "‏0 טריליון", "two": "‏0 טריליון", "many": "‏0 טריליון", "other": "‏0 טריליון" },
+      "short": { "one": "0T‏", "two": "0T‏", "many": "0T‏", "other": "0T‏" }
+    }
+  },
+  "range": {
+    "between": { "short": "{0}–{1}", "long": "{0} עד {1}" },
+    "approximately": { "short": "~{0}", "long": "כ-{0}" },
+    "atLeast": { "short": "≥{0}", "long": "לפחות {0}" },
+    "atMost": { "short": "≤{0}", "long": "{0} לכל היותר" }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "vi",
+  "format": { "pattern": "#.##0,###" },
+  "proportional": { "percent": "{0}%", "perMille": "{0}‰" },
+  "currency": [""],
+  "scientific": "#E0",
+  "compact": {
+    "4digit": { "long": { "other": "0 nghìn" }, "short": { "other": "0 N" } },
+    "7digit": { "long": { "other": "0 triệu" }, "short": { "other": "0 Tr" } },
+    "10digit": { "long": { "other": "0 tỷ" }, "short": { "other": "0 T" } },
+    "13digit": { "long": { "other": "0 nghìn tỷ" }, "short": { "other": "0 NT" } }
+  },
+  "range": {
+    "between": { "short": "{0}-{1}", "long": "{0} đến {1}" },
+    "approximately": { "short": "~{0}", "long": "khoảng {0}" },
+    "atLeast": { "short": "{0}+", "long": "tối thiểu {0}" },
+    "atMost": { "short": "≤{0}", "long": "tối đa {0}" }
+  }
+}

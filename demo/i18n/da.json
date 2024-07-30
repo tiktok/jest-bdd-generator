@@ -1,0 +1,28 @@
+{
+  "name": "da",
+  "format": { "pattern": "##.##0,###" },
+  "proportional": { "percent": "{0} %", "perMille": "{0} ‰" },
+  "currency": [""],
+  "scientific": "#E0",
+  "compact": {
+    "4digit": { "long": { "one": "0 tusind", "other": "0 tusind" } },
+    "7digit": {
+      "long": { "one": "0 million", "other": "0 millioner" },
+      "short": { "one": "0 mio.", "other": "0 mio." }
+    },
+    "10digit": {
+      "long": { "one": "0 milliard", "other": "0 milliarder" },
+      "short": { "one": "0 mia.", "other": "0 mia." }
+    },
+    "13digit": {
+      "long": { "one": "0 billion", "other": "0 billioner" },
+      "short": { "one": "0 bio.", "other": "0 bio." }
+    }
+  },
+  "range": {
+    "between": { "short": "{0}-{1}", "long": "{0} til {1}" },
+    "approximately": { "short": "~{0}", "long": "circa {0}" },
+    "atLeast": { "short": "{0}+", "long": "mindst {0}" },
+    "atMost": { "short": "≤{0}", "long": "maks. {0}" }
+  }
+}

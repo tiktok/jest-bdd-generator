@@ -1,0 +1,31 @@
+{
+  "name": "cs",
+  "format": { "pattern": "# ##0,###" },
+  "proportional": { "percent": "{0} %", "perMille": "{0} ‰" },
+  "currency": [""],
+  "scientific": "#e0",
+  "compact": {
+    "4digit": {
+      "long": { "one": "0 tisíc", "few": "0 tisíce", "many": "0 tisíce", "other": "0 tisíc" },
+      "short": { "one": "0 tis.", "few": "0 tis.", "many": "0 tis.", "other": "0 tis." }
+    },
+    "7digit": {
+      "long": { "one": "0 milion", "few": "0 miliony", "many": "0 milionu", "other": "0 milionů" },
+      "short": { "one": "0 mil.", "few": "0 mil.", "many": "0 mil.", "other": "0 mil." }
+    },
+    "10digit": {
+      "long": { "one": "0 miliarda", "few": "0 miliardy", "many": "0 miliardy", "other": "0 miliard" },
+      "short": { "one": "0 mld.", "few": "0 mld.", "many": "0 mld.", "other": "0 mld." }
+    },
+    "13digit": {
+      "long": { "one": "0 bilion", "few": "0 biliony", "many": "0 bilionu", "other": "0 bilionů" },
+      "short": { "one": "0 bil.", "few": "0 bil.", "many": "0 bil.", "other": "0 bil." }
+    }
+  },
+  "range": {
+    "between": { "short": "{0}–{1}", "long": "{0} až {1}" },
+    "approximately": { "short": "~{0}", "long": "přibližně {0}" },
+    "atLeast": { "short": "{0}+", "long": "alespoň {0}" },
+    "atMost": { "short": "≤{0}", "long": "maximálně {0}" }
+  }
+}

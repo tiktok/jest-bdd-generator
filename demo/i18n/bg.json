@@ -1,0 +1,25 @@
+{
+  "name": "bg",
+  "format": { "pattern": "## ##0,###" },
+  "proportional": { "percent": "{0}%", "perMille": "{0}‰" },
+  "currency": [""],
+  "scientific": "#E0",
+  "compact": {
+    "4digit": { "long": { "one": "0 хил.", "other": "0 хиляди" }, "short": { "one": "0 хил.", "other": "0 хил." } },
+    "7digit": { "long": { "one": "0 милион", "other": "0 милиона" }, "short": { "one": "0 млн.", "other": "0 млн." } },
+    "10digit": {
+      "long": { "one": "0 милиард", "other": "0 милиарда" },
+      "short": { "one": "0 млрд.", "other": "0 млрд." }
+    },
+    "13digit": {
+      "long": { "one": "0 трилион", "other": "0 трилиона" },
+      "short": { "one": "0 трлн.", "other": "0 трлн." }
+    }
+  },
+  "range": {
+    "between": { "short": "{0} – {1}", "long": "{0} до {1}" },
+    "approximately": { "short": "~{0}", "long": "около {0}" },
+    "atLeast": { "short": "≥ {0}", "long": "най-малко {0}" },
+    "atMost": { "short": "≤ {0}", "long": "най-много {0}" }
+  }
+}
