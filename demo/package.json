@@ -1,16 +1,17 @@
 {
-  "name": "@tiktok-arch/digit-fmt",
-  "version": "1.3.0",
-  "description": "i18n tools for digit formats",
+  "name": "demo-project",
+  "version": "0.0.1",
+  "description": "reports demo",
   "license": "ISC",
   "author": "aishiguang",
   "main": "./dist/lib/index.js",
   "module": "./dist/es/index.js",
   "types": "./dist/types/src/index.d.ts",
   "scripts": {
-    "report": "gen-report pathfeatureinput=./doc/features/format.feature",
-    "gen-comments": "gen-comments",
-    "gen-doc": "gen-doc"
+    "gen-report": "gen-report pathTestsInput=./tests/format.test.ts pathFeatureInput=./docs/features/format.feature",
+    "gen-comments": "gen-comments pathTestsInput=./tests/format.test.ts pathFeatureInput=./docs/features/format.feature",
+    "gen-test": "gen-test pathTestInput=./tests/noImplement.test.ts pathGherkinInput=./docs/features/format.feature pathOutput=./generatedIt.test.ts",
+    "gen-doc": "gen-doc pathTestsInput=./tests/format.test.ts  pathOutput=./docs/features/generatedFormat.feature"
   },
   "devDependencies": {
     "@types/jest": "^27.5.2",
@@ -26,5 +27,6 @@
     "registry": "https://bnpm.byted.org/"
   },
   "jsnext:source": "./src/index.ts",
-  "dependencies": {}
+  "dependencies": {
+  }
 }
