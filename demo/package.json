@@ -8,6 +8,7 @@
   "module": "./dist/es/index.js",
   "types": "./dist/types/src/index.d.ts",
   "scripts": {
+    "start": "modern build --watch & npx http-server -c-1 -P http://127.0.0.1:8080?",
     "gen-report": "gen-report pathTestsInput=./tests/format.test.ts pathFeatureInput=./docs/features/format.feature",
     "gen-comments": "gen-comments pathTestsInput=./tests/format.test.ts pathFeatureInput=./docs/features/format.feature",
     "gen-test": "gen-test pathTestInput=./tests/noImplement.test.ts pathGherkinInput=./docs/features/format.feature pathOutput=./generatedIt.test.ts",
