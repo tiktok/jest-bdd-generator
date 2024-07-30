@@ -22,5 +22,13 @@ export default defineConfig({
     buildType: 'bundleless',
     outDir: './dist/types',
     dts: { only: true },
-  },]
+  }, {
+    input: {index:'./website/index.tsx'},
+    format: 'umd',
+    platform: 'browser',
+    buildType: 'bundle',
+    outDir: './website',
+    autoExternal: false,
+    externals: ['fs', 'path', 'perf_hooks']
+  }]
 });
