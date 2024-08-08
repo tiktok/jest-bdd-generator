@@ -36,3 +36,10 @@ npx gen-report pathTestsInput=./tests/format.test.ts pathFeatureInput=./docs/fea
 npm run gen-report
 ```
 - the output should be `format-report.html` at `./docs/reports`
+
+
+## 5. See the Test Oracle
+```bash
+npm run start
+echo "visit : http://127.0.0.1:8080"
+```
