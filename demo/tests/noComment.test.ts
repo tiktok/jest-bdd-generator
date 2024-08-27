@@ -26,14 +26,14 @@ describe('Format', () => {
 
   });
   test.each([
-    {num: 5.5, method: "f16round", result: 5.5},
-    {num: 5.05, method: "f16round", result: 5.05078125},
-    {num: 5, method: "f16round", result: 5},
-    {num: -5.05, method: "f16round", result: -5.05078125},
     {num: 5.5, method: "fround", result: 5.5},
+    {num: 5.5, method: "f16round", result: 5.5},
     {num: 5.05, method: "fround", result: 5.050000190734863},
+    {num: 5.05, method: "f16round", result: 5.05078125},
     {num: 5, method: "fround", result: 5},
-    {num: -5.05, method: "fround", result: -5.050000190734863}
+    {num: 5, method: "f16round", result: 5},
+    {num: -5.05, method: "fround", result: -5.050000190734863},
+    {num: -5.05, method: "f16round", result: -5.05078125}
   ])('Float and double', async ({ num,method,result }) => {
     expect(typeof num).toBe('number');
     expect(Math[method]).toBeDefined();

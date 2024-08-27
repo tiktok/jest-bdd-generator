@@ -1,5 +1,5 @@
 @format-feature
-Feature: Format
+Feature: Fail With Math.f16Round
 - reference: https://bytedance.feishu.cn/docx/YNmzdBZXPowtTnxSd7dc4MHJni4
 
 Scenario Outline: Integer pattern
@@ -23,18 +23,18 @@ Examples:
 | -1234.6 | "round" | -1235 |
 
 
-Scenario Outline: Float and double
+Scenario Outline: Float, Single and double
   Given input number is <num>
   When rounding with <method>
   Then rounded number is <result>
 
 Examples:
 | num | method | result |
-| 5.5 | "f16round" | 5.5 |
-| 5.05 | "f16round" | 5.05078125 |
-| 5 | "f16round" | 5 |
-| -5.05 | "f16round" | -5.05078125 |
 | 5.5 | "fround" | 5.5 |
+| 5.5 | "f16round" | 5.5 |
 | 5.05 | "fround" | 5.050000190734863 |
+| 5.05 | "f16round" | 5.05078125 |
 | 5 | "fround" | 5 |
+| 5 | "f16round" | 5 |
 | -5.05 | "fround" | -5.050000190734863 |
+| -5.05 | "f16round" | -5.05078125 |
