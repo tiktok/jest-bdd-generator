@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { TestOracle } from '../src/UI/TestOracle'
+import { TestOracle } from '../../src/UI/TestOracle'
 
 export const elem = document.createElement("div");
 elem.className = "root";

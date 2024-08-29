@@ -547,7 +547,7 @@ export function TestOracle<
   const [editingHead, setEditingHead] = useState<{ expression: Partial<E> } | undefined>();
   let headToRefresh = editingHead;
   const [editingKey, setEditingKey] = useState<K | undefined>();
-  const [result, setResult] = useState<string[][] | undefined>();
+  const [result, setResult] = useState<React.ReactNode[][] | undefined>();
   const defaultSels = { note: '', ...colSelections };
   const [colSel, setColSel] = useState<Partial<typeof colSelections>>(defaultSels);
   const [commonColProperty, setCommonColProperty] = useState<{ expression: Partial<E> } | undefined>();
@@ -670,7 +670,7 @@ export function TestOracle<
   const width = {};
   // const width = { width: `${cols.length * 10 + 10}em` };
 
-  const executeAll = async (r = rows, c = cols): Promise<string[][]> => {
+  const executeAll = async (r = rows, c = cols): Promise<React.ReactNode[][]> => {
     return Promise.all(
       r.map(
         async (rowExp) =>
@@ -979,7 +979,7 @@ export function TestOracle<
                     }}
                     className={highlightCol === j ? 'highlight' : ''}
                   >
-                    {`${result?.[i]?.[j] ?? '--'}\t`}
+                    {result?.[i]?.[j] ?? '--'}
                   </Cell>
                 ))}
               </div>

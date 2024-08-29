@@ -50,8 +50,12 @@ npx gen-report pathTestsInput=./tests/failWithF16Round.test.ts pathFeatureInput=
 npx gen-report pathTestsInput=./tests/successfulMathRound.test.ts pathFeatureInput=./docs/features/successfulMathRound.feature
 ```
 
-## 5. See the Test Oracle
+## 5. See it on Test Oracle
 ```bash
 npm run start
 echo "visit : http://127.0.0.1:8080"
 ```
+
+  - A more sophisticated example
+  - visit : http://127.0.0.1:8080/plural/
+  - source: demo/src/plural/index.tsx
