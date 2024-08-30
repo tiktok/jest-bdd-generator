@@ -126,7 +126,6 @@ const RowHead = styled('label')`
     flex: 1 1 10em;
     border: solid 1px transparent;
     transition: all 0.3s;
-    width: 10em;
     height: 1.5em;
   }
 `;
@@ -151,15 +150,19 @@ const Table = styled('article')`
       }
     }
   }
-
+  > section::-webkit-scrollbar {
+    display: none;
+  }
   > section {
     overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     > div {
       display: table;
       > div {
         color: ${THEME[5]};
         display: table-row;
-        span {
+        > span {
           transition: all 0.3s;
           border: solid 1px transparent;
           display: table-cell;
@@ -514,7 +517,7 @@ function Head<T extends IExpression, K extends StringKeyOf<T> = StringKeyOf<T>>(
           onTransitionEnd={transitionEndHandler}
           style={{ background: background[i], color: exp === 'note' ? '#996' : 'inherit' }}
         >
-          {exp ? colHead.expression[exp]?.toString() : '-empty-'}
+          {exp ? JSON.stringify(colHead.expression[exp]) : '-empty-'}
         </a>
       ))}
     </RowHead>
@@ -629,7 +632,7 @@ export function TestOracle<
       rows[idx].expression[editingKey] = parsed as E[K];
       triggersRows[idx]?.();
       if (parsed !== undefined) {
-        nodes[idx] = <b>{parsed}</b>;
+        nodes[idx] = <b>{JSON.stringify(parsed)}</b>;
       }
     });
     setRows(rows.slice(0, values.length));

@@ -27,8 +27,16 @@ export default defineConfig({
     format: 'umd',
     platform: 'browser',
     buildType: 'bundle',
-    outDir: './website',
+    outDir: './website/dist',
     autoExternal: false,
+    copy: {
+      patterns: [{
+        from: '../README.md'
+      }, {
+        from: '../demo/README.md',
+        to: 'demo/README.md'
+      }]
+    },
     externals: ['fs', 'path', 'perf_hooks']
   }]
 });

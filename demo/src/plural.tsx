@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { TestOracle } from '../../../src/UI/TestOracle'
+import { TestOracle } from '../../src/UI/TestOracle'
 
 function resolveRule(exp: string): string {
   const idxDesc = exp.indexOf('@');
@@ -177,7 +177,3 @@ export function TestOraclePluralRule(): React.ReactElement<any, any> {
     );
   }
 }
-export const elem = document.createElement("div");
-elem.className = "root";
-document.body.append(elem);
-ReactDOM.render(<TestOraclePluralRule/>, elem)

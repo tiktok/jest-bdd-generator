@@ -13,17 +13,5 @@ export default defineConfig({
     copy: {
       patterns: [{from: './*.html'}]
     },
-  }, ...['plural'].map(path => {
-    return {
-      input: [`src/${path}`],
-      format: 'umd',
-      platform: 'browser',
-      buildType: 'bundle',
-      outDir: `./dist/${path}`,
-      autoExternal: false,
-      copy: {
-        patterns: [{from: './*.html'}]
-      },
-    } as PartialBaseBuildConfig
-  })]
+  }]
 });

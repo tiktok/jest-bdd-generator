@@ -1,38 +1,47 @@
 import * as React from "react";
-import * as ReactDOM from "react-dom";
-import { TestOracle } from '../../src/UI/TestOracle'
+import * as ReactDOM from "react-dom/client";
+import { TestOraclePluralRule } from './plural'
+import { TestOracleF16Round } from './f16round'
+import { BrowserRouter, useRoutes, type RouteObject } from 'react-router-dom';
+import styled from "styled-components";
 
+const Wrapper = styled('div')`
+  display: flex;
+  > nav {
+    padding: .5em;
+    min-width: 15em;
+  }
+  > article {
+    flex-grow: 1;
+  }
+`
+const routes: RouteObject[] = [
+  {
+    path: '/plural-rule',
+    element: <TestOraclePluralRule />,
+  },
+  {
+    path: '/',
+    element:<TestOracleF16Round/>
+  },]
+
+function RouteElements(): React.ReactElement | null {
+  const element = useRoutes(routes);
+  return element;
+}
 export const elem = document.createElement("div");
 elem.className = "root";
 document.body.append(elem);
-ReactDOM.render(<TestOracle<{num: number; method: 'ceil' | 'floor' | 'round' | 'fround' | 'f16round'}>
-  defaultRows={[
-    { num: 9.1, note: '+0.1' },
-    { num: -9.1, note: '-0.1' },
-    { num: 9.9, note: '+0.9' },
-    { num: -9.9, note: '-0.9' },
-    { num: 9.5, note: '+0.5' },
-    { num: -9.5, note: '-0.5' },
-    { num: 9.4, note: '+0.4' },
-    { num: -9.4, note: '-0.4' },
-    { num: 9.6, note: '+0.6' },
-    { num: -9.6, note: '-0.6' },
-  ]}
-  defaultCols={[
-    { method: 'ceil' }, 
-    { method: 'floor' }, 
-    { method: 'round' },
-    { method: 'fround' }, 
-    { method: 'f16round' }
-  ]}
-  colSelections={{
-    num: Number.NaN,
-    method: [
-      'ceil', 
-      'floor', 
-      'round', 
-      'fround', 
-      'f16round'
-    ]
-  }}
-  execute={ (opt) => Math[opt.method](opt.num)} />, elem);
+ReactDOM.createRoot(elem).render(
+  <Wrapper>
+    <nav>
+      <a href="./plural-rule">Test Oracle Demo: (Intl)</a>
+      <br />
+      <a href="./">Test Oracle Demo: (Math)</a>
+    </nav>
+    <article>
+      <BrowserRouter>
+        <RouteElements />
+      </BrowserRouter>
+    </article>
+  </Wrapper>);

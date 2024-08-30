@@ -70,5 +70,5 @@
     "files": true,
     "esm": true
   },
-  "include": ["src"]
+  "include": ["src", "website"]
 }
