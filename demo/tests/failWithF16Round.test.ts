@@ -1,6 +1,6 @@
 import { describe, test, it, expect } from '@jest/globals';
 
-describe('FailWithF16Round', () => {
+describe('Fail With Math.f16Round', () => {
   test.each([
     {num: 1234.1, method: "ceil", result: 1235},
     {num: 1234.9, method: "ceil", result: 1235},

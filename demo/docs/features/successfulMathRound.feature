@@ -1,6 +1,5 @@
 @format-feature
-Feature: Fail With Math.f16Round
-- reference: https://bytedance.feishu.cn/docx/YNmzdBZXPowtTnxSd7dc4MHJni4
+Feature: Rounding methods of Math
 
 Scenario Outline: Integer pattern
   Given input number is <num>

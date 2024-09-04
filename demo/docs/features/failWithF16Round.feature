@@ -1,6 +1,6 @@
 @format-feature
 Feature: Fail With Math.f16Round
-- reference: https://bytedance.feishu.cn/docx/YNmzdBZXPowtTnxSd7dc4MHJni4
+- reference:  ([Math.f16round](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/f16round)) 
 
 Scenario Outline: Integer pattern
   Given input number is <num>
