@@ -22,5 +22,21 @@ export default defineConfig({
     buildType: 'bundleless',
     outDir: './dist/types',
     dts: { only: true },
-  },]
+  }, {
+    input: {index:'./website/index.tsx'},
+    format: 'umd',
+    platform: 'browser',
+    buildType: 'bundle',
+    outDir: './website/dist',
+    autoExternal: false,
+    copy: {
+      patterns: [{
+        from: '../README.md'
+      }, {
+        from: '../demo/README.md',
+        to: 'demo/README.md'
+      }]
+    },
+    externals: ['fs', 'path', 'perf_hooks']
+  }]
 });

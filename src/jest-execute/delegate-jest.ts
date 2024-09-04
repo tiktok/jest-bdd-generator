@@ -230,7 +230,9 @@ export class DelegateJest {
             // } else if (valueType === 'number') {
             //   examplesScenario[keys[i]] = Number(v);
             // }
-            examplesScenario[keys[i]] = JSON.parse(v);
+            if (keys[i]) {
+              examplesScenario[keys[i]] = JSON.parse(v);
+            }
           });
 
           pickleSteps.splice(idx, 1);

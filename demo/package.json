@@ -1,0 +1,33 @@
+{
+  "name": "demo-project",
+  "version": "0.0.1",
+  "description": "reports demo",
+  "license": "ISC",
+  "author": "aishiguang",
+  "main": "./dist/lib/index.js",
+  "module": "./dist/es/index.js",
+  "types": "./dist/types/src/index.d.ts",
+  "scripts": {
+    "start": "modern build --watch & npx http-server -c-1 ./dist -P http://127.0.0.1:8080? -o /",
+    "gen-report": "gen-report pathTestsInput=./tests/format.test.ts pathFeatureInput=./docs/features/format.feature",
+    "gen-comments": "gen-comments pathTestsInput=./tests/format.test.ts pathFeatureInput=./docs/features/format.feature",
+    "gen-test": "gen-test pathTestInput=./tests/noImplement.test.ts pathGherkinInput=./docs/features/format.feature pathOutput=./generatedIt.test.ts",
+    "gen-doc": "gen-doc pathTestsInput=./tests/format.test.ts  pathOutput=./docs/features/generatedFormat.feature"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.5.2",
+    "@jest/globals": "~29.3.1",
+    "@cucumber/cucumber": "^9.2.0",
+    "@cucumber/gherkin": "26.2.0",
+    "@cucumber/messages": "22.0.0",
+    "typescript": "^4.9.5",
+    "json-schema-to-typescript": "^13.1.1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://bnpm.byted.org/"
+  },
+  "jsnext:source": "./src/index.ts",
+  "dependencies": {
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "jest-bdd-generator",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Jest code generator empowered with Gherkin and BDD",
   "keywords": [
     "Jest",
@@ -23,12 +23,12 @@
   },
   "main": "./dist/lib/index.js",
   "module": "./dist/es/index.js",
-  "types": "./dist/types/src/index.d.ts",
-  "type": "module",
+  "types": "./dist/types/index.d.ts",
   "scripts": {
     "build": "modern build",
     "build:watch": "modern build -w",
     "dev": "modern dev",
+    "start": "modern build; npx http-server website -c-1 -P http://127.0.0.1:8080/? -o /",
     "doc": "ts-node tools/export-api-doc",
     "lint": "eslint .",
     "lint:error": "eslint . --quiet"
@@ -37,33 +37,39 @@
     "./lib/transpiler": {
       "import": "./dist/es/transpiler/index.js",
       "require": "./dist/lib/transpiler/index.js",
-      "types": "./dist/types/src/transpiler/index.d.ts"
+      "types": "./dist/types/transpiler/index.d.ts"
     },
     "./lib/jest-to-gherkin": {
       "import": "./dist/es/jest-to-gherkin/index.js",
       "require": "./dist/lib/jest-to-gherkin/index.js",
-      "types": "./dist/types/src/jest-to-gherkin/index.d.ts"
+      "types": "./dist/types/jest-to-gherkin/index.d.ts"
     },
     "./lib/gherkin-to-test": {
       "import": "./dist/es/gherkin-to-test/index.js",
       "require": "./dist/lib/gherkin-to-test/index.js",
-      "types": "./dist/types/src/gherkin-to-test/index.d.ts"
+      "types": "./dist/types/gherkin-to-test/index.d.ts"
     },
     "./UI/TestGeneration": {
       "import": "./dist/es/UI/TestGeneration.js",
       "require": "./dist/lib/UI/TestGeneration.js",
-      "types": "./dist/types/src/UI/TestGeneration.d.ts"
+      "types": "./dist/types/UI/TestGeneration.d.ts"
     },
     "./UI/TestOracle": {
       "import": "./dist/es/UI/TestOracle.js",
       "require": "./dist/lib/UI/TestOracle.js",
-      "types": "./dist/types/src/UI/TestOracle.d.ts"
+      "types": "./dist/types/UI/TestOracle.d.ts"
+    },
+    "./UI/TestStory": {
+      "import": "./dist/es/UI/TestStory.js",
+      "require": "./dist/lib/UI/TestStory.js",
+      "types": "./dist/types/UI/TestStory.d.ts"
     }
   },
   "bin": {
     "gen-report": "bin/gen-report.js",
     "gen-doc": "bin/gen-doc.js",
-    "gen-test": "bin/gen-test.js"
+    "gen-test": "bin/gen-test.js",
+    "gen-comments": "bin/gen-comments.js"
   },
   "peerDependencies": {
     "@monaco-editor/react": "~4.6.0",
@@ -88,15 +94,17 @@
     "@types/jest": "^27.5.2",
     "@types/node": "^20.11.19",
     "@types/pako": "~2.0.3",
-    "@types/react": "17.0.65",
-    "@types/react-dom": "17.0.20",
-    "@types/react-router-dom": "~5.3.3",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@types/react-router-dom": "^5.3.0",
     "@types/styled-components": "^5.1.14",
     "eslint": "8.23.1",
     "pako": "~2.1.0",
     "prettier": "2.7.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-markdown": "^9.0.1",
+    "react-router-dom": "^6.3.0",
     "rimraf": "3.0.2",
     "styled-components": "5.3.5",
     "stylelint": "13.13.1",

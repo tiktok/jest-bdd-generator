@@ -70,5 +70,5 @@
     "files": true,
     "esm": true
   },
-  "include": ["src", "tools", "jest.config.ts"]
+  "include": ["src", "website"]
 }
