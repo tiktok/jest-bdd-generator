@@ -36,7 +36,7 @@ export function TestOracleF16Round () {
       'f16round'
     ]
   }}
-  execute={ async (opt) => opt.method ? JSON.stringify(Math[opt.method](opt.num ?? NaN)): 'Method Required'} />
+  execute={ async (opt) => Math[opt.method] ? JSON.stringify(Math[opt.method]?.(opt.num ?? NaN)): 'Method Required'} />
 }
 
 function f16round(num: any, number: any) {
