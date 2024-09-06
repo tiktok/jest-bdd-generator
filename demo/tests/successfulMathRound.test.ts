@@ -19,7 +19,7 @@ describe('Rounding methods of Math', () => {
     expect(typeof num).toBe('number');
 
     //@When rounding with <method>
-    expect(Math[method]).toBeDefined();
+    expect(Math).toHaveProperty(method);
 
     //@Then rounded number is <result>
     expect(Math[method](num)).toEqual(result);
@@ -36,7 +36,7 @@ describe('Rounding methods of Math', () => {
     expect(typeof num).toBe('number');
 
     //@When rounding with <method>
-    expect(Math[method]).toBeDefined();
+    expect(Math).toHaveProperty(method);
 
     //@Then rounded number is <result>
     expect(Math[method](num)).toEqual(result);

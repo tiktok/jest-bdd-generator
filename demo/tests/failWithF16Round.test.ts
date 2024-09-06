@@ -19,7 +19,7 @@ describe('Fail With Math.f16Round', () => {
     expect(typeof num).toBe('number');
 
     //@When rounding with <method>
-    expect(Math[method]).toBeDefined();
+    expect(Math).toHaveProperty(method);
 
     //@Then rounded number is <result>
     expect(Math[method](num)).toEqual(result);
@@ -40,7 +40,7 @@ describe('Fail With Math.f16Round', () => {
     expect(typeof num).toBe('number');
 
     //@When rounding with <method>
-    expect(Math[method]).toBeDefined();
+    expect(Math).toHaveProperty(method);
 
     //@Then rounded number is <result>
     expect(Math[method](num)).toEqual(result);

@@ -852,7 +852,7 @@ export function TestOracle<
 
     const expressions = arrRowExpression(_rows);
     const headArray = [...expressions, ..._cols.map((c, i) => Object.values(c.expression).join(';'))];
-    const resultArray = _results.map((row, i) => [...expressions.map((k) => _rows[i].expression[k] ?? ''), ...row]);
+    const resultArray = _results.map((row, i) => [...expressions.map((k) => _rows[i].expression[k] ?? ''), ...row.map(cell => JSON.stringify(cell))]);
     const resultTableFormat = [headArray, ...resultArray]
       .map((row) => row.join(format === 'gherkin' ? ' | ' : '\t'))
       .join('\n');

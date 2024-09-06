@@ -1,6 +1,6 @@
 import { describe, test, it, expect } from '@jest/globals';
 
-describe('Format', () => {
+describe('Rounding methods of Math', () => {
   test.each([
     {num: 1234.1, method: "ceil", result: 1235},
     {num: 1234.9, method: "ceil", result: 1235},
@@ -19,7 +19,7 @@ describe('Format', () => {
     expect(typeof num).toBe('number');
 
     //@When rounding method is <method>
-    expect(Math[method]).toBeDefined();
+    expect(Math).toHaveProperty(method);
 
     //@Then rounded number is <result>    
     expect(Math[method](num)).toEqual(result);
