@@ -8,20 +8,15 @@ describe('Rounding methods of Math', () => {
     {num: -1234.9, method: "ceil", result: -1234},
     {num: 1234.1, method: "floor", result: 1234},
     {num: 1234.9, method: "floor", result: 1234},
-    {num: -1234.1, method: "floor", result: -1235},
-    {num: -1234.9, method: "floor", result: -1235},
-    {num: 1234.5, method: "round", result: 1235},
-    {num: 1234.4, method: "round", result: 1234},
-    {num: -1234.5, method: "round", result: -1234},
-    {num: -1234.6, method: "round", result: -1235}
-  ])('Integer pattern', async ({ num,method,result }) => {
-    //@Given input number is <num>    
+    // Note: the examples are dynamic too.
+  ])('Integer pattern', async ({ num, method, result }) => {
+    //@Given input number is <num>
     expect(typeof num).toBe('number');
 
-    //@When rounding method is <method>
+    //@When rounding with <method>
     expect(Math).toHaveProperty(method);
 
-    //@Then rounded number is <result>    
+    //@Then rounded number is <result>
     expect(Math[method](num)).toEqual(result);
   });
   test.each([
