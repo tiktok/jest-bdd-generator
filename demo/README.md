@@ -16,7 +16,7 @@ npm link ../ #enable .bin
 ## 1. Generate Comments for Test Code
 Automatically generate comments for the test code using predefined steps:
   ```bash
-  npx gen-comments pathTestInput=./tests/noComment.test.ts pathOutput=./generatedComments.test.ts
+  npx gen-comments pathTestsInput=./tests/noComment.test.ts pathOutput=./generatedComments.test.ts
   ```
   - Alternatively, you can use the pre-configured npm script:
     ```bash
@@ -26,7 +26,7 @@ Automatically generate comments for the test code using predefined steps:
 ## 2. Generate Test Code from Gherkin and Predefined Steps
 Generate test code based on Gherkin documents and the predefined steps:
   ```bash
-  npx gen-test pathTestInput=./tests/noImplement.test.ts pathGherkinInput=./docs/features/failWithF16Round.feature pathOutput=./generatedIt.test.ts
+  npx gen-test pathTestInput=./tests/noImplement.test.ts pathGherkinInput=./docs/features/successfulMathRound.feature pathOutput=./generatedTest.test.ts
   ```
   - You can also run this using the npm script:
     ```bash
