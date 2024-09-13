@@ -17,9 +17,9 @@ jobs:
       - name: git config name
         run: git config --local user.name tiktokbot
       - name: Install dependencies
-        run: npm install
+        run: node common/scripts/install-run-rush.js update
       - name: Build
-        run: npm run build
+        run: node common/scripts/install-run-rush.js build
       - name: Publish NPM package
         # Create an .npmrc file containing the *unexpanded* environment variable name.
         # "npm publish" will expand the variable during publishing.  This is more secure
@@ -27,6 +27,6 @@ jobs:
         # accessed by other build steps or processes on the VM.
         run: |
           echo "//registry.npmjs.org/:_authToken=\${NPM_AUTH_TOKEN}" >> .npmrc
-          npm publish
+          npm publish ./packages/sdk
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

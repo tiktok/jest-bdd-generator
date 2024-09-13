@@ -1,0 +1,32 @@
+{
+  "name": "demo-project",
+  "version": "0.0.1",
+  "description": "reports demo",
+  "license": "ISC",
+  "author": "aishiguang",
+  "main": "./dist/lib/index.js",
+  "module": "./dist/es/index.js",
+  "types": "./dist/types/src/index.d.ts",
+  "scripts": {
+    "build": "modern build",
+    "start": "modern build -w & npx http-server -c-1 ./ -P http://127.0.0.1:8080/dist/index.html? -o /dist/",
+    "gen-report": "gen-report pathTestsInput=./tests/format.test.ts pathFeatureInput=./docs/features/format.feature",
+    "gen-comments": "gen-comments pathTestsInput=./tests/format.test.ts pathFeatureInput=./docs/features/format.feature",
+    "gen-test": "gen-test pathTestInput=./tests/noImplement.test.ts pathGherkinInput=./docs/features/format.feature pathOutput=./generatedIt.test.ts",
+    "gen-doc": "gen-doc pathTestsInput=./tests/format.test.ts  pathOutput=./docs/features/generatedFormat.feature"
+  },
+  "dependencies": {
+    "jest-bdd-generator": "*",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.3.0",
+    "styled-components": "5.3.5"
+  },
+  "devDependencies": {
+    "@modern-js/module-tools": "^2.48.1",
+    "@types/react": "17.0.65",
+    "@types/react-dom": "17.0.20",
+    "@types/styled-components": "^5.1.14"
+  },
+  "jsnext:source": "./src/index.ts"
+}

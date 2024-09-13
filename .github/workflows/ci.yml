@@ -45,8 +45,8 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - name: Install dependencies
-        run: npm install
+        run: node common/scripts/install-run-rush.js update
       - name: Build
-        run: npm run build
+        run: node common/scripts/install-run-rush.js build
 #      - name: ESLint
 #        run: npm run lint
