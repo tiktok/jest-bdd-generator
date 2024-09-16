@@ -26,7 +26,7 @@ Automatically generate comments for the test code using predefined steps:
 ## 2. Generate Test Code from Gherkin and Predefined Steps
 Generate test code based on Gherkin documents and the predefined steps:
   ```bash
-  npx gen-test pathTestsInput=./tests/noImplement.test.ts pathGherkinInput=./docs/features/successfulMathRound.feature pathOutput=./generatedTests.test.ts
+  npx gen-test pathTestsInput=./tests/noImplement.test.ts pathGherkinInput=./docs/features/successfulMathRound.feature pathOutput=./tests/generatedTests.test.ts
   ```
   - You can also run this using the npm script:
     ```bash
@@ -44,20 +44,21 @@ Generate a Gherkin document from test cases:
     ```
 
 ## 4. Generate Test Report in HTML
-Generate an HTML report for the test, which includes failure details and call stacks:
+Generate a report for a successful test:
   ```bash
-  npx gen-report pathTestsInput=./tests/failWithF16Round.test.ts pathFeatureInput=./docs/features/failWithF16Round.feature
+  npx gen-report pathTestsInput=./tests/successfulMathRound.test.ts pathFeatureInput=./docs/features/successfulMathRound.feature
   ```
-  - The output will be `failWithF16Round-report.html` saved in the `./docs/reports` folder.
   - Alternatively, use the npm script:
     ```bash
     npm run gen-report
     ```
 
-Generate a report for a successful test as well:
+Generate an HTML report for a failing test, which includes failure details and call stacks:
   ```bash
-  npx gen-report pathTestsInput=./tests/successfulMathRound.test.ts pathFeatureInput=./docs/features/successfulMathRound.feature
+  npx gen-report pathTestsInput=./tests/failWithF16Round.test.ts pathFeatureInput=./docs/features/failWithF16Round.feature
   ```
+  - The output will be `failWithF16Round-report.html` saved in the `./docs/reports` folder.
+
 
 ## 5. Managing Test Examples with Test Oracle
 For more information on test oracle, check out [Test Oracle on Wikipedia](https://en.wikipedia.org/wiki/Test_oracle).
