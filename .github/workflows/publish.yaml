@@ -19,7 +19,7 @@ jobs:
       - name: Install dependencies
         run: node common/scripts/install-run-rush.js install
       - name: Build
-        run: node common/scripts/install-run-rush.js build --verbose --production
+        run: node common/scripts/install-run-rush.js build --verbose
       - name: 'Rush version'
         run: node common/scripts/install-run-rush.js version --bump --version-policy none --target-branch ${{ github.ref_name }}
       - name: Rush publish
