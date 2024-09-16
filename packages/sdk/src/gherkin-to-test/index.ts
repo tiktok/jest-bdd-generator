@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { AstBuilder, GherkinClassicTokenMatcher, Parser /*, compile */ } from '@cucumber/gherkin';
 import { /* GherkinDocument, */ IdGenerator /* , PickleStep */ } from '@cucumber/messages';
-import * as prettier from "prettier";
+import * as prettier from 'prettier';
 import { JestToGherkin } from '../jest-to-gherkin';
 // import { Step } from '../types';
 import * as fs from 'fs';
@@ -31,11 +31,14 @@ export class TestGenerator extends TestGeneratorFromSource {
     const source = fs.readFileSync(pathTestInput).toString();
     return this.compileKnownStepsFromSource(source);
   }
-  async generateGherkin(options: { pathTestsInput: string; pathGherkinInput: string }):Promise<string | void> {
+  async generateGherkin(options: {
+    pathTestsInput: string;
+    pathGherkinInput: string;
+  }): Promise<string | void> {
     const { pathTestsInput, pathGherkinInput } = options;
     const steps = this.compileKnownSteps(pathTestsInput);
     const gherkinSource = fs.readFileSync(pathGherkinInput).toString();
     const testingCode = this.generateGherkinFromSource(steps, gherkinSource);
-    return testingCode ? prettier.format(testingCode, {parser: 'typescript'}) : undefined;
+    return testingCode ? prettier.format(testingCode, { parser: 'typescript' }) : undefined;
   }
 }

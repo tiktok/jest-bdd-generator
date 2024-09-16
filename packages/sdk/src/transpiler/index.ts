@@ -77,7 +77,7 @@ function searchCallName(node: ISearchableExpression): string | string[] | void {
 function traverseArguments(
   arrArgsMap: ISearchCallSchema[0],
   callExpression: ts.CallExpression,
-  context: ts.TransformationContext,
+  context: ts.TransformationContext
 ): void {
   const contextCallExpression = {} as IArgumentsSearchContext;
   for (let argIndex = 0; argIndex < arrArgsMap.arguments.length; argIndex++) {
@@ -94,7 +94,11 @@ function traverseArguments(
   }
 }
 
-function traverseChildren(signatures: ISearchCallSchema, node: ts.Node, context: ts.TransformationContext): void {
+function traverseChildren(
+  signatures: ISearchCallSchema,
+  node: ts.Node,
+  context: ts.TransformationContext
+): void {
   ts.visitEachChild(
     node,
     (subNode) => {
@@ -130,7 +134,7 @@ function traverseChildren(signatures: ISearchCallSchema, node: ts.Node, context:
         }
       }
     },
-    context,
+    context
   );
 }
 
@@ -153,7 +157,7 @@ export type ISearchCallSchema = Array<ISearchExpressionSchema>;
 
 export const customTransformerFactory: (
   searchSchema: ISearchCallSchema,
-  self: Transpile,
+  self: Transpile
 ) => ts.CustomTransformerFactory = (searchSchema, self) => (context) => {
   return {
     transformBundle: (node) => node,
@@ -163,7 +167,7 @@ export const customTransformerFactory: (
         traverseChildren(searchSchema, node, context);
       }
       return node;
-    },
+    }
   };
 };
 
@@ -180,7 +184,9 @@ export class Transpile {
   }
   public get uniqueSteps(): Step[] {
     const stepsCopied = this.steps;
-    return stepsCopied.filter((s, i) => stepsCopied.findIndex((f) => f.key === s.key && f.value === s.value) === i);
+    return stepsCopied.filter(
+      (s, i) => stepsCopied.findIndex((f) => f.key === s.key && f.value === s.value) === i
+    );
   }
   // public get outputText(): string {
   //   return this._prepareOutput();
@@ -212,7 +218,7 @@ export class Transpile {
       return {
         line,
         character,
-        pos,
+        pos
       };
     } else {
       throw new Error();
@@ -231,7 +237,7 @@ export class Transpile {
         case 'When':
         case 'Then': {
           const parent = scenarios.find(
-            (s) => s.pos.start.pos < step.pos.start.pos && s.pos.end.pos >= step.pos.end.pos, //s.pos.start.line < step.pos.start.line && s.pos.end.line > step.pos.end.line,
+            (s) => s.pos.start.pos < step.pos.start.pos && s.pos.end.pos >= step.pos.end.pos //s.pos.start.line < step.pos.start.line && s.pos.end.line > step.pos.end.line,
           );
           if (!parent) {
             return;
@@ -270,7 +276,7 @@ export class Transpile {
 
     possibleStep.reduce((prev, step, i, self) => {
       const start = step.pos.start.pos;
-      if (step.key === 'Matched Scenario' as any as IStepKey) {
+      if (step.key === ('Matched Scenario' as any as IStepKey)) {
         // output.push(`//@Scenario ${step.value}`)
         return prev;
       }
@@ -288,7 +294,7 @@ export class Transpile {
         `\n`,
         ...step.value.split('\n').map((v) => `\n  //@${step.key}${v}`),
         this.input.substring(start, end),
-        `\n  //# end of matched [@${step.value}] from [${step.parent}] Scenario\n`,
+        `\n  //# end of matched [@${step.value}] from [${step.parent}] Scenario\n`
       );
       lastIndex = end;
       return prev;
@@ -302,9 +308,15 @@ export class Transpile {
     const mapStatementsMatch = this.output.map((step) => ({
       key: step.key,
       value: step.value,
-      idxStatement: 0,
+      idxStatement: 0
     }));
-    const matched = [] as Array<{ key: string; value: string; startIdx: number; endIdx: number; from: Step[] }>;
+    const matched = [] as Array<{
+      key: string;
+      value: string;
+      startIdx: number;
+      endIdx: number;
+      from: Step[];
+    }>;
     // const ret: Transpile['output'] = [];
     block.statements.forEach((statement, idxCurrentStatement) => {
       mapStatementsMatch.forEach((map, idx) => {
@@ -325,10 +337,10 @@ export class Transpile {
               value: `${map.key} ${map.value}`,
               startIdx: idxCurrentStatement - map.idxStatement + 1,
               endIdx: idxCurrentStatement,
-              from: [step],
+              from: [step]
             };
             const duplication = matched.find(
-              (m) => m.startIdx === fullyMatched.startIdx && m.endIdx === fullyMatched.endIdx,
+              (m) => m.startIdx === fullyMatched.startIdx && m.endIdx === fullyMatched.endIdx
             );
             if (duplication) {
               if (duplication.key === fullyMatched.key && duplication.value === fullyMatched.value) {
@@ -346,27 +358,30 @@ export class Transpile {
         }
       });
     });
-    return matched.reduce((dedupe, match, idx, self) => {
-      const firstStatement = block.statements[match.startIdx];
-      const lastStatement = block.statements[match.endIdx];
-      const statements = block.statements.slice(match.startIdx, match.endIdx + 1);
-      dedupe.push({
-        key: `` as any as IStepKey,
-        value: match.value,
-        pos: {
-          start: this.parsePosition(firstStatement.pos),
-          end: this.parsePosition(lastStatement.end),
-        },
-        parent: match.from.map(step => step.host).join(', '),
-        sourceCode: {
-          statements,
-          fullText: statements.map((s) => s.getFullText()).join(''),
-          imports: [...(match.from[0].sourceCode?.imports ?? [])],
-          exports: [...(match.from[0].sourceCode?.exports ?? [])],
-        },
-      });
-      return dedupe;
-    }, [] as Transpile['output']);
+    return matched.reduce(
+      (dedupe, match, idx, self) => {
+        const firstStatement = block.statements[match.startIdx];
+        const lastStatement = block.statements[match.endIdx];
+        const statements = block.statements.slice(match.startIdx, match.endIdx + 1);
+        dedupe.push({
+          key: `` as any as IStepKey,
+          value: match.value,
+          pos: {
+            start: this.parsePosition(firstStatement.pos),
+            end: this.parsePosition(lastStatement.end)
+          },
+          parent: match.from.map((step) => step.host).join(', '),
+          sourceCode: {
+            statements,
+            fullText: statements.map((s) => s.getFullText()).join(''),
+            imports: [...(match.from[0].sourceCode?.imports ?? [])],
+            exports: [...(match.from[0].sourceCode?.exports ?? [])]
+          }
+        });
+        return dedupe;
+      },
+      [] as Transpile['output']
+    );
   }
 
   getComments(block: ts.Block, _lastItem?: Step): Transpile['output'] {
@@ -387,14 +402,14 @@ export class Transpile {
           value: keywords[2],
           pos: {
             start: this.parsePosition(range.pos),
-            end: this.parsePosition(fnHandler.end),
+            end: this.parsePosition(fnHandler.end)
           },
           sourceCode: {
             fullText: '',
             imports: [],
             exports: [],
-            statements: [],
-          },
+            statements: []
+          }
         });
         return strComment;
       });
@@ -404,16 +419,20 @@ export class Transpile {
         lastItem.sourceCode = lastItem.sourceCode || { fullText: '', statements: [] };
         lastItem.sourceCode.statements?.push(fnHandler);
         if (ts.isExpressionStatement(fnHandler)) {
-          const arrInputs = [searchCallName(fnHandler.expression as ISearchableExpression)].flat() as string[];
+          const arrInputs = [
+            searchCallName(fnHandler.expression as ISearchableExpression)
+          ].flat() as string[];
           lastItem.sourceCode.imports = lastItem.sourceCode?.imports || [];
-          lastItem.sourceCode.imports.push(...arrInputs.filter((i) => !lastItem?.sourceCode?.imports?.includes(i)));
+          lastItem.sourceCode.imports.push(
+            ...arrInputs.filter((i) => !lastItem?.sourceCode?.imports?.includes(i))
+          );
         } else if (ts.isVariableStatement(fnHandler)) {
           const arrOutputs = fnHandler.declarationList.declarations.map((declaration) =>
-            this.getDeclaration(declaration),
+            this.getDeclaration(declaration)
           );
           lastItem.sourceCode.exports = lastItem.sourceCode.exports || [];
           lastItem.sourceCode.exports.push(
-            ...arrOutputs.flat().filter((i) => !lastItem?.sourceCode?.exports?.includes(i)),
+            ...arrOutputs.flat().filter((i) => !lastItem?.sourceCode?.exports?.includes(i))
           );
         }
       }
@@ -425,7 +444,7 @@ export class Transpile {
   }
 
   /**
-   * 
+   *
    * @param name Gherkin Keyword, Feature or Scenario
    * @returns the retrieved step
    */
@@ -437,7 +456,9 @@ export class Transpile {
       } else if (ts.isTemplateExpression(expressionOfArg)) {
         argValue =
           expressionOfArg.head.text +
-          expressionOfArg.templateSpans.map((sp) => `<${sp.expression.getText()}>${sp.literal.text}`).join('');
+          expressionOfArg.templateSpans
+            .map((sp) => `<${sp.expression.getText()}>${sp.literal.text}`)
+            .join('');
       } else {
         return;
       }
@@ -450,23 +471,23 @@ export class Transpile {
         k = name;
         v = argValue;
       }
-      const fnArgument = callExpression.arguments.find(n => ts.isFunctionLike(n) && ts.isBlock(n.body)) as ts.FunctionExpression | ts.ArrowFunction;
-      const fnArgumentBody = fnArgument?.body as ts.BlockLike
+      const fnArgument = callExpression.arguments.find((n) => ts.isFunctionLike(n) && ts.isBlock(n.body)) as
+        | ts.FunctionExpression
+        | ts.ArrowFunction;
+      const fnArgumentBody = fnArgument?.body as ts.BlockLike;
       const step: Step = {
         key: k,
         value: v,
         pos: {
           start: this.parsePosition(expressionOfArg.pos),
-          end: this.parsePosition(expressionOfArg.end),
+          end: this.parsePosition(expressionOfArg.end)
         },
         sourceCode: {
           fullText: callExpression.getFullText(),
           // ["describe", "(", ["some title", ",", "() => {....}"], ")"]
-          statements: [
-            ...fnArgumentBody?.statements ?? []
-          ],
+          statements: [...(fnArgumentBody?.statements ?? [])]
         },
-        host: argValue,
+        host: argValue
       };
       this.output.push(step);
       context.stepOfCurrentFunction = step;
@@ -525,19 +546,19 @@ export class Transpile {
       const raw = ts.transpileModule(this.input, {
         ...options,
         transformers: {
-          before: [customTransformerFactory(this.searchSchema, this)],
+          before: [customTransformerFactory(this.searchSchema, this)]
         },
         compilerOptions: {
           target: ts.ScriptTarget.ESNext,
           module: ts.ModuleKind.ESNext,
           jsx: ts.JsxEmit.React,
           isolatedModules: true,
-          sourceMap: true,
-        },
+          sourceMap: true
+        }
       });
       const output: ts.TranspileOutput = {
         outputText: this._prepareOutput(),
-        sourceMapText: raw.sourceMapText,
+        sourceMapText: raw.sourceMapText
       };
       return output;
     } else {
@@ -548,8 +569,8 @@ export class Transpile {
           module: ts.ModuleKind.ESNext,
           jsx: ts.JsxEmit.React,
           isolatedModules: true,
-          sourceMap: true,
-        },
+          sourceMap: true
+        }
       });
     }
   }

@@ -21,11 +21,11 @@ async function main(): Promise<void> {
 
   const options: Parameters<typeof generator.generateGherkin>[0] = {
     pathTestsInput: path.join(process.cwd(), `./tests/${defaultFileEntry}.test.ts`),
-    pathGherkinInput: path.join(process.cwd(), `./docs/features/${defaultFileEntry}.feature`),
+    pathGherkinInput: path.join(process.cwd(), `./docs/features/${defaultFileEntry}.feature`)
   };
   const optionsFromArgV: (keyof Parameters<typeof generator.generateGherkin>[0])[] = [
     'pathTestsInput',
-    'pathGherkinInput',
+    'pathGherkinInput'
   ];
 
   const stepsKnown = run(execute, options, optionsFromArgV);

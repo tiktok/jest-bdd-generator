@@ -25,47 +25,45 @@ const CodeWrapper = styled('aside')`
 `;
 
 const Feature = styled('a')`
-.feature {
-}
-.feature h1,
-h2,
-h3,
-b,
-th {
-  font-weight: 700;
-  color: #06a;
-}
-.feature h1 {
-  font-size: 20px;
-}
-.feature h2 {
-  font-size: 18px;
-}
-.feature h3 {
-  font-size: 16px;
-}
-.feature section {
-  margin: 0 0 1em 1em;
-}
-.feature p {
-  font-size: 14px;
-  text-indent: 1em;
-}
-.feature table {
-  font-size: 12px;
-  text-align: center;
-  min-width: 50%;
-}
-.feature table td {
-  text-align: center;
-}
-.feature .active .active {
-  /* box-shadow: inset 0px -1px 0px 0px #fa0 */
-  background-color: rgb(192, 230, 255);
-}
-
-
-`
+  .feature {
+  }
+  .feature h1,
+  h2,
+  h3,
+  b,
+  th {
+    font-weight: 700;
+    color: #06a;
+  }
+  .feature h1 {
+    font-size: 20px;
+  }
+  .feature h2 {
+    font-size: 18px;
+  }
+  .feature h3 {
+    font-size: 16px;
+  }
+  .feature section {
+    margin: 0 0 1em 1em;
+  }
+  .feature p {
+    font-size: 14px;
+    text-indent: 1em;
+  }
+  .feature table {
+    font-size: 12px;
+    text-align: center;
+    min-width: 50%;
+  }
+  .feature table td {
+    text-align: center;
+  }
+  .feature .active .active {
+    /* box-shadow: inset 0px -1px 0px 0px #fa0 */
+    background-color: rgb(192, 230, 255);
+  }
+`;
 
 type IRefEditor = Parameters<OnMount>[0];
 type GherkinDocument = ReturnType<TestGeneratorFromSource['compileGherkinFromSource']>;
@@ -97,7 +95,7 @@ const ExampleBlock: React.FC<{
   if (scenario?.examples?.[0]) {
     return (
       <table>
-        <thead> 
+        <thead>
           <tr>
             {scenario.examples[0].tableHeader?.cells.map((cell, idxCell) => {
               return <th key={idxCell}>{cell.value}</th>;
@@ -159,7 +157,7 @@ const ScenarioBlock: React.FC<
         <p>{scenario?.description}</p>
         {scenario?.steps.map((s, i) => (
           <p
-            className={selectedStep === s ? "active" : ''}
+            className={selectedStep === s ? 'active' : ''}
             key={i}
             onClick={(evt) => {
               stepClick(i, evt);
@@ -177,10 +175,7 @@ const ScenarioBlock: React.FC<
 export const TestStory: React.FC<{
   testsSource?: string;
   featureSource?: string;
-}> = ({
-  testsSource = '',
-  featureSource = ''
-}) => {
+}> = ({ testsSource = '', featureSource = '' }) => {
   const [editor, setEditor] = useState<IRefEditor>(); // useRef<HTMLTextAreaElement>(null);
   const [gherkinSource, setGherkinSource] = useState<GherkinDocument>();
   const [selectedScenario, setSelectedScenario] = useState<Scenario>();
@@ -235,7 +230,7 @@ export const TestStory: React.FC<{
       const signature = {
         key: mapKeyword(scenario, idxStep),
         value: scenario.steps[idxStep].text,
-        parent: scenario.name,
+        parent: scenario.name
       };
 
       const searchResults = jestSource.filter((s) => s.value === signature.value && s.key === signature.key);
@@ -243,12 +238,12 @@ export const TestStory: React.FC<{
         const searchResult = searchResults.find((s) => s.parent === signature.parent);
         if (searchResult?.sourceCode) {
           const head = `/**\n imports [${searchResult.sourceCode.imports?.join(
-            ', ',
+            ', '
           )}]\n exports [${searchResult.sourceCode.exports?.join(', ')}] \n*/`;
           const tail = `/**\n Appearances in other Scenarios: [${searchResults.map((s) => s.parent).join(', ')}] \n*/`; //`\n`;
           const body = searchResult.sourceCode.statements
             ?.map(
-              (statement) => statement.getFullText(), //.replace(/\n\s+/g, '\n')
+              (statement) => statement.getFullText() //.replace(/\n\s+/g, '\n')
             )
             .join('');
           editor?.setValue(`${head}\n${body}\n${tail}`);
@@ -266,7 +261,7 @@ export const TestStory: React.FC<{
     if (testsSource) {
       readJest(testsSource);
     }
-  }, [testsSource, featureSource])
+  }, [testsSource, featureSource]);
 
   return (
     <LineWrapper>
@@ -282,7 +277,7 @@ export const TestStory: React.FC<{
             <ScenarioBlock
               onSelectStep={selectStep}
               key={idxFeatureChild}
-              className={selectedScenario === featureChild.scenario ? "active" : ''}
+              className={selectedScenario === featureChild.scenario ? 'active' : ''}
               featureChild={featureChild}
             />
           ))}

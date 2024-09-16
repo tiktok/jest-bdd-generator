@@ -13,7 +13,7 @@ function getTemplate(entry: string, subModuleName: string) {
   const reportPath = path.join(`<projectFolder>/docs/`, modulePath);
   if (!fs.existsSync(reportPath)) {
     fs.mkdirSync(reportPath, {
-      recursive: true,
+      recursive: true
     });
   }
   const basePath = path.relative(subModuleName, './');
@@ -22,11 +22,11 @@ function getTemplate(entry: string, subModuleName: string) {
     mainEntryPointFilePath: path.join('<projectFolder>', entry),
     apiReport: {
       reportFileName: `${moduleName}.api.md`,
-      reportFolder: reportPath,
+      reportFolder: reportPath
     },
     docModel: {
-      apiJsonFilePath: `${reportPath}/${moduleName}.api.json`,
-    },
+      apiJsonFilePath: `${reportPath}/${moduleName}.api.json`
+    }
   };
 }
 const originalFile = fs.readFileSync(path.join(__dirname, '../config/api-extractor.json'), 'utf-8');
@@ -61,7 +61,7 @@ if (exportsPackageJSON && Object.keys(exportsPackageJSON).length) {
       const pathFolder = path.join(pathOfConfig, subModuleName);
       if (!fs.existsSync(pathFolder)) {
         fs.mkdirSync(pathFolder, {
-          recursive: true,
+          recursive: true
         });
       }
       const tempFile = path.join(pathFolder, `api-extractor.json`);
@@ -78,7 +78,7 @@ function generateAPIExtraction(tempFile: string) {
 
   const extractorResult: ExtractorResult = Extractor.invoke(extractorConfig, {
     localBuild: true,
-    showVerboseMessages: true,
+    showVerboseMessages: true
   });
 
   if (extractorResult.succeeded) {
@@ -87,7 +87,7 @@ function generateAPIExtraction(tempFile: string) {
   } else {
     console.error(
       `API Extractor completed with ${extractorResult.errorCount} errors` +
-        ` and ${extractorResult.warningCount} warnings`,
+        ` and ${extractorResult.warningCount} warnings`
     );
     process.exitCode = 1;
   }

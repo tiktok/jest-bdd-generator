@@ -49,14 +49,15 @@ const SourceCodeEditor: React.FC<{
         language={type ?? 'typescript'}
         onMount={(editor) => setEditor(editor)}
         onChange={(v) => updateHandler(v ?? '')}
-        
       />
     </ColumnWrapper>
   );
 };
 
 const getUniqueStep = (steps: Step[]): string => {
-  const uniqueSteps = steps.filter((s, i) => steps.findIndex((f) => f.key === s.key && f.value === s.value) === i);
+  const uniqueSteps = steps.filter(
+    (s, i) => steps.findIndex((f) => f.key === s.key && f.value === s.value) === i
+  );
   return uniqueSteps
     .map((s) => {
       if (s.sourceCode) {
@@ -64,7 +65,7 @@ const getUniqueStep = (steps: Step[]): string => {
         const tail = ''; //`\n`;
         const body = s.sourceCode.statements
           ?.map(
-            (statement) => statement.getFullText(), //.replace(/\n\s+/g, '\n')
+            (statement) => statement.getFullText() //.replace(/\n\s+/g, '\n')
           )
           .join('');
         return `${head}${body}${tail}`;
@@ -78,10 +79,7 @@ const getUniqueStep = (steps: Step[]): string => {
 export const TestGeneration: React.FC<{
   testsSource?: string;
   featureSource?: string;
-}> = ({
-  testsSource = '',
-  featureSource = ''
-}) => {
+}> = ({ testsSource = '', featureSource = '' }) => {
   const [editor, setEditor] = useState<IRefEditor>(); // useRef<HTMLTextAreaElement>(null);
   const [type, setType] = useState<string>('typescript'); // useRef<HTMLTextAreaElement>(null);
 
@@ -134,11 +132,11 @@ export const TestGeneration: React.FC<{
     if (testsSource) {
       setJestSource(testsSource);
     }
-  }, [testsSource, featureSource])
+  }, [testsSource, featureSource]);
   return (
     <>
       <LineWrapper>
-        <SourceCodeEditor updateHandler={setJestSource} value={testsSource}  type="typescript" />
+        <SourceCodeEditor updateHandler={setJestSource} value={testsSource} type="typescript" />
         <SourceCodeEditor updateHandler={setGherkinSource} value={featureSource} type="markdown" />
       </LineWrapper>
 

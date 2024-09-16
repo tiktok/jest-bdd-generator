@@ -5,7 +5,7 @@ import React, {
   useEffect,
   useReducer,
   useRef,
-  useState,
+  useState
 } from 'react';
 import styled from 'styled-components';
 import * as pako from 'pako';
@@ -199,7 +199,7 @@ export type IExpressionNote = IExpression & { note?: string };
 export function restoreHash<T extends IExpression>(
   selections?: Partial<{
     [k in StringKeyOf<T>]: Array<NonNullable<T[k]> | EditorSelectionRelation<T>> | NonNullable<T[k]>;
-  }>,
+  }>
 ): [{ expression: T }[], { expression: T }[], string] {
   if (!window?.location?.hash) {
     return [[], [], ''];
@@ -209,7 +209,7 @@ export function restoreHash<T extends IExpression>(
     return [[], [], ''];
   }
   const restoredString = pako.inflate(new Uint8Array([...atob(restoredRaw)].map((c) => c.charCodeAt(0))), {
-    to: 'string',
+    to: 'string'
   });
 
   const [colsRestored, rowsRestored] = JSON.parse(restoredString, (k, v) => {
@@ -227,7 +227,7 @@ function showDate(date: Date): string {
   //2018-06-12T19:30
   const datetime = date instanceof Date ? date : convertStringyValue(new Date(), date)!;
   return `${datetime.getFullYear()}-${_digit2(datetime.getMonth() + 1)}-${_digit2(datetime.getDate())}T${_digit2(
-    datetime.getHours(),
+    datetime.getHours()
   )}:${_digit2(datetime.getMinutes())}:${_digit2(datetime.getSeconds())}`;
 }
 function testStringyValue<T extends IExpressionValue>(reference: T, rawValue: T | undefined): boolean {
@@ -236,11 +236,12 @@ function testStringyValue<T extends IExpressionValue>(reference: T, rawValue: T 
 
 function convertStringyValue<T extends IExpressionValue>(
   reference: T | T[] | EditorSelectionRelation<any>[],
-  rawValue: T | undefined,
+  rawValue: T | undefined
 ): T | undefined {
   if (Array.isArray(reference)) {
     if (typeof reference[0] === 'object' && !(reference[0] instanceof Date)) {
-      return (reference as EditorSelectionRelation<any>[]).find((s) => testStringyValue(s.value, rawValue))?.value;
+      return (reference as EditorSelectionRelation<any>[]).find((s) => testStringyValue(s.value, rawValue))
+        ?.value;
     } else {
       return (reference as T[]).find((s) => testStringyValue(s, rawValue));
     }
@@ -274,7 +275,7 @@ function ExpressionInput<T extends IExpressionNote>({
   selections,
   focused,
   onPaste,
-  onChange,
+  onChange
 }: {
   name: keyof T;
   data: Partial<T>;
@@ -290,7 +291,7 @@ function ExpressionInput<T extends IExpressionNote>({
     (evt: React.ChangeEvent) => {
       onChange?.(evt);
     },
-    [name, data],
+    [name, data]
   );
   useEffect(() => {
     const val = data[name];
@@ -395,7 +396,7 @@ export type EditorSelectionRelation<T extends IExpressionNote> = { value: T[Stri
 function ExpressionEditor<
   T extends IExpressionNote,
   K extends StringKeyOf<T> = StringKeyOf<T>,
-  R extends EditorSelectionRelation<T> = EditorSelectionRelation<T>,
+  R extends EditorSelectionRelation<T> = EditorSelectionRelation<T>
 >({
   colSetting,
   colHead,
@@ -404,7 +405,7 @@ function ExpressionEditor<
   insertAfter,
   focused,
   onPaste,
-  onChange,
+  onChange
 }: {
   colSetting: Partial<{
     [k in StringKeyOf<T>]: Array<T[k] | R> | NonNullable<T[k]>;
@@ -441,7 +442,11 @@ function ExpressionEditor<
             let selectionValues = selections as T[StringKeyOf<T>] | T[StringKeyOf<T>][];
             let testConnectionOnChange = testConnection;
 
-            if (Array.isArray(selections) && typeof selections[0] === 'object' && !(selections[0] instanceof Date)) {
+            if (
+              Array.isArray(selections) &&
+              typeof selections[0] === 'object' &&
+              !(selections[0] instanceof Date)
+            ) {
               const relations = selections as R[];
               selectionValues = relations.map((relation) => {
                 return relation.value;
@@ -492,7 +497,7 @@ function Head<T extends IExpression, K extends StringKeyOf<T> = StringKeyOf<T>>(
   getTrigger,
   targeted,
   children,
-  onMouseMove,
+  onMouseMove
 }: {
   colHead: { expression: Partial<T> };
   titles?: Array<K>;
@@ -520,7 +525,7 @@ function Head<T extends IExpression, K extends StringKeyOf<T> = StringKeyOf<T>>(
       setBackground(bg);
       return currentTitles.map((exp) => colHead.expression[exp]);
     },
-    displayTitle.map((exp) => colHead.expression[exp]),
+    displayTitle.map((exp) => colHead.expression[exp])
   );
 
   const transitionEndHandler: TransitionEventHandler = (e) => {
@@ -571,13 +576,13 @@ export function TestOracle<
     [k in StringKeyOf<E>]: Array<NonNullable<E[k]> | EditorSelectionRelation<E>> | NonNullable<E[k]>;
   } = {
     [k in StringKeyOf<E>]: Array<NonNullable<E[k]> | EditorSelectionRelation<E>> | NonNullable<E[k]>;
-  },
+  }
 >({
   defaultCols,
   defaultRows,
   colSelections,
   execute,
-  sort,
+  sort
 }: {
   defaultCols: Partial<E>[];
   defaultRows: Partial<E>[];
@@ -622,9 +627,9 @@ export function TestOracle<
             return Number(v);
           }
           return v;
-        }),
-      ) as any,
-    ),
+        })
+      ) as any
+    )
   );
 
   useEffect(() => {
@@ -676,7 +681,7 @@ export function TestOracle<
       let parsed: IExpressionValue | undefined;
       if ((selection as EditorSelectionRelation<E>[])[0]?.value) {
         const found = (selection as EditorSelectionRelation<E>[]).find(
-          (s) => s.value === convertStringyValue(s.value, val as E[K]),
+          (s) => s.value === convertStringyValue(s.value, val as E[K])
         );
         parsed = found?.value;
         if (found) {
@@ -698,7 +703,11 @@ export function TestOracle<
     setRows(rows.slice(0, values.length));
     setPasteNote(<>{...nodes}</>);
   };
-  const getEditingArray = (): [number, { expression: Partial<E> }[], React.Dispatch<{ expression: Partial<E> }[]>] => {
+  const getEditingArray = (): [
+    number,
+    { expression: Partial<E> }[],
+    React.Dispatch<{ expression: Partial<E> }[]>
+  ] => {
     const idxRows = rows.findIndex((h) => h === editingHead);
     if (idxRows !== -1) {
       return [idxRows, rows, setRows];
@@ -745,9 +754,9 @@ export function TestOracle<
               } catch (err: any) {
                 return err.message ?? err?.toString() ?? err;
               }
-            }),
-          ),
-      ),
+            })
+          )
+      )
     );
   };
 
@@ -912,7 +921,10 @@ export function TestOracle<
 
     const expressions = arrRowExpression(_rows);
     const headArray = [...expressions, ..._cols.map((c, i) => Object.values(c.expression).join(';'))];
-    const resultArray = _results.map((row, i) => [...expressions.map((k) => _rows[i].expression[k] ?? ''), ...row]);
+    const resultArray = _results.map((row, i) => [
+      ...expressions.map((k) => _rows[i].expression[k] ?? ''),
+      ...row
+    ]);
     const resultTableFormat = [headArray, ...resultArray]
       .map((row) => row.join(format === 'gherkin' ? ' | ' : '\t'))
       .join('\n');
@@ -967,7 +979,9 @@ export function TestOracle<
                 key={i}
                 onClick={() => headHeadClickHandler(title)}
                 style={
-                  Object.keys(colSel).length === 1 && editingKey === title ? { background: BACKGROUND_EDITOR } : {}
+                  Object.keys(colSel).length === 1 && editingKey === title
+                    ? { background: BACKGROUND_EDITOR }
+                    : {}
                 }
               >
                 {title.replace('formatOption', 'opt')}
@@ -1034,7 +1048,9 @@ export function TestOracle<
                   <Cell
                     key={j}
                     style={
-                      selected(i, j) !== -1 ? { borderColor: `${THEME[5]} ${THEME[2]} ${THEME[2]} ${THEME[5]}` } : {}
+                      selected(i, j) !== -1
+                        ? { borderColor: `${THEME[5]} ${THEME[2]} ${THEME[2]} ${THEME[5]}` }
+                        : {}
                     }
                     onMouseMove={(e) => {
                       highlight(i, j);

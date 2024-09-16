@@ -10,7 +10,7 @@ if (files[0]) {
 }
 
 const options = {
-  pathTestsInput: path.join(process.cwd(), `./tests/${defaultFileEntry}.test.ts`),
+  pathTestsInput: path.join(process.cwd(), `./tests/${defaultFileEntry}.test.ts`)
 };
 
 void run(generateComments, options);

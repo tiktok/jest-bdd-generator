@@ -44,17 +44,17 @@ export class JestToGherkin extends Transpile {
                   examples,
                   pos: {
                     start: this.parsePosition(call.pos),
-                    end: this.parsePosition(call.end),
-                  },
+                    end: this.parsePosition(call.end)
+                  }
                 });
-              },
-            },
-          ],
-        },
+              }
+            }
+          ]
+        }
       ],
       arguments: [
         {
-          callback: this.callbackOnStringArgumentFactory('Scenario'),
+          callback: this.callbackOnStringArgumentFactory('Scenario')
         },
         {
           callback: this.callbackOnFnArgument,
@@ -69,40 +69,40 @@ export class JestToGherkin extends Transpile {
                       value: call.parent.getText(),
                       pos: {
                         start: this.parsePosition(call.pos),
-                        end: this.parsePosition(call.end),
-                      },
+                        end: this.parsePosition(call.end)
+                      }
                     });
                     return node;
-                  },
-                },
-              ],
-            },
-          ],
-        },
-      ],
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
     };
     const searchDescribeFunction: ISearchExpressionSchema = {
       keyword: 'describe',
 
       arguments: [
         {
-          callback: this.callbackOnStringArgumentFactory('Feature'),
+          callback: this.callbackOnStringArgumentFactory('Feature')
         },
         {
           searchCallSchema: [
             {
               keyword: 'test',
               chain: searchTestFunction.chain,
-              arguments: searchTestFunction.arguments,
+              arguments: searchTestFunction.arguments
             },
             {
               keyword: 'it',
               chain: searchTestFunction.chain,
-              arguments: searchTestFunction.arguments,
-            },
-          ],
-        },
-      ],
+              arguments: searchTestFunction.arguments
+            }
+          ]
+        }
+      ]
     };
     searchDescribeFunction.arguments[1].searchCallSchema?.push(searchDescribeFunction);
     this.searchSchema = [searchDescribeFunction];
@@ -122,58 +122,61 @@ export class JestToGherkin extends Transpile {
     });
 
     const fileHeadJest: string[] = [];
-    this.output.reduce((prevstep, step, idx, steps) => {
-      let displayKey = '',
-        displayValue = '';
-      switch (step.key) {
-        case 'Feature':
-          displayKey = '\nFeature: ';
-          displayValue = step.value;
-          break;
-        case 'Scenario':
-          displayKey = `\nScenario `;
-          if (step.examples) {
-            displayKey += `Outline: `;
-          }
-          displayValue = step.value;
-          break;
-        case 'Given':
-        case 'Then':
-        case 'When':
-          displayKey = `  ${prevstep?.key === step.key ? 'And' : step.key} `;
-          displayValue = step.value;
-          break;
-        case 'Examples':
-          const MIN_WITH = 8;
-          const examples = (step as ExampleStep).examples;
-          const header = Object.keys(examples[0]);
-          const widthsCols = new Array(header.length);
-          widthsCols.fill(MIN_WITH);
-          const getColMaxWidth = (val: string, i: number): string => {
-            widthsCols[i] = Math.max(widthsCols[i], val.length);
-            widthsCols[i] = Math.ceil(widthsCols[i] / MIN_WITH) * MIN_WITH;
-            return val;
-          };
-          const padding = (str: string, i: number): string => {
-            const spacesEachSide = (widthsCols[i] - str.length) / 2;
-            const paddingLefts = new Array(Math.ceil(spacesEachSide)).fill(' ').join('');
-            const paddingRights = new Array(Math.floor(spacesEachSide)).fill(' ').join('');
-            return `${paddingLefts}${str}${paddingRights}   `;
-          };
-          const table = [
-            header.map((title, i) => getColMaxWidth(title, i)),
-            ...examples.map((val) => header.map((colname, i) => getColMaxWidth(val[colname].toString(), i))),
-          ]
-            .map((row) => row.map(padding).join('|'))
-            .join('\n');
-          displayKey = `Examples:\n`;
-          displayValue = table;
-          break;
-        default:
-      }
-      fileHeadJest.push(`${displayKey}${displayValue}`);
-      return step;
-    }, {} as Step | undefined);
+    this.output.reduce(
+      (prevstep, step, idx, steps) => {
+        let displayKey = '',
+          displayValue = '';
+        switch (step.key) {
+          case 'Feature':
+            displayKey = '\nFeature: ';
+            displayValue = step.value;
+            break;
+          case 'Scenario':
+            displayKey = `\nScenario `;
+            if (step.examples) {
+              displayKey += `Outline: `;
+            }
+            displayValue = step.value;
+            break;
+          case 'Given':
+          case 'Then':
+          case 'When':
+            displayKey = `  ${prevstep?.key === step.key ? 'And' : step.key} `;
+            displayValue = step.value;
+            break;
+          case 'Examples':
+            const MIN_WITH = 8;
+            const examples = (step as ExampleStep).examples;
+            const header = Object.keys(examples[0]);
+            const widthsCols = new Array(header.length);
+            widthsCols.fill(MIN_WITH);
+            const getColMaxWidth = (val: string, i: number): string => {
+              widthsCols[i] = Math.max(widthsCols[i], val.length);
+              widthsCols[i] = Math.ceil(widthsCols[i] / MIN_WITH) * MIN_WITH;
+              return val;
+            };
+            const padding = (str: string, i: number): string => {
+              const spacesEachSide = (widthsCols[i] - str.length) / 2;
+              const paddingLefts = new Array(Math.ceil(spacesEachSide)).fill(' ').join('');
+              const paddingRights = new Array(Math.floor(spacesEachSide)).fill(' ').join('');
+              return `${paddingLefts}${str}${paddingRights}   `;
+            };
+            const table = [
+              header.map((title, i) => getColMaxWidth(title, i)),
+              ...examples.map((val) => header.map((colname, i) => getColMaxWidth(val[colname].toString(), i)))
+            ]
+              .map((row) => row.map(padding).join('|'))
+              .join('\n');
+            displayKey = `Examples:\n`;
+            displayValue = table;
+            break;
+          default:
+        }
+        fileHeadJest.push(`${displayKey}${displayValue}`);
+        return step;
+      },
+      {} as Step | undefined
+    );
     return `${fileHeadJest.join('\n')}`;
   }
 }
