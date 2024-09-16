@@ -13,7 +13,7 @@ export async function runTests(options: {
 
   // load the support code upfront
   runConfiguration.support.requireModules = [
-    path.join(__dirname, `./jest-execute/jest-ts-register${path.extname(__filename)}`),
+    path.join(__dirname, `./jest-execute/jest-ts-register${path.extname(__filename)}`)
   ];
 
   if (options.pathTestsInput) {
@@ -28,7 +28,7 @@ export async function runTests(options: {
       runConfiguration.support.requirePaths = [options.pathTestsInput];
     }
     runConfiguration.formats.files = {
-      [`${path.basename(options.pathTestsInput)}-report.html`]: 'html',
+      [`${path.basename(options.pathTestsInput)}-report.html`]: 'html'
     };
   }
   if (options.pathFeatureInput) {
@@ -37,12 +37,12 @@ export async function runTests(options: {
       const featureBookName = path.basename(options.pathFeatureInput).replace(/\.feature$/, '');
       // overwrite report name from testpath
       runConfiguration.formats.files = {
-        [`${featureBookName}-report.html`]: 'html',
+        [`${featureBookName}-report.html`]: 'html'
       };
 
       // filter *.test.ts with featureName
       runConfiguration.support.requirePaths = runConfiguration.support.requirePaths.filter(
-        (filename) => path.basename(filename).indexOf(featureBookName) !== -1,
+        (filename) => path.basename(filename).indexOf(featureBookName) !== -1
       );
     }
   }

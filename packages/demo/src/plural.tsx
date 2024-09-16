@@ -1,5 +1,5 @@
-import React from 'react'
-import { TestOracle } from 'jest-bdd-generator/UI/TestOracle'
+import React from 'react';
+import { TestOracle } from 'jest-bdd-generator/UI/TestOracle';
 
 function resolveRule(exp: string): string {
   const idxDesc = exp.indexOf('@');
@@ -25,7 +25,7 @@ function resolveRule(exp: string): string {
         exp = resolveRuleValue(p1, oparator, p3);
       }
       return `(${exp})`;
-    },
+    }
   );
   return `return ${expressedRule}`;
 }
@@ -96,7 +96,7 @@ const defaultRows: Partial<IColumnHead & { note: string }>[] = [
   '0.10',
   '0.100',
   '0.1000',
-  '0.10000',
+  '0.10000'
 ].map((n) => ({ num: n }));
 const dataPreset: Promise<{
   supplemental: {
@@ -107,8 +107,8 @@ const dataPreset: Promise<{
       };
     };
   };
-}> = fetch('https://raw.githubusercontent.com/unicode-cldr/cldr-core/master/supplemental/plurals.json').then((res) =>
-  res.json(),
+}> = fetch('https://raw.githubusercontent.com/unicode-cldr/cldr-core/master/supplemental/plurals.json').then(
+  (res) => res.json()
 );
 
 async function execute(options: Partial<IColumnHead>): Promise<React.ReactNode> {
@@ -143,7 +143,7 @@ async function execute(options: Partial<IColumnHead>): Promise<React.ReactNode> 
     const c = 0;
     const e = 0;
     if (tester(n, parseInt(i), v, w, f ? parseInt(f) : 0, t, c, e)) {
-      ret = <div title={expression}> {ruleName.split('-').slice(-1)[0]}</div>
+      ret = <div title={expression}> {ruleName.split('-').slice(-1)[0]}</div>;
       break;
     }
   }
@@ -162,17 +162,18 @@ export function TestOraclePluralRule(): React.ReactElement<any, any> {
 
     const colSelections = {
       keys,
-      num: '',
+      num: ''
     };
 
     return (
-      <TestOracle colSelections={colSelections} defaultCols={defaultCols} defaultRows={defaultRows} execute={execute} />
+      <TestOracle
+        colSelections={colSelections}
+        defaultCols={defaultCols}
+        defaultRows={defaultRows}
+        execute={execute}
+      />
     );
   } else {
-    return (
-      <h1>
-        https://raw.githubusercontent.com/unicode-cldr/cldr-core/master/supplemental/plurals.json
-      </h1>
-    );
+    return <h1>https://raw.githubusercontent.com/unicode-cldr/cldr-core/master/supplemental/plurals.json</h1>;
   }
 }

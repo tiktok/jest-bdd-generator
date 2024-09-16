@@ -3,7 +3,7 @@
  * Rush features.  More documentation is available on the Rush website: https://rushjs.io
  */
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/experiments.schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/experiments.schema.json"
 
   /**
    * By default, 'rush install' passes --no-prefer-frozen-lockfile to 'pnpm install'.
@@ -96,5 +96,5 @@
    * This ensures that important notices will be seen by anyone doing active development, since people often
    * ignore normal discussion group messages or don't know to subscribe.
    */
-   // "rushAlerts": true
+  // "rushAlerts": true
 }

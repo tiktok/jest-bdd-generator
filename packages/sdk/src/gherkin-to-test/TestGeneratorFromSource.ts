@@ -1,15 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {
-  AstBuilder,
-  GherkinClassicTokenMatcher,
-  Parser /*, compile */,
-} from "@cucumber/gherkin";
-import {
-  GherkinDocument,
-  IdGenerator /*, PickleStep */,
-} from "@cucumber/messages";
-import { JestToGherkin } from "../jest-to-gherkin";
-import { Step } from "../types";
+import { AstBuilder, GherkinClassicTokenMatcher, Parser /*, compile */ } from '@cucumber/gherkin';
+import { GherkinDocument, IdGenerator /*, PickleStep */ } from '@cucumber/messages';
+import { JestToGherkin } from '../jest-to-gherkin';
+import { Step } from '../types';
 
 const newId = IdGenerator.uuid();
 const builder = new AstBuilder(newId);
@@ -24,20 +17,17 @@ export class TestGeneratorFromSource {
     return gherkinDocument;
     // return compile(gherkinDocument, 'uri.feature', newId);
   }
-  compileKnownStepsFromSource(source: string): JestToGherkin["output"] {
+  compileKnownStepsFromSource(source: string): JestToGherkin['output'] {
     this.source = source;
     const _piler = new JestToGherkin();
-    _piler.fileName = "pathTestInput.test.ts";
+    _piler.fileName = 'pathTestInput.test.ts';
     const o = _piler.transpile(source, {
-      fileName: "pathTestInput.test.ts",
+      fileName: 'pathTestInput.test.ts'
     }).outputText;
     this.transpiler = _piler;
     return _piler.output;
   }
-  generateGherkinFromSource(
-    steps: Step[],
-    gherkinSource: string
-  ): string | undefined {
+  generateGherkinFromSource(steps: Step[], gherkinSource: string): string | undefined {
     const plan = this.compileGherkinFromSource(gherkinSource);
 
     const statements = plan.feature?.children
@@ -46,61 +36,51 @@ export class TestGeneratorFromSource {
         const sourceSteps = p.scenario?.steps
           .map((pStep) => {
             const criteria = pStep.text;
-            const keyword =
-              pStep.keyword === "And " ? lastKeyword : pStep.keyword;
+            const keyword = pStep.keyword === 'And ' ? lastKeyword : pStep.keyword;
             lastKeyword = keyword;
 
-            const source = steps.find(
-              (s) => s.value === criteria && s.parent === p.scenario?.name
-            ); // return s.value.replace(/<[^>]+>/g, '$p') === criteria.replace(/<[^>]+>/g, '$p');
+            const source = steps.find((s) => s.value === criteria && s.parent === p.scenario?.name); // return s.value.replace(/<[^>]+>/g, '$p') === criteria.replace(/<[^>]+>/g, '$p');
             if (source?.sourceCode) {
               return [
                 // `//@${source.key} ${source.value}`,
                 // `  // import [${source.sourceCode?.imports}]`,
                 // `  // export [${source.sourceCode?.exports}]`,
-                `  ${(
-                  source.sourceCode.statements?.map((a) => a.getFullText()) ??
-                  []
-                ).join("")}`,
-              ].join("");
+                `  ${(source.sourceCode.statements?.map((a) => a.getFullText()) ?? []).join('')}`
+              ].join('');
             }
 
-            const sourceInOtherScenario = steps.find(
-              (s) => s.value === criteria
-            ); // return s.value.replace(/<[^>]+>/g, '$p') === criteria.replace(/<[^>]+>/g, '$p');
+            const sourceInOtherScenario = steps.find((s) => s.value === criteria); // return s.value.replace(/<[^>]+>/g, '$p') === criteria.replace(/<[^>]+>/g, '$p');
             if (sourceInOtherScenario) {
-              return [`/**`,
+              return [
+                `/**`,
                 `*     FOUND: @${keyword}${pStep.text}`,
                 `*     FROM: (Scenario)${sourceInOtherScenario.parent} - [Step]${sourceInOtherScenario.key} ${sourceInOtherScenario.value}`,
                 `*     referenced: [${sourceInOtherScenario.sourceCode?.imports}]`,
                 `*     declared: [${sourceInOtherScenario.sourceCode?.exports}]`,
                 `* (remove this comments block with: /^\\s*?\\/\\*\\*\\n\\*\\s*?FOUND: @.+\\n(\\*.+\\n)+/g )`,
-                `${(
-                  sourceInOtherScenario.sourceCode?.statements?.map((a) =>
-                    a.getFullText()
-                  ) ?? []
-                ).join("")}`,
-                `*/`,
-              ].join("\n");
+                `${(sourceInOtherScenario.sourceCode?.statements?.map((a) => a.getFullText()) ?? []).join(
+                  ''
+                )}`,
+                `*/`
+              ].join('\n');
             }
 
             return [
               `//@${keyword}${pStep.text}`,
               `  // TODO: implement assertions here;`,
               `  return 'pending';`,
-              ``,
-            ].join("    \n");
+              ``
+            ].join('    \n');
           })
-          .join("\n");
+          .join('\n');
 
-        let fnTitle = "it";
+        let fnTitle = 'it';
         let sourceParams: string[] = [];
         if (p.scenario?.examples) {
           const exp = p.scenario.examples
             .map((ex) => {
               const ret: string[] = [];
-              sourceParams =
-                ex.tableHeader?.cells.map((cell) => cell.value) ?? [];
+              sourceParams = ex.tableHeader?.cells.map((cell) => cell.value) ?? [];
               ex.tableBody.forEach((line) => {
                 const row: Record<string, string> = {};
                 line.cells.forEach((v, i) => {
@@ -115,38 +95,35 @@ export class TestGeneratorFromSource {
                       return `"${k}": ${valueExpression}`;
                     }
                   })
-                  .join(", ");
+                  .join(', ');
                 ret.push(`{${lineExpression}}`);
               });
-              return ret.join(",\n  ");
+              return ret.join(',\n  ');
             })
-            .join("");
+            .join('');
           fnTitle = `test.each([\n  ${exp}\n])`;
           sourceParams = sourceParams.map((strVariable) => {
             if (strVariable.match(/^[a-zA-Z][0-9a-zA-Z]*?$/)) {
               return strVariable;
             } else {
-              return `'${strVariable}': ${strVariable.replace(/-(\w)/g, (x) =>
-                x[1].toUpperCase()
-              )}`;
+              return `'${strVariable}': ${strVariable.replace(/-(\w)/g, (x) => x[1].toUpperCase())}`;
             }
           });
         }
         return `${fnTitle}('${p.scenario?.name}', async ({ ${sourceParams} }) => {\n${sourceSteps}\n});`;
       })
-      .flat().join('\n');
+      .flat()
+      .join('\n');
 
-    const feature = steps.find(
-      (s) => s.key === "Feature" && s.value === plan.feature?.name
-    );
+    const feature = steps.find((s) => s.key === 'Feature' && s.value === plan.feature?.name);
     if (feature?.sourceCode?.statements) {
       const contents = feature.sourceCode.statements;
       const head = this.source.substring(0, contents[0].getFullStart());
       const tail = this.source.substring(contents[contents.length - 1].end);
 
-      return [head, statements, tail].join("\n");
+      return [head, statements, tail].join('\n');
     } else {
-      return statements
+      return statements;
     }
   }
 }

@@ -1,49 +1,50 @@
 import React from 'react';
-import ReactDOM from "react-dom";
-import { TestGeneration } from 'jest-bdd-generator/UI/TestGeneration'
-import { TestStory } from 'jest-bdd-generator/UI/TestStory'
-import { TestOraclePluralRule } from 'demo-project/src/plural'
-import { TestOracleF16Round } from 'demo-project/src/f16round'
+import ReactDOM from 'react-dom';
+import { TestGeneration } from 'jest-bdd-generator/UI/TestGeneration';
+import { TestStory } from 'jest-bdd-generator/UI/TestStory';
+import { TestOraclePluralRule } from 'demo-project/src/plural';
+import { TestOracleF16Round } from 'demo-project/src/f16round';
 import { BrowserRouter, useRoutes, type RouteObject } from 'react-router-dom';
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Wrapper = styled('div')`
   display: flex;
   > nav {
-    padding: .5em;
+    padding: 0.5em;
     min-width: 15em;
   }
   > article {
     flex-grow: 1;
   }
-`
+`;
 
-function MarkDownLoader ({url} : {url: string}) {
+function MarkDownLoader({ url }: { url: string }) {
   const [source, setSource] = React.useState('');
-  
-  React.useEffect(() => {
-    fetch(url).then(res => res.text()).then(ret => setSource(ret));
-  })
-  return  <pre>{source}</pre>
 
+  React.useEffect(() => {
+    fetch(url)
+      .then((res) => res.text())
+      .then((ret) => setSource(ret));
+  });
+  return <pre>{source}</pre>;
 }
 
 const routes: RouteObject[] = [
   {
     path: '/TestGeneration',
-    element: <TestGeneration />,
+    element: <TestGeneration />
   },
   {
     path: '/TestStory',
-    element: <TestStory />,
+    element: <TestStory />
   },
   {
     path: '/TestOracle-plural-rule',
-    element: <TestOraclePluralRule />,
+    element: <TestOraclePluralRule />
   },
   {
     path: '/TestOracle-f16round',
-    element: <TestOracleF16Round />,
+    element: <TestOracleF16Round />
   },
   // {
   //   path: '/demo',
@@ -52,14 +53,15 @@ const routes: RouteObject[] = [
   {
     path: '/',
     element: <MarkDownLoader url="/dist/README.md" />
-  },]
+  }
+];
 
 function RouteElements(): React.ReactElement | null {
   const element = useRoutes(routes);
   return element;
 }
-export const elem = document.createElement("div");
-elem.className = "root";
+export const elem = document.createElement('div');
+elem.className = 'root';
 document.body.append(elem);
 
 ReactDOM.render(
@@ -86,4 +88,6 @@ ReactDOM.render(
         <RouteElements />
       </BrowserRouter>
     </article>
-  </Wrapper>, elem);
+  </Wrapper>,
+  elem
+);
