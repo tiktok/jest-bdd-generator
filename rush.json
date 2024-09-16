@@ -412,7 +412,8 @@
 
     {
       "packageName": "jest-bdd-generator",
-      "projectFolder": "packages/sdk"
+      "projectFolder": "packages/sdk",
+      "shouldPublish": true
     },
     {
       "packageName": "demo-project",
