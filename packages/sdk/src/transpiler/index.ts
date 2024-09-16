@@ -286,9 +286,9 @@ export class Transpile {
       output.push(
         this.input.substring(lastIndex, start),
         `\n`,
-        ...step.value.split('\n').map((v) => `\n//?${step.key} ${v})}`),
+        ...step.value.split('\n').map((v) => `\n  //@${step.key}${v}`),
         this.input.substring(start, end),
-        `\n  //# end ${step.key}\n`,
+        `\n  //# end of matched [@${step.value}] from [${step.parent}] Scenario\n`,
       );
       lastIndex = end;
       return prev;
@@ -351,12 +351,13 @@ export class Transpile {
       const lastStatement = block.statements[match.endIdx];
       const statements = block.statements.slice(match.startIdx, match.endIdx + 1);
       dedupe.push({
-        key: `Matched` as any as IStepKey,
+        key: `` as any as IStepKey,
         value: match.value,
         pos: {
           start: this.parsePosition(firstStatement.pos),
           end: this.parsePosition(lastStatement.end),
         },
+        parent: match.from.map(step => step.host).join(', '),
         sourceCode: {
           statements,
           fullText: statements.map((s) => s.getFullText()).join(''),
@@ -376,7 +377,7 @@ export class Transpile {
 
       commentRange?.forEach((range) => {
         const strComment = this.input.substring(range.pos, range.end);
-        const keywords = strComment?.match(/^\s*?\/\/\s*?@(When|Then|Given) (.+)$/);
+        const keywords = strComment?.match(/^\s*?\/\/\s*?@(When|Then|Given) (.+[^\s])\s*?$/);
         if (!keywords) {
           return strComment;
         }
@@ -441,7 +442,7 @@ export class Transpile {
         return;
       }
       let k: IStepKey, v: string;
-      const matchedValue = argValue.match(/^(When|Then|Given) (.+)/);
+      const matchedValue = argValue.match(/^(When|Then|Given) (.+)$/);
       if (matchedValue) {
         k = matchedValue[1] as IStepKey;
         v = matchedValue[2];
