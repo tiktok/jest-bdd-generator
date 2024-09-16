@@ -10,10 +10,10 @@
   "scripts": {
     "build": "modern build",
     "start": "modern build -w & npx http-server -c-1 ./ -P http://127.0.0.1:8080/dist/index.html? -o /dist/",
-    "gen-report": "gen-report pathTestsInput=./tests/format.test.ts pathFeatureInput=./docs/features/format.feature",
-    "gen-comments": "gen-comments pathTestsInput=./tests/format.test.ts pathFeatureInput=./docs/features/format.feature",
-    "gen-test": "gen-test pathTestInput=./tests/noImplement.test.ts pathGherkinInput=./docs/features/format.feature pathOutput=./generatedIt.test.ts",
-    "gen-doc": "gen-doc pathTestsInput=./tests/format.test.ts  pathOutput=./docs/features/generatedFormat.feature"
+    "gen-report": "gen-report pathTestsInput=./tests/successfulMathRound.test.ts pathFeatureInput=./docs/features/successfulMathRound.feature",
+    "gen-comments": "gen-comments pathTestsInput=./tests/noComment.test.ts pathOutput=./generatedComments.test.ts",
+    "gen-test": "gen-test pathTestsInput=./tests/noImplement.test.ts pathGherkinInput=./docs/features/successfulMathRound.feature pathOutput=./tests/generatedTests.test.ts",
+    "gen-doc": "gen-doc pathTestsInput=./tests/failWithF16Round.test.ts pathOutput=./docs/features/generatedFeature.feature"
   },
   "dependencies": {
     "jest-bdd-generator": "workspace:*",
@@ -27,9 +27,13 @@
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@modern-js/module-tools": "^2.48.1",
+    "@types/jest": "^27.5.2",
     "@types/react": "17.0.65",
     "@types/react-dom": "17.0.20",
-    "@types/styled-components": "^5.1.14"
+    "@types/styled-components": "^5.1.14",
+    "jest": "^27.5.1",
+    "ts-jest": "^27.1.5",
+    "typescript": "^4.9.5"
   },
   "jsnext:source": "./src/index.ts"
 }
