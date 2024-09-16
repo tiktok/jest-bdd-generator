@@ -44,9 +44,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
+      - name: Verify Change Logs
+        run: node common/scripts/install-run-rush.js change --verify
       - name: Install dependencies
-        run: npm install
+        run: node common/scripts/install-run-rush.js install
       - name: Build
-        run: npm run build
-#      - name: ESLint
-#        run: npm run lint
+        run: node common/scripts/install-run-rush.js build --verbose

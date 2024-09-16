@@ -1,0 +1,57 @@
+{
+  "name": "website",
+  "version": "0.5.0",
+  "description": "Jest code generator empowered with Gherkin and BDD",
+  "keywords": [
+    "Jest",
+    "JestJS",
+    "Testing",
+    "Unit-Testing",
+    "Behaviour-Driven-Development",
+    "BDD",
+    "Cucumber",
+    "CucumberJS",
+    "Gherkin",
+    "Use case",
+    "Code Generator",
+    "Test Oracle"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tiktok/jest-bdd-generator.git"
+  },
+  "main": "./dist/lib/index.js",
+  "module": "./dist/es/index.js",
+  "types": "./dist/types/index.d.ts",
+  "scripts": {
+    "build": "modern build",
+    "build:watch": "modern build -w",
+    "dev": "modern dev",
+    "start": "modern build; npx http-server ./ -c-1 -P http://127.0.0.1:8080/? -o /",
+    "lint": "eslint .",
+    "lint:error": "eslint . --quiet"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0",
+    "styled-components": "5.3.5"
+  },
+  "dependencies": {
+    "jest-bdd-generator": "workspace:*",
+    "demo-project": "workspace:*"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@modern-js/module-tools": "^2.48.1",
+    "@types/react": "17.0.65",
+    "@types/react-dom": "17.0.20",
+    "@types/styled-components": "^5.1.14",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-is": "^17.0.2",
+    "react-router-dom": "^6.3.0",
+    "styled-components": "5.3.5"
+  },
+  "jsnext:source": "./src/index.ts"
+}

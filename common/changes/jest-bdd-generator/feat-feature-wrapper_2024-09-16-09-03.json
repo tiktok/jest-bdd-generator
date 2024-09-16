@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "jest-bdd-generator",
+      "comment": "Improve SDK design and documentation",
+      "type": "minor"
+    }
+  ],
+  "packageName": "jest-bdd-generator"
+}

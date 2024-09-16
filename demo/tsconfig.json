@@ -1,6 +1,0 @@
-{
-  "compilerOptions": {
-    "jsx": "react"  /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */,
-    "lib": ["ESNext", "DOM"]
-  }
-}

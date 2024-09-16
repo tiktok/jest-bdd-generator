@@ -1,0 +1,4 @@
+.DS_Store
+generatedTests.test.ts
+generatedComments.test.ts
+docs/features/generatedFeature.feature

@@ -1,5 +1,7 @@
 name: Publish NPM Packages
 on: workflow_dispatch
+permissions:
+  contents: write
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -7,8 +9,6 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 2
-          # No automatic version-bumping in the current workflow
-          # token: ${{ secrets.BOT_ACCESS_TOKEN }}
       - uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -17,16 +17,12 @@ jobs:
       - name: git config name
         run: git config --local user.name tiktokbot
       - name: Install dependencies
-        run: npm install
+        run: node common/scripts/install-run-rush.js install
       - name: Build
-        run: npm run build
-      - name: Publish NPM package
-        # Create an .npmrc file containing the *unexpanded* environment variable name.
-        # "npm publish" will expand the variable during publishing.  This is more secure
-        # because the token is discarded after the process terminates and cannot be
-        # accessed by other build steps or processes on the VM.
-        run: |
-          echo "//registry.npmjs.org/:_authToken=\${NPM_AUTH_TOKEN}" >> .npmrc
-          npm publish
+        run: node common/scripts/install-run-rush.js build --verbose
+      - name: 'Rush version'
+        run: node common/scripts/install-run-rush.js version --bump --version-policy none --target-branch ${{ github.ref_name }}
+      - name: Rush publish
+        run: node common/scripts/install-run-rush.js publish --apply --publish --include-all --target-branch ${{ github.ref_name }}
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
