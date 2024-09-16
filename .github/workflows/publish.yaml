@@ -17,9 +17,9 @@ jobs:
       - name: git config name
         run: git config --local user.name tiktokbot
       - name: Install dependencies
-        run: node common/scripts/install-run-rush.js update
+        run: node common/scripts/install-run-rush.js install
       - name: Build
-        run: node common/scripts/install-run-rush.js build
+        run: node common/scripts/install-run-rush.js build --verbose --production
       - name: Publish NPM package
         # Create an .npmrc file containing the *unexpanded* environment variable name.
         # "npm publish" will expand the variable during publishing.  This is more secure
