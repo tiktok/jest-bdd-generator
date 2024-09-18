@@ -1,0 +1,23 @@
+{
+  "id": "doc2",
+  "title": "document number 2",
+  "description": "| Cucumber | Jest |",
+  "source": "@site/docs/doc2.md",
+  "sourceDirName": ".",
+  "slug": "/doc2",
+  "permalink": "/doc2",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/tiktok/sparo/tree/main/apps/website/docs/doc2.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "doc2",
+    "title": "document number 2"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "Why Jest-BDD",
+    "permalink": "/introduction"
+  }
+}

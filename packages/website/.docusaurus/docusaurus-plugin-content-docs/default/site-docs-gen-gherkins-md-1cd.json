@@ -1,0 +1,23 @@
+{
+  "id": "genGherkins",
+  "title": "Gherkin *.feature generation",
+  "description": "Generate a Gherkin document from test cases:",
+  "source": "@site/docs/genGherkins.md",
+  "sourceDirName": ".",
+  "slug": "/genGherkins",
+  "permalink": "/jest-bdd-generator/genGherkins",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/tiktok/jest-bdd-generator/tree/main/packages/website/docs/genGherkins.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "genGherkins",
+    "title": "Gherkin *.feature generation"
+  },
+  "sidebar": "docsSidebar",
+  "previous": {
+    "title": "//@step comments Generation",
+    "permalink": "/jest-bdd-generator/genComments"
+  }
+}

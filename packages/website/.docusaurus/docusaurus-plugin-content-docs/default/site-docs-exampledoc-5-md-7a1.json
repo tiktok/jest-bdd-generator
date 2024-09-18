@@ -1,0 +1,18 @@
+{
+  "id": "doc5",
+  "title": "Fifth Document",
+  "description": "Another one",
+  "source": "@site/docs/exampledoc5.md",
+  "sourceDirName": ".",
+  "slug": "/doc5",
+  "permalink": "/doc5",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/tiktok/sparo/tree/main/apps/website/docs/exampledoc5.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "doc5",
+    "title": "Fifth Document"
+  }
+}

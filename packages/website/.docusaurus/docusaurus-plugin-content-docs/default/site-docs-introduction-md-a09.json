@@ -1,0 +1,24 @@
+{
+  "id": "introduction",
+  "title": "Why Jest-BDD",
+  "description": "There are two key difference between Cucumber and Jest, that make them contradictory in certain aspects:",
+  "source": "@site/docs/introduction.md",
+  "sourceDirName": ".",
+  "slug": "/introduction",
+  "permalink": "/jest-bdd-generator/introduction",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/tiktok/jest-bdd-generator/tree/main/packages/website/docs/introduction.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "introduction",
+    "title": "Why Jest-BDD",
+    "sidebar_label": "Why Jest-BDD"
+  },
+  "sidebar": "docsSidebar",
+  "next": {
+    "title": "Gherkin Jest comparison",
+    "permalink": "/jest-bdd-generator/mapping"
+  }
+}

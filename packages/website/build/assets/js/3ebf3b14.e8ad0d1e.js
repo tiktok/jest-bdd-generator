@@ -1,0 +1,11 @@
+'use strict';
+(self.webpackChunkwebsite = self.webpackChunkwebsite || []).push([
+  [667],
+  {
+    6137: (e) => {
+      e.exports = JSON.parse(
+        '{"version":{"pluginId":"default","version":"current","label":"Next","banner":null,"badge":false,"noIndex":false,"className":"docs-version-current","isLast":true,"docsSidebars":{"docsSidebar":[{"type":"category","label":"Introduction","collapsible":false,"items":[{"type":"link","label":"Why Jest-BDD","href":"/jest-bdd-generator/introduction","docId":"introduction","unlisted":false},{"type":"link","label":"Gherkin Jest comparison","href":"/jest-bdd-generator/mapping","docId":"mapping","unlisted":false}],"collapsed":false},{"type":"category","label":"Key Features","collapsible":false,"items":[{"type":"link","label":"Testing code Generation","href":"/jest-bdd-generator/genTests","docId":"genTests","unlisted":false},{"type":"link","label":"//@step comments Generation","href":"/jest-bdd-generator/genComments","docId":"genComments","unlisted":false},{"type":"link","label":"Gherkin *.feature generation","href":"/jest-bdd-generator/genGherkins","docId":"genGherkins","unlisted":false}],"collapsed":false},{"type":"category","label":"Demos","collapsible":false,"items":[{"type":"link","label":"Complete Testing-codes","href":"/genTestings"},{"type":"link","label":"Missing step comments","href":"/genTestings"},{"type":"link","label":"Missing step implementations","href":"/genTestings"}],"collapsed":false}]},"docs":{"genComments":{"id":"genComments","title":"//@step comments Generation","description":"Automatically generate comments for the test code using predefined steps:","sidebar":"docsSidebar"},"genGherkins":{"id":"genGherkins","title":"Gherkin *.feature generation","description":"Generate a Gherkin document from test cases:","sidebar":"docsSidebar"},"genTests":{"id":"genTests","title":"Testing code Generation","description":"Given a well prepared Gherkin, most of the testing code can easily be generated.","sidebar":"docsSidebar"},"introduction":{"id":"introduction","title":"Why Jest-BDD","description":"There are two key difference between Cucumber and Jest, that make them contradictory in certain aspects:","sidebar":"docsSidebar"},"mapping":{"id":"mapping","title":"Gherkin Jest comparison","description":"| Cucumber | Jest |","sidebar":"docsSidebar"}}}}'
+      );
+    }
+  }
+]);

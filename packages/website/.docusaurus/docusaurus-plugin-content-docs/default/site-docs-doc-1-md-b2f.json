@@ -1,0 +1,24 @@
+{
+  "id": "doc1",
+  "title": "Latin-ish",
+  "description": "Check the documentation for how to use Docusaurus.",
+  "source": "@site/docs/doc1.md",
+  "sourceDirName": ".",
+  "slug": "/doc1",
+  "permalink": "/doc1",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/tiktok/sparo/tree/main/apps/website/docs/doc1.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "doc1",
+    "title": "Latin-ish",
+    "sidebar_label": "Example Page"
+  },
+  "sidebar": "docsSidebar",
+  "next": {
+    "title": "document number 2",
+    "permalink": "/doc2"
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "/jest-bdd-generator/__docusaurus/debug/-3e2": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---jest-bdd-generator-docusaurus-debug-b-38-8e7"
+    }
+  },
+  "/jest-bdd-generator/__docusaurus/debug/config/-21d": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---jest-bdd-generator-docusaurus-debug-b-38-8e7"
+    }
+  },
+  "/jest-bdd-generator/__docusaurus/debug/content/-3f9": {
+    "__comp": "__comp---theme-debug-contentba-8-ce7",
+    "__context": {
+      "plugin": "plugin---jest-bdd-generator-docusaurus-debug-b-38-8e7"
+    },
+    "__props": "__props---jest-bdd-generator-docusaurus-debug-content-7-c-0-502"
+  },
+  "/jest-bdd-generator/__docusaurus/debug/globalData/-ed4": {
+    "__comp": "__comp---theme-debug-global-dataede-0fa",
+    "__context": {
+      "plugin": "plugin---jest-bdd-generator-docusaurus-debug-b-38-8e7"
+    }
+  },
+  "/jest-bdd-generator/__docusaurus/debug/metadata/-815": {
+    "__comp": "__comp---theme-debug-site-metadata-68-e-3d4",
+    "__context": {
+      "plugin": "plugin---jest-bdd-generator-docusaurus-debug-b-38-8e7"
+    }
+  },
+  "/jest-bdd-generator/__docusaurus/debug/registry/-837": {
+    "__comp": "__comp---theme-debug-registry-679-501",
+    "__context": {
+      "plugin": "plugin---jest-bdd-generator-docusaurus-debug-b-38-8e7"
+    }
+  },
+  "/jest-bdd-generator/__docusaurus/debug/routes/-3ff": {
+    "__comp": "__comp---theme-debug-routes-946-699",
+    "__context": {
+      "plugin": "plugin---jest-bdd-generator-docusaurus-debug-b-38-8e7"
+    }
+  },
+  "/jest-bdd-generator/blog/-c18": {
+    "__comp": "__comp---theme-blog-list-pagea-6-a-7ba",
+    "__context": {
+      "plugin": "plugin---jest-bdd-generator-blog-369-8c5"
+    },
+    "sidebar": "sidebar---jest-bdd-generator-blog-814-e9d",
+    "items": [
+      {
+        "content": "content---jest-bdd-generator-blog-10-a-99d"
+      },
+      {
+        "content": "content---jest-bdd-generator-blog-517-d84"
+      },
+      {
+        "content": "content---jest-bdd-generator-blog-c-7-a-740"
+      },
+      {
+        "content": "content---jest-bdd-generator-blog-398-7bc"
+      },
+      {
+        "content": "content---jest-bdd-generator-blog-025-334"
+      }
+    ],
+    "__props": "__props---jest-bdd-generator-blog-9-d-8-a36"
+  },
+  "/jest-bdd-generator/blog/2016/03/11/blog-post/-409": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "data": {
+        "blogMetadata": "blogMetadata---jest-bdd-generator-blog-2016-03-11-blog-post-ace-ccf"
+      },
+      "plugin": "plugin---jest-bdd-generator-blog-369-8c5"
+    },
+    "sidebar": "sidebar---jest-bdd-generator-blog-814-e9d",
+    "content": "content---jest-bdd-generator-blog-2016-03-11-blog-post-bf-9-413"
+  },
+  "/jest-bdd-generator/blog/2017/04/10/blog-post-two/-9b2": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "data": {
+        "blogMetadata": "blogMetadata---jest-bdd-generator-blog-2016-03-11-blog-post-ace-ccf"
+      },
+      "plugin": "plugin---jest-bdd-generator-blog-369-8c5"
+    },
+    "sidebar": "sidebar---jest-bdd-generator-blog-814-e9d",
+    "content": "content---jest-bdd-generator-blog-2017-04-10-blog-post-two-dfa-436"
+  },
+  "/jest-bdd-generator/blog/2017/09/25/testing-rss/-7ec": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "data": {
+        "blogMetadata": "blogMetadata---jest-bdd-generator-blog-2016-03-11-blog-post-ace-ccf"
+      },
+      "plugin": "plugin---jest-bdd-generator-blog-369-8c5"
+    },
+    "sidebar": "sidebar---jest-bdd-generator-blog-814-e9d",
+    "content": "content---jest-bdd-generator-blog-2017-09-25-testing-rss-4-d-8-409"
+  },
+  "/jest-bdd-generator/blog/2017/09/26/adding-rss/-6ed": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "data": {
+        "blogMetadata": "blogMetadata---jest-bdd-generator-blog-2016-03-11-blog-post-ace-ccf"
+      },
+      "plugin": "plugin---jest-bdd-generator-blog-369-8c5"
+    },
+    "sidebar": "sidebar---jest-bdd-generator-blog-814-e9d",
+    "content": "content---jest-bdd-generator-blog-2017-09-26-adding-rss-ad-7-e1f"
+  },
+  "/jest-bdd-generator/blog/2017/10/24/new-version-1.0.0/-330": {
+    "__comp": "__comp---theme-blog-post-pageccc-cab",
+    "__context": {
+      "data": {
+        "blogMetadata": "blogMetadata---jest-bdd-generator-blog-2016-03-11-blog-post-ace-ccf"
+      },
+      "plugin": "plugin---jest-bdd-generator-blog-369-8c5"
+    },
+    "sidebar": "sidebar---jest-bdd-generator-blog-814-e9d",
+    "content": "content---jest-bdd-generator-blog-2017-10-24-new-version-1-0-0-bbb-7c2"
+  },
+  "/jest-bdd-generator/blog/archive/-8cc": {
+    "__comp": "__comp---theme-blog-archive-page-9-e-4-1d8",
+    "__context": {
+      "plugin": "plugin---jest-bdd-generator-blog-369-8c5"
+    },
+    "__props": "__props---jest-bdd-generator-blog-archive-c-1-b-d88"
+  },
+  "/jest-bdd-generator/genTestings/-662": {
+    "__comp": "__comp---site-src-pages-gen-testings-tsxadd-e95",
+    "__context": {
+      "plugin": "plugin---jest-bdd-generator-gen-testings-a-74-0e6"
+    },
+    "config": "config---jest-bdd-generator-gen-testings-5-e-9-7a9"
+  },
+  "/jest-bdd-generator/-cc3": {
+    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__context": {
+      "plugin": "plugin---jest-bdd-generator-aba-e29"
+    }
+  },
+  "/jest-bdd-generator/-0a2": {
+    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
+    "__props": "__props---jest-bdd-generator-3-eb-e89"
+  },
+  "/jest-bdd-generator/-c0b": {
+    "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/jest-bdd-generator/genComments/-d32": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---jest-bdd-generator-gen-comments-b-8-a-835"
+  },
+  "/jest-bdd-generator/genGherkins/-6c8": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---jest-bdd-generator-gen-gherkins-1-cd-ea6"
+  },
+  "/jest-bdd-generator/genTests/-221": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---jest-bdd-generator-gen-tests-2-e-1-84b"
+  },
+  "/jest-bdd-generator/introduction/-18f": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---jest-bdd-generator-introduction-a-09-1a4"
+  },
+  "/jest-bdd-generator/mapping/-a12": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---jest-bdd-generator-mapping-483-6d9"
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "blogBasePath": "/jest-bdd-generator/blog",
+  "blogTitle": "Blog",
+  "authorsListPath": "/jest-bdd-generator/blog/authors"
+}
