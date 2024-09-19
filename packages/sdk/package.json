@@ -40,9 +40,9 @@
       "types": "./dist/types/transpiler/index.d.ts"
     },
     "./lib/jest-to-gherkin": {
-      "import": "./dist/es/jest-to-gherkin/index.js",
-      "require": "./dist/lib/jest-to-gherkin/index.js",
-      "types": "./dist/types/jest-to-gherkin/index.d.ts"
+      "import": "./dist/es/jest-to-gherkin/JestToGherkin.js",
+      "require": "./dist/lib/jest-to-gherkin/JestToGherkin.js",
+      "types": "./dist/types/jest-to-gherkin/JestToGherkin.d.ts"
     },
     "./lib/gherkin-to-test": {
       "import": "./dist/es/gherkin-to-test/index.js",

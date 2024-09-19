@@ -41,6 +41,8 @@
     "@algolia/client-search": "^4.9.1",
     "@docusaurus/core": "3.5.2",
     "@docusaurus/preset-classic": "3.5.2",
+    "@docusaurus/theme-common": "~3.5.2",
+    "@docusaurus/plugin-content-docs": "~3.5.2",
     "@mdx-js/react": "^3.0.0",
     "docusaurus": "^1.14.7",
     "react": "^18.0.0",

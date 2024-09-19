@@ -1,20 +1,24 @@
 ---
-id: mapping
+id: comparison
 title: Gherkin Jest comparison
 ---
 
 # Comparison / Mapping of Gherkin to Jest
 
-| Cucumber | Jest |
-| --- | --- |
-| `Feature` | `define()` |
-| `Scenario` | `test()` / `it()` |
-| `Examples` | `test.each()()` |
-| `Background` | `beforeAll()` |
-| `Steps` | code statements and `//@STEP` comments |
+| **Gherkin**      | **Jest**          |
+|------------------|-------------------|
+| `Feature`        | `describe()`       |
+| `Scenario`       | `test()` / `it()`  |
+| `Examples`       | `test.each()`      |
+| `Background`     | `beforeAll()`      |
+| `Steps`          | Code statements with `//@STEP` comments |
 
-## for instance, these two are the perfect match
-```Gherkin
+## Example: Mapping a Gherkin Scenario to Jest
+
+Here’s how a Gherkin scenario translates perfectly into a Jest test:
+
+### Gherkin
+```gherkin
 Feature: Rounding methods of Math
 
 Scenario Outline: Integer pattern
@@ -23,25 +27,26 @@ Scenario Outline: Integer pattern
   Then rounded number is <result>
 
 Examples:
-| num | method | result |
-| 1234.1 | "ceil" | 1235 |
-| 1234.9 | "ceil" | 1235 |
-| -1234.1 | "ceil" | -1234 |
-| -1234.9 | "ceil" | -1234 |
-| 1234.1 | "floor" | 1234 |
-| 1234.9 | "floor" | 1234 |
-| -1234.1 | "floor" | -1235 |
-| -1234.9 | "floor" | -1235 |
-| 1234.5 | "round" | 1235 |
-| 1234.4 | "round" | 1234 |
-| -1234.5 | "round" | -1234 |
-| -1234.6 | "round" | -1235 |
+| num    | method | result |
+| 1234.1 | "ceil" | 1235   |
+| 1234.9 | "ceil" | 1235   |
+| -1234.1| "ceil" | -1234  |
+| -1234.9| "ceil" | -1234  |
+| 1234.1 | "floor"| 1234   |
+| 1234.9 | "floor"| 1234   |
+| -1234.1| "floor"| -1235  |
+| -1234.9| "floor"| -1235  |
+| 1234.5 | "round"| 1235   |
+| 1234.4 | "round"| 1234   |
+| -1234.5| "round"| -1234  |
+| -1234.6| "round"| -1235  |
 ```
 
+### Jest
 ```ts
-import { describe, test, it, expect } from '@jest/globals';
+import { describe, test, expect } from '@jest/globals';
 
-describe('Fail With Math.f16Round', () => {
+describe('Rounding methods of Math', () => {
   test.each([
     { num: 1234.1, method: 'ceil', result: 1235 },
     { num: 1234.9, method: 'ceil', result: 1235 },
@@ -55,7 +60,7 @@ describe('Fail With Math.f16Round', () => {
     { num: 1234.4, method: 'round', result: 1234 },
     { num: -1234.5, method: 'round', result: -1234 },
     { num: -1234.6, method: 'round', result: -1235 }
-  ])('Integer pattern', async ({ num, method, result }) => {
+  ])('Integer pattern for $method', ({ num, method, result }) => {
     //@Given input number is <num>
     expect(typeof num).toBe('number');
 
@@ -66,6 +71,6 @@ describe('Fail With Math.f16Round', () => {
     expect(Math[method](num)).toEqual(result);
   });
 });
-
-
 ```
+
+In this example, the Gherkin feature and scenario outline are mapped directly into Jest's `describe()`, `test.each()`, and `expect()` functions, with comments marking the corresponding Gherkin steps (`//@STEP`). This provides a clear 1:1 mapping, demonstrating how the two frameworks align in structure and logic.

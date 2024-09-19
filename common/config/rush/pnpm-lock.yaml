@@ -159,9 +159,15 @@ importers:
       '@docusaurus/core':
         specifier: 3.5.2
         version: 3.5.2(@docusaurus/types@3.5.2)(@mdx-js/react@3.0.0)(react-dom@18.0.0)(react@18.0.0)(typescript@4.9.5)
+      '@docusaurus/plugin-content-docs':
+        specifier: ~3.5.2
+        version: 3.5.2(@mdx-js/react@3.0.0)(react-dom@18.0.0)(react@18.0.0)(typescript@4.9.5)
       '@docusaurus/preset-classic':
         specifier: 3.5.2
         version: 3.5.2(@algolia/client-search@4.9.1)(@mdx-js/react@3.0.0)(@types/react@18.0.0)(react-dom@18.0.0)(react@18.0.0)(search-insights@2.0.0)(typescript@4.9.5)
+      '@docusaurus/theme-common':
+        specifier: ~3.5.2
+        version: 3.5.2(@docusaurus/plugin-content-docs@3.5.2)(@docusaurus/types@3.5.2)(react-dom@18.0.0)(react@18.0.0)(typescript@4.9.5)
       '@mdx-js/react':
         specifier: ^3.0.0
         version: 3.0.0(@types/react@18.0.0)(react@18.0.0)
@@ -2512,7 +2518,7 @@ packages:
     dependencies:
       '@docusaurus/types': 3.5.2(react-dom@18.0.0)(react@18.0.0)
       '@types/history': 4.7.11
-      '@types/react': 18.0.0
+      '@types/react': 17.0.65
       '@types/react-router-config': 5.0.11
       '@types/react-router-dom': 5.3.3
       react: 18.0.0
@@ -4832,7 +4838,7 @@ packages:
   /@types/mdast@4.0.4:
     resolution: {integrity: sha512-kGaNbPh1k7AFzgpud/gMdvIm5xuECykRR+JnWKQno9TAXVa6WIVCGTPvYGekIDL4uwCZQSYbUxNBSb1aUo79oA==}
     dependencies:
-      '@types/unist': 2.0.11
+      '@types/unist': 3.0.3
 
   /@types/mdx@2.0.13:
     resolution: {integrity: sha512-+OWZQfAYyio6YkJb3HLxDrvnx6SWWDbC0zVPfBRzUk0/nqoDyf6dNxQi3eArPe8rJ473nobTMQ/8Zk+LxJ+Yuw==}
@@ -4915,7 +4921,7 @@ packages:
     resolution: {integrity: sha512-WmSAg7WgqW7m4x8Mt4N6ZyKz0BubSj/2tVUMsAHp+Yd2AMwcSbeFq9WympT19p5heCFmF97R9eD5uUR/t4HEqw==}
     dependencies:
       '@types/history': 4.7.11
-      '@types/react': 18.0.0
+      '@types/react': 17.0.65
       '@types/react-router': 5.1.20
     dev: false
 
@@ -4932,6 +4938,14 @@ packages:
     dependencies:
       '@types/history': 4.7.11
       '@types/react': 18.0.0
+    dev: false
+
+  /@types/react@17.0.65:
+    resolution: {integrity: sha512-oxur785xZYHvnI7TRS61dXbkIhDPnGfsXKv0cNXR/0ml4SipRIFpSMzA7HMEfOywFwJ5AOnPrXYTEiTRUQeGlQ==}
+    dependencies:
+      '@types/prop-types': 15.7.12
+      '@types/scheduler': 0.23.0
+      csstype: 3.1.3
     dev: false
 
   /@types/react@18.0.0:
@@ -18056,7 +18070,9 @@ time:
   /@cucumber/gherkin@26.2.0: '2023-04-07T12:15:46.868Z'
   /@cucumber/messages@22.0.0: '2023-04-06T20:17:34.278Z'
   /@docusaurus/core@3.5.2: '2024-08-13T12:09:23.497Z'
+  /@docusaurus/plugin-content-docs@3.5.2: '2024-08-13T12:09:28.977Z'
   /@docusaurus/preset-classic@3.5.2: '2024-08-13T12:09:34.682Z'
+  /@docusaurus/theme-common@3.5.2: '2024-08-13T12:09:26.421Z'
   /@docusaurus/types@3.5.2: '2024-08-13T12:09:12.850Z'
   /@jest/globals@29.7.0: '2023-09-12T06:43:54.076Z'
   /@jest/test-result@27.2.0: '2021-09-13T08:06:53.045Z'

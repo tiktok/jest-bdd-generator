@@ -13,8 +13,8 @@ export default {
   projectName: 'jest-bdd-generator', // Usually your repo name.
   trailingSlash: true,
 
-  onBrokenLinks: 'log',
-  onBrokenMarkdownLinks: 'log',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'throw',
 
   presets: [
     [

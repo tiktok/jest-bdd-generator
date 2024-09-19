@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { AstBuilder, GherkinClassicTokenMatcher, Parser /*, compile */ } from '@cucumber/gherkin';
 import { GherkinDocument, IdGenerator /*, PickleStep */ } from '@cucumber/messages';
-import { JestToGherkin } from '../jest-to-gherkin';
+import { JestToGherkin } from '../jest-to-gherkin/JestToGherkin';
 import { Step } from '../types';
 
 const newId = IdGenerator.uuid();
