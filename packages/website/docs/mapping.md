@@ -1,6 +1,8 @@
 ---
 id: comparison
 title: Gherkin Jest comparison
+slug: /
+
 ---
 
 # Comparison / Mapping of Gherkin to Jest
