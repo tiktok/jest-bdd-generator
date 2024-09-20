@@ -42,7 +42,6 @@
     "@docusaurus/core": "3.5.2",
     "@docusaurus/preset-classic": "3.5.2",
     "@docusaurus/theme-common": "~3.5.2",
-    "@docusaurus/plugin-content-docs": "~3.5.2",
     "@mdx-js/react": "^3.0.0",
     "docusaurus": "^1.14.7",
     "react": "^18.0.0",
@@ -53,6 +52,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
+    "@docusaurus/plugin-content-docs": "~3.5.2",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@types/styled-components": "^5.1.14",

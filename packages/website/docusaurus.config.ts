@@ -16,6 +16,11 @@ export default {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
 
+  themeConfig: {
+    prism: {
+      additionalLanguages: ['gherkin']
+    }
+  },
   presets: [
     [
       'classic',

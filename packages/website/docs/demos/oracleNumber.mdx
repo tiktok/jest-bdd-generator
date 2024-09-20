@@ -1,0 +1,31 @@
+---
+id: oracleNumber
+title: Number[<rounding methods>]
+---
+
+import React from 'react';
+import { TestOracleF16Round } from 'demo-project/src/f16round';
+
+This demo provides an interactive table showcasing various rounding methods such as `ceil`, `floor`, `round`, `fround`, and `f16round`. You can compare the results of these methods against different numeric inputs to understand how each handles rounding behavior. This feature allows developers to easily validate their logic for rounding operations.
+
+### Selecting and Copying Data
+
+You can select and copy specific portions of the table, including the relevant row and column headers:
+
+- **Selecting Cells**: Click and drag to select multiple cells within the table, and then click **copy** to capture the data.
+- **Selecting Columns**: Drag across the column headers to select entire columns, including both headers and the corresponding data.
+
+Click **copy** to export the table into `Gherkin` or `XLS` format, which you can use in `.feature` files or spreadsheets for further testing and documentation.
+
+### Deeplinking
+
+The expressions of columns and rows are compressed and stored in the URL hash, allowing you to share or save specific configurations.
+
+## Live demo:
+
+<TestOracleF16Round />
+
+### Key Features:
+
+- **Interactive Testing**: Modify numeric inputs directly in the table and see how different rounding methods (like `ceil` or `floor`) respond in real-time.
+- **Comparison**: Compare results across multiple rounding methods for the same input to determine the most appropriate method for your use case.

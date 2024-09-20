@@ -18,5 +18,5 @@ npx gen-doc pathTestsInput=./tests/failWithF16Round.test.ts pathOutput=./docs/fe
 ```
 
 ## Web UI
-Try our demo Web UI for generating Gherkin files [here](/fullImplement):
+Try our demo Web UI for generating Gherkin files [here](/demos/fullImplement):
 - Click the button labeled `Generate Gherkin from DEFINED STEPS` to generate a Gherkin file from your defined steps.

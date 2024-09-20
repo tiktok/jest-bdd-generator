@@ -19,8 +19,7 @@ slug: /
 
 Here’s how a Gherkin scenario translates perfectly into a Jest test:
 
-### Gherkin
-```gherkin
+```gherkin title="./docs/features/rounding.feature" showLineNumbers
 Feature: Rounding methods of Math
 
 Scenario Outline: Integer pattern
@@ -44,8 +43,7 @@ Examples:
 | -1234.6| "round"| -1235  |
 ```
 
-### Jest
-```ts
+```typescript title="./tests/rounding.test.ts" showLineNumbers
 import { describe, test, expect } from '@jest/globals';
 
 describe('Rounding methods of Math', () => {

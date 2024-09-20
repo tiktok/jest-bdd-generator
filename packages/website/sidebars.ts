@@ -6,8 +6,8 @@ const sidebars: { docsSidebar: SidebarItemCategoryConfig[] } = {
       label: 'Introduction',
       collapsible: false,
       items: [
-        'why',
-        'comparison'
+        'introduction/why',
+        'introduction/comparison'
         // {
         //   type: 'doc',
         //   label: 'introduction',
@@ -19,7 +19,14 @@ const sidebars: { docsSidebar: SidebarItemCategoryConfig[] } = {
       type: 'category',
       label: 'Key Features',
       collapsible: false,
-      items: ['generateTests', 'generateComments', 'generateGherkins', 'testOracle']
+      items: ['generateTests', 'generateReports', 'testOracle']
+    },
+
+    {
+      type: 'category',
+      label: 'More Features',
+      collapsible: false,
+      items: ['generateComments', 'generateGherkins']
     },
     {
       type: 'category',
@@ -30,40 +37,13 @@ const sidebars: { docsSidebar: SidebarItemCategoryConfig[] } = {
           type: 'category',
           label: 'Test Generation',
           collapsible: false,
-          items: [
-            {
-              type: 'link',
-              label: 'Complete Testing-codes',
-              href: '/fullImplement'
-            },
-            {
-              type: 'link',
-              label: 'Missing step comments',
-              href: '/genComments'
-            },
-            {
-              type: 'link',
-              label: 'Missing step implementations',
-              href: '/genTestings'
-            }
-          ]
+          items: ['demos/fullImplement', 'demos/generateTests', 'demos/generateComments']
         },
         {
           type: 'category',
           label: 'Test Oracle',
           collapsible: false,
-          items: [
-            {
-              type: 'link',
-              label: 'Number[<rounding methods>]',
-              href: '/oracleNumber'
-            },
-            {
-              type: 'link',
-              label: 'Intl.PluralRule',
-              href: '/oracleIntl'
-            }
-          ]
+          items: ['demos/oracleNumber', 'demos/oracleIntl']
         }
       ]
     }

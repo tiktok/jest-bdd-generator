@@ -29,4 +29,4 @@ npx gen-test pathTestsInput=./tests/noImplement.test.ts pathGherkinInput=./docs/
 ```
 
 ## Web UI
-You can try the demo version of our web UI for generating test code [here](/genTestings).
+You can try the demo version of our web UI for generating test code [here](/demos/generateTests).

@@ -29,6 +29,6 @@ npx gen-comments pathTestsInput=./tests/noComment.test.ts pathOutput=./generated
 ```
 
 ## Web UI
-Try out our demo Web UI for generating comments [here](/genComments):
+Try out our demo Web UI for generating comments [here](/demos/generateComments):
 - The second function compares the original code to the one with added comments.
 - Click the second button to automatically insert the `//@step` comments.

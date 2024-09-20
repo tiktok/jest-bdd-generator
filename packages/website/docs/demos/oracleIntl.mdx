@@ -1,0 +1,36 @@
+---
+id: oracleIntl
+title: Intl.PluralRule from Unicode
+---
+
+import React from 'react';
+import { TestOraclePluralRule } from 'demo-project/src/plural';
+
+This demo integrates the **TestOracle** feature to demonstrate how **Unicode’s [**CLDR Plural Rules**](https://raw.githubusercontent.com/unicode-cldr/cldr-core/master/supplemental/plurals.json)** are compiled and executed in JavaScript. The tool provides an interactive table where you can explore how different numbers are categorized into plural forms (e.g., "one," "few," "many," "other") across various languages and locales.
+
+### Key Features:
+
+1. **Run**: Click the **run** button to execute the tests and see real-time pluralization results.
+2. **Copy**: Use the **copy** feature to export the data in **Gherkin** or **XLS** formats for easy integration into your test cases.
+3. **Edit and Customize**: You can add new rows or columns to test custom numbers or languages, or modify the existing data to see how different scenarios affect pluralization results.
+
+### Selecting and Copying Data
+
+Just like the [**Rounding Methods Demo**](/demos/oracleNumber), you can select and copy specific parts of the table, including the relevant row and column headers:
+
+### Deeplinking
+
+Similar to the **Rounding Methods Demo**, this demo also leverages URL hashing to store the table configuration.
+
+- **Load a Setting**: When a URL with a valid hash is loaded, the TestOracle will automatically restore the rows and columns based on the hash.
+- **Default View**: If no valid hash is found, the page will display the default set of rows and columns, allowing you to start from scratch.
+
+---
+
+## <TestOraclePluralRule />
+
+### Use Case for this TestOracle demo
+
+- **Automated Testing of Plural Rules**: Developers working on multilingual applications can use the TestOracle tool to automate the validation of pluralization logic. By integrating TestOracle into your workflow, you can ensure that your app handles plural forms consistently across all supported languages.
+- **Comprehensive Coverage**: TestOracle enables you to test across multiple languages simultaneously, ensuring that your plural rules are accurate for all supported locales, reducing the risk of errors in localization.
+- **Manage `Examples`in Gherkin**: When exported as Gherkin, you can easily **batch update the examples** in your `.feature` files, making it more efficient to maintain and scale test cases for different rounding methods.
