@@ -1,0 +1,17 @@
+{
+  "name": "jest-bdd-generator",
+  "entries": [
+    {
+      "version": "0.2.0",
+      "tag": "jest-bdd-generator_v0.2.0",
+      "date": "Sat, 21 Sep 2024 08:06:30 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Improve SDK design and documentation"
+          }
+        ]
+      }
+    }
+  ]
+}
