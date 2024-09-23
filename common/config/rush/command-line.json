@@ -177,6 +177,14 @@
     // }
 
     {
+      "name": "build",
+      "commandKind": "bulk",
+      "summary": "Build all projects that haven't been built, or have changed since they were last built",
+      "incremental": true,
+      "enableParallelism": true,
+      "allowWarningsInSuccessfulBuild": true
+    },
+    {
       "name": "prettier",
       "commandKind": "global",
       "summary": "Used by the pre-commit Git hook. This command invokes Prettier to reformat staged changes.",
