@@ -212,12 +212,14 @@ export function restoreHash<T extends IExpression>(
     to: 'string'
   });
 
-  const [colsRestored, rowsRestored] = JSON.parse(restoredString, (k, v) => {
-    if (selections?.[k] !== undefined) {
-      return convertStringyValue(selections[k as StringKeyOf<T>], v);
-    }
-    return v;
-  });
+  const [colsRestored, rowsRestored] = restoredString
+    ? JSON.parse(restoredString, (k, v) => {
+        if (selections?.[k] !== undefined) {
+          return convertStringyValue(selections[k as StringKeyOf<T>], v);
+        }
+        return v;
+      })
+    : [[], []];
   return [colsRestored, rowsRestored, restoredRaw];
 }
 function _digit2(num: number): string {
