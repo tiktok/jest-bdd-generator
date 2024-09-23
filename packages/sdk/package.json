@@ -45,9 +45,9 @@
       "types": "./dist/types/jest-to-gherkin/JestToGherkin.d.ts"
     },
     "./lib/gherkin-to-test": {
-      "import": "./dist/es/gherkin-to-test/index.js",
-      "require": "./dist/lib/gherkin-to-test/index.js",
-      "types": "./dist/types/gherkin-to-test/index.d.ts"
+      "import": "./dist/es/gherkin-to-test/TestGeneratorFromSource.js",
+      "require": "./dist/lib/gherkin-to-test/TestGeneratorFromSource.js",
+      "types": "./dist/types/gherkin-to-test/TestGeneratorFromSource.d.ts"
     },
     "./UI/TestGeneration": {
       "import": "./dist/es/UI/TestGeneration.js",
