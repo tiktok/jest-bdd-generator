@@ -33,7 +33,7 @@ describe('Fail With Math.f16Round', () => {
     { num: 5, method: 'f16round', result: 5 },
     { num: -5.05, method: 'fround', result: -5.050000190734863 },
     { num: -5.05, method: 'f16round', result: -5.05078125 }
-  ])('Float, Single and double', async ({ num, method, result }) => {
+  ])('Float and double', async ({ num, method, result }) => {
     //@Given input number is <num>
     expect(typeof num).toBe('number');
 

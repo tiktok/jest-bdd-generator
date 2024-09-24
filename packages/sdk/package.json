@@ -27,7 +27,9 @@
   "scripts": {
     "build": "modern build",
     "build:watch": "modern build -w",
+    "build:test": "npx gen-test pathTestsinput=./tests/generateTests.test.ts pathGherkinInput=./docs/features/generateTests.feature pathOutput=./tests/generateTests.test.ts",
     "dev": "modern dev",
+    "test": "npx jest generateTests",
     "start": "modern build; npx http-server website -c-1 -P http://127.0.0.1:8080/? -o /",
     "doc": "ts-node tools/export-api-doc",
     "lint": "eslint .",
@@ -92,6 +94,7 @@
     "@babel/core": "^7.25.2",
     "react-is": "^18.0.0",
     "monaco-editor": "^0.51.0",
+    "@jest/globals": "~29.7.0",
     "@jest/test-result": "^27.1.5",
     "@microsoft/api-extractor": "~7.39.1",
     "@modern-js/module-tools": "^2.48.1",

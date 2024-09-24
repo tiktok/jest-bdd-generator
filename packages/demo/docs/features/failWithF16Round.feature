@@ -23,7 +23,7 @@ Examples:
 | -1234.6 | "round" | -1235 |
 
 
-Scenario Outline: Float, Single and double
+Scenario Outline: Float and double
   Given input number is <num>
   When rounding with <method>
   Then rounded number is <result>
