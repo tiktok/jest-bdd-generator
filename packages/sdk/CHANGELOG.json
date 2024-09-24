@@ -2,6 +2,18 @@
   "name": "jest-bdd-generator",
   "entries": [
     {
+      "version": "0.2.1",
+      "tag": "jest-bdd-generator_v0.2.1",
+      "date": "Tue, 24 Sep 2024 04:52:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "export jest-to-gherkin compiler core instead of CLI handler"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.2.0",
       "tag": "jest-bdd-generator_v0.2.0",
       "date": "Sat, 21 Sep 2024 08:06:30 GMT",
