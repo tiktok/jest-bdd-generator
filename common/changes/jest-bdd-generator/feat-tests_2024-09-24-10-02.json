@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "jest-bdd-generator",
+      "comment": "add testings to main features",
+      "type": "minor"
+    }
+  ],
+  "packageName": "jest-bdd-generator"
+}
