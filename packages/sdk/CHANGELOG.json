@@ -2,6 +2,18 @@
   "name": "jest-bdd-generator",
   "entries": [
     {
+      "version": "0.3.0",
+      "tag": "jest-bdd-generator_v0.3.0",
+      "date": "Thu, 26 Sep 2024 05:56:20 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add testings to main features"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.2.1",
       "tag": "jest-bdd-generator_v0.2.1",
       "date": "Tue, 24 Sep 2024 04:52:24 GMT",
