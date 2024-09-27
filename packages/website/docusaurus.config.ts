@@ -1,7 +1,12 @@
 import type { Config } from '@docusaurus/types';
+import type {
+  SidebarItemCategoryConfig,
+  SidebarItemConfig
+} from '@docusaurus/plugin-content-docs/src/sidebars/types.js';
+const BASE_URL = '/jest-bdd-generator';
 export default {
   title: 'Docusaurus',
-  baseUrl: '/jest-bdd-generator',
+  baseUrl: BASE_URL,
   // Set the production url of your site here
   url: 'https://tiktok.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
@@ -46,5 +51,38 @@ export default {
         // }
       }
     ]
+  ],
+
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'reference',
+        path: '../sdk/docs',
+        routeBasePath: 'references',
+
+        async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
+          const sidebarItems = reverseSidebarItems(await defaultSidebarItemsGenerator(args));
+          return [
+            {
+              type: 'link',
+              label: 'Home',
+              href: BASE_URL
+            },
+            ...sidebarItems
+          ];
+        }
+      }
+    ]
   ]
 } satisfies Config;
+function reverseSidebarItems(items) {
+  const result = items.map((item) => {
+    if (item.type === 'category') {
+      return { ...item, items: reverseSidebarItems(item.items), collapsed: false };
+    }
+    return item;
+  });
+  result.reverse();
+  return result;
+}

@@ -1,5 +1,8 @@
-import type { SidebarItemCategoryConfig } from '@docusaurus/plugin-content-docs/src/sidebars/types.js';
-const sidebars: { docsSidebar: SidebarItemCategoryConfig[] } = {
+import type {
+  SidebarItemCategoryConfig,
+  SidebarItemConfig
+} from '@docusaurus/plugin-content-docs/src/sidebars/types.js';
+const sidebars: { docsSidebar: Array<SidebarItemCategoryConfig | SidebarItemConfig> } = {
   docsSidebar: [
     {
       type: 'category',
@@ -47,6 +50,12 @@ const sidebars: { docsSidebar: SidebarItemCategoryConfig[] } = {
           items: ['demos/oracleNumber', 'demos/oracleIntl']
         }
       ]
+    },
+
+    {
+      type: 'link',
+      label: 'API References',
+      href: '/references/lib/transpiler.api'
     }
   ]
 };
