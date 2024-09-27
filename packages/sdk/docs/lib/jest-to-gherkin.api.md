@@ -6,17 +6,7 @@
 
 import * as ts from 'typescript';
 
-// @public (undocumented)
-export function compose(options: {
-    pathTestsInput: string;
-}): string;
-
-// @public (undocumented)
-export function generateComments(options: {
-    pathTestsInput: string;
-}): string;
-
-// Warning: (ae-forgotten-export) The symbol "Transpile" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "Transpile" needs to be exported by the entry point JestToGherkin.d.ts
 //
 // @public (undocumented)
 export class JestToGherkin extends Transpile {

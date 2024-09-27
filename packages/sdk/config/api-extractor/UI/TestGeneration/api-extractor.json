@@ -1,6 +1,6 @@
 {
   "extends": "../../../api-extractor.json",
-  "mainEntryPointFilePath": "<projectFolder>/dist/types/src/UI/TestGeneration.d.ts",
+  "mainEntryPointFilePath": "<projectFolder>/dist/types/UI/TestGeneration.d.ts",
   "apiReport": {
     "reportFileName": "TestGeneration.api.md",
     "reportFolder": "<projectFolder>/docs/UI"

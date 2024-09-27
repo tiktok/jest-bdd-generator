@@ -7,19 +7,22 @@
 import { GherkinDocument } from '@cucumber/messages';
 import * as ts from 'typescript';
 
-// Warning: (ae-forgotten-export) The symbol "TestGeneratorFromSource" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export class TestGenerator extends TestGeneratorFromSource {
-    // Warning: (ae-forgotten-export) The symbol "JestToGherkin" needs to be exported by the entry point index.d.ts
+export class TestGeneratorFromSource {
+    // (undocumented)
+    compileGherkinFromSource(gherkinDoc: string): GherkinDocument;
+    // (undocumented)
+    compileKnownStepsFromSource(source: string): JestToGherkin['output'];
+    // Warning: (ae-forgotten-export) The symbol "Step" needs to be exported by the entry point TestGeneratorFromSource.d.ts
     //
     // (undocumented)
-    compileKnownSteps(pathTestInput: string): JestToGherkin['output'];
+    generateGherkinFromSource(steps: Step[], gherkinSource: string): string | undefined;
     // (undocumented)
-    generateGherkin(options: {
-        pathTestInput: string;
-        pathGherkinInput: string;
-    }): string | undefined;
+    source: string;
+    // Warning: (ae-forgotten-export) The symbol "JestToGherkin" needs to be exported by the entry point TestGeneratorFromSource.d.ts
+    //
+    // (undocumented)
+    transpiler?: JestToGherkin;
 }
 
 // (No @packageDocumentation comment for this package)

@@ -1,9 +1,9 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { Extractor, ExtractorConfig, ExtractorResult } from '@microsoft/api-extractor';
-import { fileURLToPath } from 'url';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// import { fileURLToPath } from 'url';
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 const packageJSON = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
 function getTemplate(entry: string, subModuleName: string) {

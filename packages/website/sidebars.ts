@@ -28,6 +28,7 @@ const sidebars: { docsSidebar: SidebarItemCategoryConfig[] } = {
       collapsible: false,
       items: ['generateComments', 'generateGherkins']
     },
+
     {
       type: 'category',
       label: 'Demos',

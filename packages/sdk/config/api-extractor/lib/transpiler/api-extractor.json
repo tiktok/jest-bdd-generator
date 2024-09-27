@@ -1,6 +1,6 @@
 {
   "extends": "../../../api-extractor.json",
-  "mainEntryPointFilePath": "<projectFolder>/dist/types/src/transpiler/index.d.ts",
+  "mainEntryPointFilePath": "<projectFolder>/dist/types/transpiler/index.d.ts",
   "apiReport": {
     "reportFileName": "transpiler.api.md",
     "reportFolder": "<projectFolder>/docs/lib"
