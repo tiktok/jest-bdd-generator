@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "jest-bdd-generator",
+      "comment": "update ignore pattern",
+      "type": "none"
+    }
+  ],
+  "packageName": "jest-bdd-generator"
+}
