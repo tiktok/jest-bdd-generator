@@ -1,53 +1,23 @@
-config/
-tests/
-docs/
-.DS_Store
+!/bin/**
+!/src/**
+!/tools/**
+!/dist/**
 
-.pnp
-.pnp.js
-.env.local
-.env.*.local
-.history
-.rts*
-*.log*
-*.pid
-*.pid.*
-*.report
-*.lcov
-lib-cov
-node_modules/
-.npm
-.lock-wscript
-.yarn-integrity
-.node_repl_history
-.nyc_output
-*.tsbuildinfo
-.eslintcache
-.sonarlint
+!CHANGELOG.md
+!CHANGELOG.json
+!LICENSE.md
+!modern.config.ts
+!rush-plugin-manifest.json
+!ThirdPartyNotice.txt
 
-coverage/
-release/
-output/
-output_resource/
-log/
+*.test.js
 
-**/*-report.html
-**/*.api.json
-temp/
+# NOTE: These don't need to be specified, because NPM includes them automatically.
+#
+# package.json
+# README.md
+# LICENSE
 
-.vscode/**/*
-!.vscode/settings.json
-!.vscode/extensions.json
-.idea/
-
-**/*/typings/auto-generated
-
-.changeset/pre.json
-
-.pnpm-store/
-
-edenx.config.local.ts
-edenx.config.local.js
-edenx.config.local.mjs
-
-doc_build/
+# ---------------------------------------------------------------------------
+# DO NOT MODIFY ABOVE THIS LINE!  Add any project-specific overrides below.
+# ---------------------------------------------------------------------------
