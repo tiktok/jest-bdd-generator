@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "jest-bdd-generator",
+      "comment": "docs update: re-generate API reference",
+      "type": "none"
+    }
+  ],
+  "packageName": "jest-bdd-generator"
+}

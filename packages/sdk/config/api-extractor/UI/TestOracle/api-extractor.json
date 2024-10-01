@@ -1,6 +1,6 @@
 {
   "extends": "../../../api-extractor.json",
-  "mainEntryPointFilePath": "<projectFolder>/dist/types/src/UI/TestOracle.d.ts",
+  "mainEntryPointFilePath": "<projectFolder>/dist/types/UI/TestOracle.d.ts",
   "apiReport": {
     "reportFileName": "TestOracle.api.md",
     "reportFolder": "<projectFolder>/docs/UI"

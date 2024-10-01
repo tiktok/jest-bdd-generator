@@ -7,21 +7,51 @@
 import { default as React_2 } from 'react';
 
 // @public (undocumented)
-export type IColumnHead = {
-    expression: Record<string, any>;
+export type EditorSelectionRelation<T extends IExpressionNote> = {
+    value: T[StringKeyOf<T>];
+} & Partial<T>;
+
+// @public (undocumented)
+export type IExpression = {
+    [key: string]: IExpressionValue;
 };
 
 // @public (undocumented)
-export const TestOracle: <C extends {
-    expression: Record<string, any>;
-}, R extends {
-    expression: Record<string, any>;
-}>(...args: Parameters<React_2.FC<{
-    fnGenerate: (rowExp: R, colExp: C) => Promise<string[]>;
-    setEditingHead: (head: R | C | undefined) => void;
-    defaultCols: C[];
-    defaultRows: R[];
-}>>) => ReturnType<React_2.FC>;
+export type IExpressionNote = IExpression & {
+    note?: string;
+};
+
+// @public (undocumented)
+export type IExpressionValue = string | number | boolean | Date;
+
+// @public (undocumented)
+export function restoreHash<T extends IExpression>(selections?: Partial<{
+    [k in StringKeyOf<T>]: Array<NonNullable<T[k]> | EditorSelectionRelation<T>> | NonNullable<T[k]>;
+}>): [{
+    expression: T;
+}[], {
+    expression: T;
+}[], string];
+
+// @public (undocumented)
+export type StringKeyOf<T> = string & Exclude<Exclude<keyof T, symbol>, number>;
+
+// @public (undocumented)
+export function TestOracle<T extends IExpression, E extends IExpressionNote = T & {
+    note?: string;
+}, K extends StringKeyOf<E> = StringKeyOf<E>, S extends {
+    [k in StringKeyOf<E>]: Array<NonNullable<E[k]> | EditorSelectionRelation<E>> | NonNullable<E[k]>;
+} = {
+    [k in StringKeyOf<E>]: Array<NonNullable<E[k]> | EditorSelectionRelation<E>> | NonNullable<E[k]>;
+}>({ defaultCols, defaultRows, colSelections, execute, sort }: {
+    defaultCols: Partial<E>[];
+    defaultRows: Partial<E>[];
+    colSelections: Partial<S>;
+    execute: (options: Partial<T>) => Promise<React_2.ReactNode>;
+    sort?: (options: Partial<E> | undefined) => Promise<void | ((row: {
+        expression: Partial<E>;
+    }) => number)>;
+}): React_2.ReactElement<any, any>;
 
 // (No @packageDocumentation comment for this package)
 

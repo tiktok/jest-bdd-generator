@@ -36,8 +36,10 @@ export class Transpile {
     constructor(searchSchema?: ISearchCallSchema);
     // (undocumented)
     callbackOnFnArgument: ICallbackOnFunctionExpression;
+    // Warning: (ae-forgotten-export) The symbol "IStepKey" needs to be exported by the entry point index.d.ts
+    //
     // (undocumented)
-    callbackOnStringArgumentFactory: (name: string) => ICallbackOnFunctionExpression;
+    callbackOnStringArgumentFactory: (name: IStepKey) => ICallbackOnFunctionExpression;
     // (undocumented)
     dealwithSourceMap(input: string): Record<string, string>;
     // (undocumented)
@@ -77,7 +79,7 @@ export class Transpile {
 
 // Warnings were encountered during analysis:
 //
-// dist/types/src/transpiler/index.d.ts:6:5 - (ae-forgotten-export) The symbol "Step" needs to be exported by the entry point index.d.ts
+// dist/types/transpiler/index.d.ts:6:5 - (ae-forgotten-export) The symbol "Step" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

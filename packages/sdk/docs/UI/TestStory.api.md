@@ -7,7 +7,7 @@
 import { default as React_2 } from 'react';
 
 // @public (undocumented)
-export const TestGeneration: React_2.FC<{
+export const TestStory: React_2.FC<{
     testsSource?: string;
     featureSource?: string;
 }>;
