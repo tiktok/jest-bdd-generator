@@ -22,6 +22,8 @@ node_modules/
 .eslintcache
 .sonarlint
 
+.openAIToken
+
 dist/
 coverage/
 release/
@@ -31,6 +33,7 @@ log/
 
 **/*-report.html
 **/*.api.json
+**/*.api.md.feature
 temp/
 
 .vscode/**/*
