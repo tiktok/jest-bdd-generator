@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { Extractor, ExtractorConfig, ExtractorResult } from '@microsoft/api-extractor';
+import { pathOfBaseConfig, pathOfConfig } from './const';
 // import { fileURLToPath } from 'url';
 // const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename);
@@ -30,8 +31,6 @@ function getTemplate(entry: string, subModuleName: string) {
   };
 }
 const originalFile = fs.readFileSync(path.join(__dirname, '../config/api-extractor.json'), 'utf-8');
-const pathOfBaseConfig = './config/api-extractor.json';
-const pathOfConfig = './config/api-extractor/';
 const exportsPackageJSON = packageJSON.exports;
 
 if (!fs.existsSync(pathOfBaseConfig)) {
