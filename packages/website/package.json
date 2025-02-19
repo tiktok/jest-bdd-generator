@@ -44,11 +44,14 @@
     "@docusaurus/theme-common": "~3.5.2",
     "@mdx-js/react": "^3.0.0",
     "docusaurus": "^1.14.7",
+    "docusaurus-lunr-search": "^3.3.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "search-insights": "^2.0.0",
     "jest-bdd-generator": "workspace:*",
-    "demo-project": "workspace:*"
+    "demo-project": "workspace:*",
+    "prism-react-renderer": "~2.4.1",
+    "lunr": "~2.3.9"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

@@ -3,6 +3,8 @@ import type {
   SidebarItemCategoryConfig,
   SidebarItemConfig
 } from '@docusaurus/plugin-content-docs/src/sidebars/types.js';
+import { themes as prismThemes } from 'prism-react-renderer';
+
 const BASE_URL = '/jest-bdd-generator';
 export default {
   title: 'Docusaurus',
@@ -22,11 +24,29 @@ export default {
   onBrokenMarkdownLinks: 'throw',
 
   themeConfig: {
+    navbar: {
+      title: 'Jest BDD Generator',
+      items: [
+        {
+          to: 'introduction/why/',
+          position: 'right',
+          label: 'Docs'
+        },
+        {
+          href: 'https://github.com/tiktok/jest-bdd-generator',
+          label: 'GitHub',
+          position: 'right'
+        }
+      ]
+    },
     prism: {
-      additionalLanguages: ['gherkin']
+      theme: prismThemes.github,
+      darkTheme: prismThemes.dracula,
+      additionalLanguages: ['gherkin', 'bash', 'batch', 'javascript', 'json', 'powershell', 'typescript']
     }
   },
   presets: [
+    //@easyops-cn/docusaurus-search-local
     [
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
@@ -54,6 +74,7 @@ export default {
   ],
 
   plugins: [
+    [require.resolve('docusaurus-lunr-search'), {}],
     [
       '@docusaurus/plugin-content-docs',
       {
