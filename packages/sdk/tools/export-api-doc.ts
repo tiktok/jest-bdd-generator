@@ -11,8 +11,9 @@ function getTemplate(entry: string, subModuleName: string) {
   const moduleName = moduleNameParts.splice(-1, 1)[0];
   const modulePath = moduleNameParts.join('/');
   const reportPath = path.join(`<projectFolder>/docs/`, modulePath);
-  if (!fs.existsSync(reportPath)) {
-    fs.mkdirSync(reportPath, {
+  const phsicalReportPath = reportPath.replace(/^<projectFolder>/, '.');
+  if (!fs.existsSync(phsicalReportPath)) {
+    fs.mkdirSync(phsicalReportPath, {
       recursive: true
     });
   }
@@ -36,8 +37,8 @@ const exportsPackageJSON = packageJSON.exports;
 
 if (!fs.existsSync(pathOfBaseConfig)) {
   const originalConfig = new Function(`return (${originalFile})`)();
-  (originalConfig.mainEntryPointFilePath = path.join('<projectFolder>', packageJSON.types)),
-    fs.writeFileSync(pathOfBaseConfig, JSON.stringify(originalConfig, undefined, 2));
+  originalConfig.mainEntryPointFilePath = path.join('<projectFolder>', packageJSON.types);
+  fs.writeFileSync(pathOfBaseConfig, JSON.stringify(originalConfig, undefined, 2));
 }
 generateAPIExtraction(pathOfBaseConfig);
 

@@ -17,6 +17,11 @@ export class TestGeneratorFromSource {
     return gherkinDocument;
     // return compile(gherkinDocument, 'uri.feature', newId);
   }
+  /**
+   * Get steps details from source code. Includes statements, position, accessed variables, defined indentifiers
+   * @param source TypeScript source code in Jest
+   * @returns Array of Steps extracted from the source code.
+   */
   compileKnownStepsFromSource(source: string): JestToGherkin['output'] {
     this.source = source;
     const _piler = new JestToGherkin();
@@ -27,6 +32,15 @@ export class TestGeneratorFromSource {
     this.transpiler = _piler;
     return _piler.output;
   }
+
+  /**
+   * Generate Jest testing.
+   * If a step is given source code `statements`, it will use it.
+   * If there are same step definitions in other scenarios without source code, it will reference them with comments.
+   * @param steps array of Steps extracted from source code.
+   * @param gherkinSource source Gherkin text.
+   * @returns Jest testing code in TypeScript, or undefined if cannot find the Feature definition.
+   */
   generateGherkinFromSource(steps: Step[], gherkinSource: string): string | undefined {
     const plan = this.compileGherkinFromSource(gherkinSource);
 

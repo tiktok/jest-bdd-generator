@@ -69,9 +69,7 @@ export class Transpile {
     source: string;
     // (undocumented)
     sourceFile?: ts.SourceFile;
-    // (undocumented)
     get steps(): Step[];
-    // (undocumented)
     transpile(input: string, options?: ts.TranspileOptions): ts.TranspileOutput;
     // (undocumented)
     get uniqueSteps(): Step[];

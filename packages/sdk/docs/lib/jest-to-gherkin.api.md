@@ -8,7 +8,7 @@ import * as ts from 'typescript';
 
 // Warning: (ae-forgotten-export) The symbol "Transpile" needs to be exported by the entry point JestToGherkin.d.ts
 //
-// @public (undocumented)
+// @public
 export class JestToGherkin extends Transpile {
     constructor();
     // (undocumented)

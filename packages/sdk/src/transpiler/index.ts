@@ -176,6 +176,9 @@ export class Transpile {
   source: string = '';
   sourceFile?: ts.SourceFile;
   public output: Step[] = [];
+  /**
+   * the `Step` compiled from the source code.
+   */
   public get steps(): Step[] {
     return this.output.map((s) => {
       const { key, value, host, parent, pos, examples } = s;
@@ -540,6 +543,13 @@ export class Transpile {
     // return JSON.parse(rawSourceMap);
   }
 
+  /**
+   * TypeScript Transpiler for Jest code.
+   * Note: If the `fileName` in `options` does not end with `.test.ts`, it works as an ordinary TypeScript transpiler.
+   * @param input Jest source code in TypeScript
+   * @param options TS transpiler options, i.e { fileName: 'index.test.ts' }
+   * @returns Transpiler class
+   */
   transpile(input: string, options: ts.TranspileOptions = {}): ts.TranspileOutput {
     if (options.fileName?.match(/\.test\.ts$/)) {
       this.input = input;
