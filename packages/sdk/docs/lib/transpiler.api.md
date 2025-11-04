@@ -55,7 +55,6 @@ export class Transpile {
     set input(input: string);
     // (undocumented)
     get input(): string;
-    // (undocumented)
     output: Step[];
     // (undocumented)
     outputCode(): string;

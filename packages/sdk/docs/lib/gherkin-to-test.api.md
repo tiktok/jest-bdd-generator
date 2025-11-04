@@ -11,12 +11,12 @@ import * as ts from 'typescript';
 export class TestGeneratorFromSource {
     // (undocumented)
     compileGherkinFromSource(gherkinDoc: string): GherkinDocument;
-    // (undocumented)
     compileKnownStepsFromSource(source: string): JestToGherkin['output'];
     // Warning: (ae-forgotten-export) The symbol "Step" needs to be exported by the entry point TestGeneratorFromSource.d.ts
     //
-    // (undocumented)
+    // @deprecated (undocumented)
     generateGherkinFromSource(steps: Step[], gherkinSource: string): string | undefined;
+    generateJestFromGherkin(steps: Step[], gherkinSource: string): string | undefined;
     // (undocumented)
     source: string;
     // Warning: (ae-forgotten-export) The symbol "JestToGherkin" needs to be exported by the entry point TestGeneratorFromSource.d.ts

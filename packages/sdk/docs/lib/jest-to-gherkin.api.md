@@ -13,7 +13,6 @@ export class JestToGherkin extends Transpile {
     constructor();
     // (undocumented)
     fileName: string;
-    // (undocumented)
     outputCode(): ReturnType<Transpile['outputCode']>;
 }
 
