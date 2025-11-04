@@ -175,6 +175,11 @@ export class Transpile {
   searchSchema!: ISearchCallSchema;
   source: string = '';
   sourceFile?: ts.SourceFile;
+  /**
+   * The retrieved step.
+   * During the transpilation, steps are pushed into this array.
+   * 'searchSchema' defines how to find the steps.
+   */
   public output: Step[] = [];
   /**
    * the `Step` compiled from the source code.

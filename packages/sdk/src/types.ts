@@ -7,6 +7,11 @@ export type IStep = {
   examples?: Array<Record<string, string | number>>;
   sanitizedTitle?: string;
   pos: {
+    /**
+     * Line and character position in source file.
+     * For Scenario, position is at the start bracket of the function body. `test('...', () => {<-- start ... end -->})`
+     * For Step, position is at the start of the comment keyword.
+     */
     start: {
       line: number;
       character: number;
@@ -21,6 +26,9 @@ export type IStep = {
   host?: string;
   parent?: string;
   sourceCode?: {
+    /**
+     * For Scenario, full text of the `test('...', () => {...})` function declaration. Includes the body and its wrappings.
+     */
     fullText: string;
     imports?: string[];
     exports?: string[];
