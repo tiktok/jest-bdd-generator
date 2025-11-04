@@ -34,7 +34,8 @@ export class TestGeneratorFromSource {
   }
 
   /**
-   * Generate Jest testing.
+   * @deprecated
+   * Generate Jest testing. Use `generateJestFromGherkin` instead.
    * If a step is given source code `statements`, it will use it.
    * If there are same step definitions in other scenarios without source code, it will reference them with comments.
    * @param steps array of Steps extracted from source code.
@@ -42,6 +43,18 @@ export class TestGeneratorFromSource {
    * @returns Jest testing code in TypeScript, or undefined if cannot find the Feature definition.
    */
   generateGherkinFromSource(steps: Step[], gherkinSource: string): string | undefined {
+    return this.generateJestFromGherkin(steps, gherkinSource);
+  }
+
+  /**
+   * Generate Jest testing.
+   * If a step is given source code `statements`, it will use it.
+   * If there are same step definitions in other scenarios without source code, it will reference them with comments.
+   * @param steps array of Steps extracted from source code.
+   * @param gherkinSource source Gherkin text.
+   * @returns Jest testing code in TypeScript, or undefined if cannot find the Feature definition.
+   */
+  generateJestFromGherkin(steps: Step[], gherkinSource: string): string | undefined {
     const plan = this.compileGherkinFromSource(gherkinSource);
 
     const statements = plan.feature?.children
