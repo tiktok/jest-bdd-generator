@@ -6,14 +6,96 @@
 
 import * as ts from 'typescript';
 
-// Warning: (ae-forgotten-export) The symbol "Transpile" needs to be exported by the entry point JestToGherkin.d.ts
+// @public
+export type ExampleStep = {
+    key: 'Examples' | 'Scenario';
+    examples: Array<Record<string, string | number>>;
+} & IStep;
+
+// Warning: (ae-forgotten-export) The symbol "IArgumentsSearchContext" needs to be exported by the entry point JestToGherkin.d.ts
 //
+// @public (undocumented)
+export type ICallbackOnFunctionExpression = (node: ts.Expression, callExpression: ts.CallExpression, context: IArgumentsSearchContext, ..._any: unknown[]) => void;
+
+// @public
+export type IStep = {
+    stepParams?: string[];
+    key: IStepKey;
+    value: string;
+    examples?: Array<Record<string, string | number>>;
+    sanitizedTitle?: string;
+    pos: {
+        start: {
+            line: number;
+            character: number;
+            pos: number;
+        };
+        end: {
+            line: number;
+            character: number;
+            pos: number;
+        };
+    };
+    host?: string;
+    parent?: string;
+    sourceCode?: {
+        fullText: string;
+        imports?: string[];
+        exports?: string[];
+        statements?: ts.Statement[];
+    };
+};
+
+// @public
+export type IStepKey = 'Given' | 'When' | 'Then' | 'Examples' | 'Scenario' | 'Feature';
+
 // @public
 export class JestToGherkin extends Transpile {
     constructor();
     // (undocumented)
     fileName: string;
     outputCode(): ReturnType<Transpile['outputCode']>;
+}
+
+// @public (undocumented)
+export type Result = Step & {
+    status?: 'passed' | 'skipped' | 'failed';
+    errors?: string[];
+};
+
+// @public (undocumented)
+export type Step = ExampleStep | IStep;
+
+// @public (undocumented)
+export class Transpile {
+    constructor(searchSchema?: ISearchCallSchema);
+    callbackOnFnArgument: ICallbackOnFunctionExpression;
+    callbackOnStringArgumentFactory: (name: IStepKey) => ICallbackOnFunctionExpression;
+    // @deprecated (undocumented)
+    dealwithSourceMap(input: string): Record<string, string>;
+    generateComments(): string;
+    generateFromKnownSteps(block: ts.Block): Transpile['output'];
+    getComments(block: ts.Block, _lastItem?: Step): Transpile['output'];
+    // (undocumented)
+    getDeclaration(declaration: ts.VariableDeclaration | ts.BindingElement): string[];
+    // (undocumented)
+    groupToScenario(): void;
+    set input(input: string);
+    get input(): string;
+    output: Step[];
+    // @deprecated (undocumented)
+    outputCode(): string;
+    parsePosition(pos: number): Step['pos']['start'];
+    possibleStep: Step[];
+    // Warning: (ae-forgotten-export) The symbol "ISearchCallSchema" needs to be exported by the entry point JestToGherkin.d.ts
+    searchSchema: ISearchCallSchema;
+    source: string;
+    // (undocumented)
+    sourceFile?: ts.SourceFile;
+    get steps(): Step[];
+    transpile(input: string, options?: ts.TranspileOptions): ts.TranspileOutput;
+    // (undocumented)
+    get uniqueSteps(): Step[];
 }
 
 // (No @packageDocumentation comment for this package)

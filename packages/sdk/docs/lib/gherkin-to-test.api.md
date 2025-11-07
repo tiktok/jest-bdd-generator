@@ -7,21 +7,62 @@
 import { GherkinDocument } from '@cucumber/messages';
 import * as ts from 'typescript';
 
+// @public
+export type ExampleStep = {
+    key: 'Examples' | 'Scenario';
+    examples: Array<Record<string, string | number>>;
+} & IStep;
+
+// @public
+export type IStep = {
+    stepParams?: string[];
+    key: IStepKey;
+    value: string;
+    examples?: Array<Record<string, string | number>>;
+    sanitizedTitle?: string;
+    pos: {
+        start: {
+            line: number;
+            character: number;
+            pos: number;
+        };
+        end: {
+            line: number;
+            character: number;
+            pos: number;
+        };
+    };
+    host?: string;
+    parent?: string;
+    sourceCode?: {
+        fullText: string;
+        imports?: string[];
+        exports?: string[];
+        statements?: ts.Statement[];
+    };
+};
+
+// @public
+export type IStepKey = 'Given' | 'When' | 'Then' | 'Examples' | 'Scenario' | 'Feature';
+
+// @public (undocumented)
+export type Result = Step & {
+    status?: 'passed' | 'skipped' | 'failed';
+    errors?: string[];
+};
+
+// @public (undocumented)
+export type Step = ExampleStep | IStep;
+
 // @public (undocumented)
 export class TestGeneratorFromSource {
-    // (undocumented)
     compileGherkinFromSource(gherkinDoc: string): GherkinDocument;
     compileKnownStepsFromSource(source: string): JestToGherkin['output'];
-    // Warning: (ae-forgotten-export) The symbol "Step" needs to be exported by the entry point TestGeneratorFromSource.d.ts
-    //
     // @deprecated (undocumented)
     generateGherkinFromSource(steps: Step[], gherkinSource: string): string | undefined;
     generateJestFromGherkin(steps: Step[], gherkinSource: string): string | undefined;
-    // (undocumented)
     source: string;
     // Warning: (ae-forgotten-export) The symbol "JestToGherkin" needs to be exported by the entry point TestGeneratorFromSource.d.ts
-    //
-    // (undocumented)
     transpiler?: JestToGherkin;
 }
 

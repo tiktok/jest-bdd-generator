@@ -6,8 +6,14 @@
 
 import * as ts from 'typescript';
 
-// @public (undocumented)
+// @public
 export const customTransformerFactory: (searchSchema: ISearchCallSchema, self: Transpile) => ts.CustomTransformerFactory;
+
+// @public
+export type ExampleStep = {
+    key: 'Examples' | 'Scenario';
+    examples: Array<Record<string, string | number>>;
+} & IStep;
 
 // @public (undocumented)
 export type IArgumentsSearchContext = {
@@ -31,40 +37,69 @@ export type ISearchExpressionSchema = {
     chain?: ISearchCallSchema;
 };
 
+// @public
+export type IStep = {
+    stepParams?: string[];
+    key: IStepKey;
+    value: string;
+    examples?: Array<Record<string, string | number>>;
+    sanitizedTitle?: string;
+    pos: {
+        start: {
+            line: number;
+            character: number;
+            pos: number;
+        };
+        end: {
+            line: number;
+            character: number;
+            pos: number;
+        };
+    };
+    host?: string;
+    parent?: string;
+    sourceCode?: {
+        fullText: string;
+        imports?: string[];
+        exports?: string[];
+        statements?: ts.Statement[];
+    };
+};
+
+// @public
+export type IStepKey = 'Given' | 'When' | 'Then' | 'Examples' | 'Scenario' | 'Feature';
+
+// @public (undocumented)
+export type Result = Step & {
+    status?: 'passed' | 'skipped' | 'failed';
+    errors?: string[];
+};
+
+// @public (undocumented)
+export type Step = ExampleStep | IStep;
+
 // @public (undocumented)
 export class Transpile {
     constructor(searchSchema?: ISearchCallSchema);
-    // (undocumented)
     callbackOnFnArgument: ICallbackOnFunctionExpression;
-    // Warning: (ae-forgotten-export) The symbol "IStepKey" needs to be exported by the entry point index.d.ts
-    //
-    // (undocumented)
     callbackOnStringArgumentFactory: (name: IStepKey) => ICallbackOnFunctionExpression;
-    // (undocumented)
+    // @deprecated (undocumented)
     dealwithSourceMap(input: string): Record<string, string>;
-    // (undocumented)
     generateComments(): string;
-    // (undocumented)
     generateFromKnownSteps(block: ts.Block): Transpile['output'];
-    // (undocumented)
     getComments(block: ts.Block, _lastItem?: Step): Transpile['output'];
     // (undocumented)
     getDeclaration(declaration: ts.VariableDeclaration | ts.BindingElement): string[];
     // (undocumented)
     groupToScenario(): void;
     set input(input: string);
-    // (undocumented)
     get input(): string;
     output: Step[];
-    // (undocumented)
+    // @deprecated (undocumented)
     outputCode(): string;
-    // (undocumented)
     parsePosition(pos: number): Step['pos']['start'];
-    // (undocumented)
     possibleStep: Step[];
-    // (undocumented)
     searchSchema: ISearchCallSchema;
-    // (undocumented)
     source: string;
     // (undocumented)
     sourceFile?: ts.SourceFile;
@@ -73,10 +108,6 @@ export class Transpile {
     // (undocumented)
     get uniqueSteps(): Step[];
 }
-
-// Warnings were encountered during analysis:
-//
-// dist/types/transpiler/index.d.ts:6:5 - (ae-forgotten-export) The symbol "Step" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

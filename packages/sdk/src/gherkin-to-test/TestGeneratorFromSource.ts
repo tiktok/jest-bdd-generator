@@ -4,14 +4,28 @@ import { GherkinDocument, IdGenerator /*, PickleStep */ } from '@cucumber/messag
 import { JestToGherkin } from '../jest-to-gherkin/JestToGherkin';
 import { Step } from '../types';
 
+export * from '../types';
+
 const newId = IdGenerator.uuid();
 const builder = new AstBuilder(newId);
 const matcher = new GherkinClassicTokenMatcher();
 const parser = new Parser(builder, matcher);
 
 export class TestGeneratorFromSource {
+  /**
+   * Jest to Gherkin transpiler instance, which compiles TypeScript testing code in Jest.
+   * `compileKnownStepsFromSource` method fills this property.
+   */
   transpiler?: JestToGherkin;
+  /**
+   * TypeScript testing code in Jest
+   */
   source!: string;
+  /**
+   * Read Gherkin source code and generate GherkinDocument object.
+   * @param gherkinDoc string of Gherkin soucecode.
+   * @returns GherkinDocument object.
+   */
   compileGherkinFromSource(gherkinDoc: string): GherkinDocument {
     const gherkinDocument = parser.parse(gherkinDoc);
     return gherkinDocument;
