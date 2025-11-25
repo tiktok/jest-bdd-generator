@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "jest-bdd-generator",
+      "comment": "docs update",
+      "type": "patch"
+    }
+  ],
+  "packageName": "jest-bdd-generator"
+}
