@@ -307,7 +307,8 @@ export class Transpile {
    * Use the following RegExp to find or replace the generated comments:
    * ```ts
    * // /^\s*?\/\*\*\n\*\s*?FOUND: @.+\n(\*.+\n)+/g
-   * @returns
+   * ```
+   * @returns the generated comment
    */
   generateComments(): string {
     const possibleStep: Step[] = this.possibleStep ?? [];
