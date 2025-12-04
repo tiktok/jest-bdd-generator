@@ -4,19 +4,38 @@ import { GherkinDocument, IdGenerator /*, PickleStep */ } from '@cucumber/messag
 import { JestToGherkin } from '../jest-to-gherkin/JestToGherkin';
 import { Step } from '../types';
 
+export * from '../types';
+
 const newId = IdGenerator.uuid();
 const builder = new AstBuilder(newId);
 const matcher = new GherkinClassicTokenMatcher();
 const parser = new Parser(builder, matcher);
 
 export class TestGeneratorFromSource {
+  /**
+   * Jest to Gherkin transpiler instance, which compiles TypeScript testing code in Jest.
+   * `compileKnownStepsFromSource` method fills this property.
+   */
   transpiler?: JestToGherkin;
+  /**
+   * TypeScript testing code in Jest
+   */
   source!: string;
+  /**
+   * Read Gherkin source code and generate GherkinDocument object.
+   * @param gherkinDoc string of Gherkin soucecode.
+   * @returns GherkinDocument object.
+   */
   compileGherkinFromSource(gherkinDoc: string): GherkinDocument {
     const gherkinDocument = parser.parse(gherkinDoc);
     return gherkinDocument;
     // return compile(gherkinDocument, 'uri.feature', newId);
   }
+  /**
+   * Get steps details from source code. Includes statements, position, accessed variables, defined indentifiers
+   * @param source TypeScript source code in Jest
+   * @returns Array of Steps extracted from the source code.
+   */
   compileKnownStepsFromSource(source: string): JestToGherkin['output'] {
     this.source = source;
     const _piler = new JestToGherkin();
@@ -27,7 +46,29 @@ export class TestGeneratorFromSource {
     this.transpiler = _piler;
     return _piler.output;
   }
+
+  /**
+   * @deprecated
+   * Generate Jest testing. Use `generateJestFromGherkin` instead.
+   * If a step is given source code `statements`, it will use it.
+   * If there are same step definitions in other scenarios without source code, it will reference them with comments.
+   * @param steps array of Steps extracted from source code.
+   * @param gherkinSource source Gherkin text.
+   * @returns Jest testing code in TypeScript, or undefined if cannot find the Feature definition.
+   */
   generateGherkinFromSource(steps: Step[], gherkinSource: string): string | undefined {
+    return this.generateJestFromGherkin(steps, gherkinSource);
+  }
+
+  /**
+   * Generate Jest testing.
+   * If a step is given source code `statements`, it will use it.
+   * If there are same step definitions in other scenarios without source code, it will reference them with comments.
+   * @param steps array of Steps extracted from source code.
+   * @param gherkinSource source Gherkin text.
+   * @returns Jest testing code in TypeScript, or undefined if cannot find the Feature definition.
+   */
+  generateJestFromGherkin(steps: Step[], gherkinSource: string): string | undefined {
     const plan = this.compileGherkinFromSource(gherkinSource);
 
     const statements = plan.feature?.children

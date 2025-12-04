@@ -2,7 +2,7 @@
 /* eslint-disable @ttfe/@typescript-eslint/no-unnecessary-condition */
 import * as ts from 'typescript';
 import { IStepKey, Step } from '../types';
-
+export * from '../types';
 type ISearchableExpression =
   | ts.Identifier
   | ts.PropertyAccessExpression
@@ -155,6 +155,13 @@ export type ISearchExpressionSchema = {
 };
 export type ISearchCallSchema = Array<ISearchExpressionSchema>;
 
+/**
+ * TypeScript Custom Transformer Factory for Jest to Gherkin transpilation.
+ * Can be used in `ts.transpileModule` transformers.
+ * @param searchSchema {ISearchCallSchema} Search schema for Jest to Gherkin transpilation.
+ * @param self The factory owner, i.e., Transpile instance.
+ * @returns {ts.CustomTransformerFactory} TypeScript Custom Transformer Factory. Works as a part of TypeScript transpilation.
+ */
 export const customTransformerFactory: (
   searchSchema: ISearchCallSchema,
   self: Transpile
@@ -172,10 +179,25 @@ export const customTransformerFactory: (
 };
 
 export class Transpile {
+  /**
+   * The search schema for Jest to Gherkin transpilation. It looks for `describe`, `test`, `it` function calls.
+   * And ``@When ...``, `@Then ...`, `@Given ...` comments.
+   */
   searchSchema!: ISearchCallSchema;
+  /**
+   * The source code to be transpiled.
+   */
   source: string = '';
   sourceFile?: ts.SourceFile;
+  /**
+   * The retrieved step.
+   * During the transpilation, steps are pushed into this array.
+   * 'searchSchema' defines how to find the steps.
+   */
   public output: Step[] = [];
+  /**
+   * the `Step` compiled from the source code.
+   */
   public get steps(): Step[] {
     return this.output.map((s) => {
       const { key, value, host, parent, pos, examples } = s;
@@ -191,8 +213,14 @@ export class Transpile {
   // public get outputText(): string {
   //   return this._prepareOutput();
   // }
+
+  /**
+   * Based on code repeation, if a sequence of code matches multiple times, it is considered as a possible step.
+   * Set during transpilation.
+   */
   public possibleStep: Step[] = [];
 
+  /** Setter for the source code to be transpiled. */
   public set input(input: string) {
     const sourceMap = this.dealwithSourceMap(input);
 
@@ -202,6 +230,8 @@ export class Transpile {
       this.source = input;
     }
   }
+
+  /** Getter for the source code to be transpiled. */
   get input(): string {
     return this.source;
   }
@@ -212,6 +242,7 @@ export class Transpile {
     }
   }
 
+  /** Parse the position number to line and character. */
   parsePosition(pos: number): Step['pos']['start'] {
     if (this.sourceFile) {
       const { line, character } = this.sourceFile.getLineAndCharacterOfPosition(pos);
@@ -269,6 +300,16 @@ export class Transpile {
     return [];
   }
 
+  /**
+   * Find code for a step when it is not implemented yet.
+   * Search for the same Step signature in other Scenarios.
+   * If found, generate comments for those steps.
+   * Use the following RegExp to find or replace the generated comments:
+   * ```ts
+   * // /^\s*?\/\*\*\n\*\s*?FOUND: @.+\n(\*.+\n)+/g
+   * ```
+   * @returns the generated comment
+   */
   generateComments(): string {
     const possibleStep: Step[] = this.possibleStep ?? [];
     const output: string[] = [];
@@ -304,6 +345,12 @@ export class Transpile {
     return output.join('');
   }
 
+  /**
+   * Search the block for code sequences that match known steps.
+   * If found, generate a comment to mark the Step signature.
+   * @param block
+   * @returns {Step[]} The retrieved steps from matched code sequences.
+   */
   generateFromKnownSteps(block: ts.Block): Transpile['output'] {
     const mapStatementsMatch = this.output.map((step) => ({
       key: step.key,
@@ -384,6 +431,12 @@ export class Transpile {
     );
   }
 
+  /**
+   * Traverse the block to find comments that match `@When ...`, `@Then ...`, `@Given ...`.
+   * @param block {ts.Block} The block to be traversed. Usually the body of a function expression.
+   * @param _lastItem {Step} The last step found. Used to accumulate source code.
+   * @returns {Step[]} The retrieved steps from comments.
+   */
   getComments(block: ts.Block, _lastItem?: Step): Transpile['output'] {
     const ret: Transpile['output'] = [];
     let lastItem = _lastItem;
@@ -444,7 +497,7 @@ export class Transpile {
   }
 
   /**
-   *
+   * Traversing the AST, when the string argument is found, create a step and push into the output.
    * @param name Gherkin Keyword, Feature or Scenario
    * @returns the retrieved step
    */
@@ -495,6 +548,13 @@ export class Transpile {
     };
   };
 
+  /**
+   * When a function expression argument is found, traverse its body to find steps inside it.
+   * @param expressionOfArg
+   * @param callExpression
+   * @param callContext
+   * @returns {void}
+   */
   callbackOnFnArgument: ICallbackOnFunctionExpression = (expressionOfArg, callExpression, callContext) => {
     const steps: Transpile['output'] = [];
     const host = callContext.host as string;
@@ -529,6 +589,11 @@ export class Transpile {
     this.output.push(...steps);
   };
 
+  /**
+   * @deprecated Does nothing currently. Used to earse source map from input.
+   * @param input
+   * @returns
+   */
   dealwithSourceMap(input: string): Record<string, string> {
     // const sourceMapData = input.split('//# sourceMappingURL=data:application/json;charset=utf-8;base64,')[1];
     // if (!sourceMapData || !Buffer) {
@@ -540,6 +605,13 @@ export class Transpile {
     // return JSON.parse(rawSourceMap);
   }
 
+  /**
+   * TypeScript Transpiler for Jest code.
+   * Note: If the `fileName` in `options` does not end with `.test.ts`, it works as an ordinary TypeScript transpiler.
+   * @param input {string} Jest source code in TypeScript
+   * @param options TS transpiler options, i.e { fileName: 'index.test.ts' }
+   * @returns {Transpiler} Transpiler class
+   */
   transpile(input: string, options: ts.TranspileOptions = {}): ts.TranspileOutput {
     if (options.fileName?.match(/\.test\.ts$/)) {
       this.input = input;
@@ -575,6 +647,7 @@ export class Transpile {
     }
   }
 
+  /** @deprecated */
   private _prepareOutput(): string {
     this.groupToScenario();
     // console.log(new Array(10).fill('+').join('\n'));
@@ -582,6 +655,7 @@ export class Transpile {
     return this.outputCode();
   }
 
+  /** @deprecated */
   outputCode(): string {
     return '';
   }

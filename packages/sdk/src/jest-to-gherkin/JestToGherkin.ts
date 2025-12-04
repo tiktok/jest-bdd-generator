@@ -1,7 +1,13 @@
 import ts from 'typescript';
 import { ExampleStep, Step } from '../types';
 import { ISearchExpressionSchema, Transpile } from '../transpiler';
-
+export type { ICallbackOnFunctionExpression, Transpile } from '../transpiler';
+export * from '../types';
+/**
+ * TypeScript compiler for transpiling tests in Jest.
+ * After it transpile an input, the instance stores the extracted information.
+ * this.steps: Step[] - the `Step` compiled from the source code.
+ */
 export class JestToGherkin extends Transpile {
   public fileName: string = '';
   constructor() {
@@ -108,6 +114,10 @@ export class JestToGherkin extends Transpile {
     this.searchSchema = [searchDescribeFunction];
   }
 
+  /**
+   * Based on the Jest testing structure and comments, output Gherkin code.
+   * @returns {string} Gherkin code in string.
+   */
   outputCode(): ReturnType<Transpile['outputCode']> {
     this.output = this.output.sort((a, b) => {
       const startA = a.pos.start;
