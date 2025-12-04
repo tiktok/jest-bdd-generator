@@ -1,6 +1,6 @@
 {
   "name": "jest-bdd-generator",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Jest code generator empowered with Gherkin and BDD",
   "keywords": [
     "Jest",
