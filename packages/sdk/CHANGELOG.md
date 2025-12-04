@@ -1,6 +1,13 @@
 # Change Log - jest-bdd-generator
 
-This log was last generated on Thu, 26 Sep 2024 05:56:20 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Dec 2025 02:29:37 GMT and should not be manually modified.
+
+## 0.3.1
+Thu, 04 Dec 2025 02:29:37 GMT
+
+### Patches
+
+- docs update
 
 ## 0.3.0
 Thu, 26 Sep 2024 05:56:20 GMT

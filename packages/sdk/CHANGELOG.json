@@ -2,6 +2,26 @@
   "name": "jest-bdd-generator",
   "entries": [
     {
+      "version": "0.3.1",
+      "tag": "jest-bdd-generator_v0.3.1",
+      "date": "Thu, 04 Dec 2025 02:29:37 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "docs update"
+          }
+        ],
+        "none": [
+          {
+            "comment": "update ignore pattern"
+          },
+          {
+            "comment": "docs update: re-generate API reference"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.3.0",
       "tag": "jest-bdd-generator_v0.3.0",
       "date": "Thu, 26 Sep 2024 05:56:20 GMT",
