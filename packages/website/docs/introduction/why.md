@@ -7,8 +7,8 @@ sidebar_label:  Why Jest-BDD
 There are **two key difference** between **Cucumber** and **Jest**, that make them contradictory in certain aspects:
 
 - **context**
-   1. Unit testing with Jest requires every `test()` to be self-contained and independent, or put in another way, context-free.
-   1. In the contrast, it is an **anti-pattern** for `Cucumber` to have steps that are scenario-specific. It emphasizes reusing across different scenarios, allowing tests to run in various real-world context.
+   1. Unit testing with Jest requires every `test()` to be self-contained and independent, or put in another way, **context-free**.
+   1. In the contrast, it is an **anti-pattern** for `Cucumber` to have steps that are **scenario-specific**. It emphasizes reusing across different scenarios, allowing tests to run in various real-world context.
 
 - **Reusing**
   1. One of the powerful aspects of `Cucumber` and the `BDD` approach is the ability to reuse `step` definitions across multiple scenarios and features, allowing you to cover a wide range of test cases with a relatively small amount of code. This reuse is facilitated by writing generic step definitions that can be parameterized to handle different data and contexts.
