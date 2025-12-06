@@ -58,16 +58,26 @@ Generate an HTML report for a failing test, which includes failure details and c
   npx gen-report pathTestsInput=./tests/failWithF16Round.test.ts pathFeatureInput=./docs/features/failWithF16Round.feature
   ```
   - The output will be `failWithF16Round-report.html` saved in the `./docs/reports` folder.
+  - or visit [http://127.0.0.1:8080/docs/reports/](http://127.0.0.1:8080/docs/reports/)
+    *see also: [5. View the web UI]()
 
-
-## 5. Managing Test Examples with Test Oracle
-For more information on test oracle, check out [Test Oracle on Wikipedia](https://en.wikipedia.org/wiki/Test_oracle).
-
-Start the TestOracle service:
+## 5. View the web UI 
+Start the HTTP service:
   ```bash
-  npm run start
+  npm run start # or rushx start
   echo "Visit: http://127.0.0.1:8080"
   ```
+Above demos are listed under `Code Generation Demo:`
+  - Try above features in web UI, click the corresponding buttons
+    - Code Generation Demos:
+    - [Complete Testing-codes](http://127.0.0.1:8080/test-generation): the tests on the left contains all the `Scenarios`
+    - [Missing step comments](http://127.0.0.1:8080/test-generation/no-comments): the tests code has both Scenario but only the first one has comments
+    - [Missing step implementations](http://127.0.0.1:8080/test-generation/no-implementation): the tests code only implements one `Scenario`
+
+
+## 6. Managing Test Examples with Test Oracle
+For more information on test oracle, check out [Test Oracle on Wikipedia](https://en.wikipedia.org/wiki/Test_oracle).
+
 
 ### Features of the TestOracle Index Page
 The [index page](http://127.0.0.1:8080/test-oracle/f16round) presents a table of various `Math.round` methods:

@@ -7,17 +7,22 @@ slug: /
 
 # Comparison / Mapping of Gherkin to Jest
 
-| **Gherkin**      | **Jest**          |
-|------------------|-------------------|
-| `Feature`        | `describe()`       |
-| `Scenario`       | `test()` / `it()`  |
-| `Examples`       | `test.each()`      |
-| `Background`     | `beforeAll()`      |
-| `Steps`          | Code statements with `//@STEP` comments |
+`Gherkin` is a well defined language, which is easy to parse and read by both humans and machines, not only accessible to non-technical stack-holders, but also easier for experienced developers to understand the intended behaviour of the system, and organize test cases effectively.
+It naturally matches the structure of Jest test files, aligning the behavior-driven development (`BDD`) approach to a more structured and organized testing methodology.
+
+| **Gherkin** keywords     | **Jest** methods         |
+|--------------------------|--------------------------|
+| `Feature`                | `describe()`             |
+| `Scenario`               | `test()` / `it()`        |
+| `Examples`               | `test.each()`            |
+| `Background`             | `beforeAll()`            |
+| `Steps`                  | Code statements with `//@STEP` comments |
 
 ## Example: Mapping a Gherkin Scenario to Jest
 
-Here’s how a Gherkin scenario translates perfectly into a Jest test:
+Here’s how a **Gherkin** `scenario` translates perfectly into a **Jest** `test`:
+
+- **Gherkin**:
 
 ```gherkin title="./docs/features/rounding.feature" showLineNumbers
 Feature: Rounding methods of Math
@@ -42,6 +47,8 @@ Examples:
 | -1234.5| "round"| -1234  |
 | -1234.6| "round"| -1235  |
 ```
+
+- **Jest**:
 
 ```typescript title="./tests/rounding.test.ts" showLineNumbers
 import { describe, test, expect } from '@jest/globals';
