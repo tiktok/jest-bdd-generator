@@ -1,4 +1,4 @@
-This website was created with [Docusaurus](https://docusaurus.io/).
+This website (including this README) was created with [Docusaurus](https://docusaurus.io/).
 
 # What's In This Document
 
@@ -14,14 +14,14 @@ This website was created with [Docusaurus](https://docusaurus.io/).
 
 ```sh
 # Install dependencies
-$ yarn
+$ rush install # Or `rush install --to website` at project root
 ```
 
 2. Run your dev server:
 
 ```sh
 # Start the site
-$ yarn start
+$ rushx start
 ```
 
 ## Directory Structure

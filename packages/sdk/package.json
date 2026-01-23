@@ -30,7 +30,6 @@
     "build:test": "npx gen-test pathTestsinput=./tests/generateTests.test.ts pathGherkinInput=./docs/features/generateTests.feature pathOutput=./tests/generateTests.test.ts",
     "dev": "modern dev",
     "test": "npx jest generateTests",
-    "start": "modern build; npx http-server website -c-1 -P http://127.0.0.1:8080/? -o /",
     "doc": "ts-node tools/export-api-doc ",
     "lint": "eslint .",
     "lint:error": "eslint . --quiet"

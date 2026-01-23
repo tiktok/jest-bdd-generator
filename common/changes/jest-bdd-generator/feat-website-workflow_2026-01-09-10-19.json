@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "jest-bdd-generator",
+      "comment": "update Website workflow and README",
+      "type": "none"
+    }
+  ],
+  "packageName": "jest-bdd-generator"
+}

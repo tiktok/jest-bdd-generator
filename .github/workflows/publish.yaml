@@ -2,6 +2,7 @@ name: Publish NPM Packages
 on: workflow_dispatch
 jobs:
   publish:
+    if: github.repository == 'tiktok/jest-bdd-generator'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
